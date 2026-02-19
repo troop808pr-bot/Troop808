@@ -101,6 +101,17 @@
         #lightbox {
             transition: opacity 0.3s ease;
         }
+        
+        .lightbox-nav-btn {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.2s ease;
+        }
+        
+        .lightbox-nav-btn:hover {
+            background: rgba(234, 88, 12, 0.8);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -300,11 +311,11 @@
         <section id="galeria" class="py-20 bg-slate-100">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 uppercase tracking-widest font-brand font-bold"><i class="fas fa-camera-retro mr-3 text-orange-500"></i>Galería Visual</h3>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                    <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" referrerpolicy="no-referrer" onclick="openLightbox(this.src)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" referrerpolicy="no-referrer" onclick="openLightbox(this.src)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" referrerpolicy="no-referrer" onclick="openLightbox(this.src)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" referrerpolicy="no-referrer" onclick="openLightbox(this.src)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
+                <div id="photo-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                    <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" referrerpolicy="no-referrer" onclick="openLightbox(0)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
+                    <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" referrerpolicy="no-referrer" onclick="openLightbox(1)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
+                    <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" referrerpolicy="no-referrer" onclick="openLightbox(2)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
+                    <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" referrerpolicy="no-referrer" onclick="openLightbox(3)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
                 </div>
             </div>
         </section>
@@ -421,15 +432,84 @@
     </footer>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex items-center justify-center p-4" onclick="closeLightbox()">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none" aria-label="Cerrar">&times;</button>
-        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl animate-fade-in" onclick="event.stopPropagation()">
+    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+        <!-- Botón Cerrar -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none z-[110]" aria-label="Cerrar">&times;</button>
+        
+        <div class="relative w-full max-w-5xl flex items-center justify-center group" onclick="event.stopPropagation()">
+            <!-- Flecha Izquierda -->
+            <button onclick="prevPhoto()" class="absolute left-0 md:-left-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Anterior">
+                <i class="fas fa-chevron-left text-2xl md:text-4xl text-white"></i>
+            </button>
+
+            <!-- Imagen Principal -->
+            <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] md:max-h-[85vh] rounded-lg shadow-2xl animate-fade-in object-contain">
+
+            <!-- Flecha Derecha -->
+            <button onclick="nextPhoto()" class="absolute right-0 md:-right-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Siguiente">
+                <i class="fas fa-chevron-right text-2xl md:text-4xl text-white"></i>
+            </button>
+        </div>
+        
+        <!-- Indicador de Foto -->
+        <div id="lightbox-counter" class="mt-6 text-white font-bold font-brand text-xs uppercase tracking-widest opacity-60"></div>
     </div>
 
     <!-- Scripts -->
     <script type="module">
         const mobileBtn = document.getElementById('mobile-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+
+        // Lógica de Galería Integrada
+        const galleryImages = [
+            "https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo",
+            "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg",
+            "https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j",
+            "https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4"
+        ];
+        let currentPhotoIndex = 0;
+
+        window.openLightbox = (index) => {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+            currentPhotoIndex = index;
+            updateLightbox();
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeLightbox = () => {
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        };
+
+        window.nextPhoto = () => {
+            currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length;
+            updateLightbox();
+        };
+
+        window.prevPhoto = () => {
+            currentPhotoIndex = (currentPhotoIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        };
+
+        function updateLightbox() {
+            const img = document.getElementById('lightbox-img');
+            const counter = document.getElementById('lightbox-counter');
+            img.src = galleryImages[currentPhotoIndex];
+            counter.innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
+        }
+
+        // Soporte para flechas del teclado
+        document.addEventListener('keydown', (e) => {
+            const lb = document.getElementById('lightbox');
+            if (lb.classList.contains('hidden')) return;
+            if (e.key === 'ArrowRight') window.nextPhoto();
+            if (e.key === 'ArrowLeft') window.prevPhoto();
+            if (e.key === 'Escape') window.closeLightbox();
+        });
 
         window.switchView = (v) => {
             const main = document.getElementById('main-view'), docs = document.getElementById('docs-view');
@@ -453,23 +533,12 @@
             }, 100);
         };
 
-        window.openLightbox = (src) => {
-            const lb = document.getElementById('lightbox'), img = document.getElementById('lightbox-img');
-            img.src = src; lb.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        };
-
-        window.closeLightbox = () => {
-            document.getElementById('lightbox').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        };
-
         if(mobileBtn) {
             mobileBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); };
             document.addEventListener('click', () => mobileMenu.classList.remove('active'));
         }
 
-        // --- MOTOR DE CALENDARIO OPTIMIZADO (TURBO-BOOST) ---
+        // --- MOTOR DE CALENDARIO OPTIMIZADO ---
         const calendarEmail = "troop808pr@gmail.com";
         const iCalUrl = `https://calendar.google.com/calendar/ical/${encodeURIComponent(calendarEmail)}/public/basic.ics?v=${new Date().getTime()}`;
 
@@ -477,14 +546,13 @@
             const container = document.getElementById('event-cards-container');
             let rawICal = null;
 
-            // Priorizamos los proxies más rápidos para este entorno
             const proxyAttempts = [
                 `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`,
                 `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}`,
                 `https://thingproxy.freeboard.io/fetch/${iCalUrl}`
             ];
 
-            const fetchWithTimeout = async (url, timeout = 4000) => { // Reducido a 4s para saltar rápido si uno falla
+            const fetchWithTimeout = async (url, timeout = 4000) => {
                 const controller = new AbortController();
                 const id = setTimeout(() => controller.abort(), timeout);
                 try {
@@ -501,7 +569,6 @@
             };
 
             try {
-                // Ejecutamos en paralelo competitivo: el que responda primero gana
                 rawICal = await Promise.any(proxyAttempts.map(url => fetchWithTimeout(url)));
             } catch (e) { 
                 console.error("Error sincronizando agenda");
@@ -514,7 +581,6 @@
                 const vevents = unfolded.split('BEGIN:VEVENT');
                 vevents.shift();
                 
-                // HOY: Feb 18. Filtramos a partir del 19 para mostrar 21, 24, 27.
                 const filterYear = 2026;
                 const filterMonth = 1; 
                 const filterDay = 19; 
@@ -617,7 +683,6 @@
         const toggleC = document.getElementById('toggle-calendar');
         if(toggleC) toggleC.onclick = () => document.getElementById('google-calendar-section').classList.toggle('hidden');
 
-        // EJECUCIÓN INMEDIATA: Iniciamos el fetch sin esperar al window.onload
         fetchCalendarEvents();
     </script>
 </body>
