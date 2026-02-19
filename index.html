@@ -97,6 +97,29 @@
             backdrop-filter: blur(5px);
             transition: all 0.2s ease;
         }
+
+        /* Animación "Escribiendo" tipo WhatsApp */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 0;
+        }
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #4c1d95;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -106,10 +129,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('main')">
-                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" 
-                         alt="Logo Tropa 808" 
-                         referrerpolicy="no-referrer"
-                         class="w-12 h-12 rounded-full border-2 border-orange-500 object-cover logo-shadow">
+                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo Tropa 808" class="w-12 h-12 rounded-full border-2 border-orange-500 object-cover logo-shadow">
                     <div>
                         <span class="block text-lg font-extrabold text-indigo-900 leading-none font-brand uppercase">TROPA 808</span>
                         <span class="text-[9px] font-bold text-orange-600 uppercase tracking-tighter">Distrito Majagua PR</span>
@@ -127,9 +147,7 @@
                     <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="bg-orange-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-800 transition shadow-md">Unirse</a>
                 </div>
 
-                <button id="mobile-btn" class="lg:hidden text-indigo-900 p-2 focus:outline-none" aria-label="Menu">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+                <button id="mobile-btn" class="lg:hidden text-indigo-900 p-2 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
             </div>
         </div>
 
@@ -204,14 +222,12 @@
             </div>
         </header>
 
-        <!-- ESENCIA -->
+        <!-- SECCIÓN ESENCIA -->
         <section class="py-20 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="w-full md:w-1/2 flex justify-center">
-                        <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" 
-                             alt="Esencia" referrerpolicy="no-referrer"
-                             class="w-3/4 md:w-3/5 h-auto object-contain rounded-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" alt="Esencia" referrerpolicy="no-referrer" class="w-3/4 md:w-3/5 h-auto object-contain rounded-2xl">
                     </div>
                     <div class="w-full md:w-1/2 space-y-6">
                         <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs font-brand">Nuestra Esencia</h2>
@@ -258,7 +274,7 @@
             </div>
         </section>
 
-        <!-- BITÁCORA (FOTOS ORIGINALES FIJADAS) -->
+        <!-- BITÁCORA -->
         <section id="blog" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
                 <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 text-center uppercase tracking-tighter font-brand"><i class="fas fa-journal-whills mr-3 text-indigo-600"></i>Bitácora Scout 808</h3>
@@ -340,7 +356,7 @@
         </section>
     </main>
 
-    <!-- RECURSOS (4 DOCUMENTOS) -->
+    <!-- RECURSOS -->
     <section id="docs-view" class="hidden pt-28 md:pt-32 pb-24 bg-slate-100 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-12">
@@ -464,7 +480,7 @@
         // --- GALERÍA ---
         const galleryImages = [
             "https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo",
-            "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg",
+            "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoFChKSQCOS9LfiiSSrIg",
             "https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j",
             "https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4"
         ];
@@ -492,7 +508,7 @@
             document.getElementById('lightbox-counter').innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
         }
 
-        // --- INFINITY AI ✨ (OPTIMIZADO: GITHUB + SAFARI + ESPACIADO) ---
+        // --- INFINITY AI (PUNTOS Y FORMATO) ---
         window.toggleAiChat = () => document.getElementById('ai-chat-modal').classList.toggle('hidden');
 
         async function fetchWithBackoff(url, options, retries = 5, delay = 1000) {
@@ -515,14 +531,20 @@
             input.value = ""; messages.scrollTop = messages.scrollHeight;
             
             const lid = 'l-' + Date.now();
-            messages.innerHTML += `<div id="${lid}" class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 w-fit font-bold text-xs">Analizando...</div>`;
+            messages.innerHTML += `
+                <div id="${lid}" class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 w-fit font-bold text-xs flex items-center">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>`;
             messages.scrollTop = messages.scrollHeight;
 
             const systemPrompt = `Eres Infinity AI ✨, experto de la Tropa 808. 
             AYUDA EXCLUSIVA: Scouting, Camping, Merit Badges y Rangos. 
             Si te preguntan otra cosa, responde cortésmente que solo hablas de Scouting.
             REGLA DE FORMATO CRÍTICA: Sé muy organizado. Al terminar una idea o párrafo con punto y aparte, DEJA UNA LÍNEA EN BLANCO ADICIONAL (Salto de línea doble) para que el texto sea muy fácil de leer.
-            DATOS CLAVE: Próxima reunión el 21 de febrero de 2026. Próximo Camping Guajataka 2026.
             Termina siempre con "Siempre Listos ⚜️".`;
 
             try {
@@ -554,7 +576,15 @@
         const aiInp = document.getElementById('ai-input');
         if(aiInp) aiInp.onkeypress = (e) => { if (e.key === 'Enter') window.sendAiMessage(); };
 
-        // --- CALENDARIO (SINCRONIZADO: 21, 24 y 27 FEB) ---
+        // --- CALENDARIO (REDUCCIÓN DE REPETICIÓN DE COLORES) ---
+        const themes = {
+            purpura: { b: 'border-indigo-600', bg: 'bg-indigo-600', tb: 'bg-indigo-50', tc: 'text-indigo-600' },
+            naranja: { b: 'border-orange-500', bg: 'bg-orange-500', tb: 'bg-orange-50', tc: 'text-orange-600' },
+            verde: { b: 'border-green-600', bg: 'bg-green-600', tb: 'bg-green-50', tc: 'text-green-600' },
+            azul: { b: 'border-blue-600', bg: 'bg-blue-600', tb: 'bg-blue-50', tc: 'text-blue-600' },
+            rojo: { b: 'border-red-600', bg: 'bg-red-600', tb: 'bg-red-50', tc: 'text-red-600' }
+        };
+
         const calendarEmail = "troop808pr%40gmail.com";
         const iCalUrl = `https://calendar.google.com/calendar/ical/${calendarEmail}/public/basic.ics?v=${new Date().getTime()}`;
 
@@ -573,8 +603,6 @@
             if (rawICal) {
                 const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
                 const vevents = unfolded.split('BEGIN:VEVENT').slice(1);
-                
-                // Filtramos eventos futuros (desde hoy 19 de febrero)
                 const todayComp = new Date(2026, 1, 19).getTime(); 
                 
                 const events = vevents.map(v => {
@@ -585,42 +613,64 @@
                 }).filter(e => e && e.comp >= todayComp).sort((a,b) => a.comp - b.comp).slice(0,3);
 
                 const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-                const th = [
-                    { b: 'border-indigo-600', bg: 'bg-indigo-600', tb: 'bg-indigo-50', tc: 'text-indigo-600' },
-                    { b: 'border-orange-500', bg: 'bg-orange-500', tb: 'bg-orange-50', tc: 'text-orange-600' },
-                    { b: 'border-green-600', bg: 'bg-green-600', tb: 'bg-green-50', tc: 'text-green-600' }
-                ];
+                const themeKeys = Object.keys(themes);
+                
+                // --- LÓGICA DE COLORES SIN REPETICIÓN ---
+                let availableThemes = [...themeKeys];
 
                 container.innerHTML = events.map((ev, i) => {
-                    const cur = th[i%3];
-                    let tag = "AVENTURA";
-                    if(ev.summary.toLowerCase().includes("reunion") || ev.summary.toLowerCase().includes("reunión")) tag = "REUNIÓN";
-                    else if(ev.summary.toLowerCase().includes("caminata")) tag = "CAMINATA";
-                    else if(ev.summary.toLowerCase().includes("camping") || ev.summary.toLowerCase().includes("guajataka") || ev.summary.toLowerCase().includes("g-taka")) tag = "CAMPING";
+                    const sl = ev.summary.toLowerCase();
+                    let st = null;
+                    let chosenKey = null;
 
-                    return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${cur.b} shadow-sm flex flex-col justify-between font-bold animate-fade-in">
+                    // 1. Prioridad: Detección por palabra clave
+                    if (sl.includes('verde')) chosenKey = 'verde';
+                    else if (sl.includes('naranja')) chosenKey = 'naranja';
+                    else if (sl.includes('azul')) chosenKey = 'azul';
+                    else if (sl.includes('rojo')) chosenKey = 'rojo';
+                    else if (sl.includes('purpura') || sl.includes('púrpura')) chosenKey = 'purpura';
+                    
+                    // 2. Si no hay palabra clave o el color ya se usó mucho, elegimos uno al azar de los disponibles
+                    if (!chosenKey || !availableThemes.includes(chosenKey)) {
+                        const randomIndex = Math.floor(Math.random() * availableThemes.length);
+                        chosenKey = availableThemes[randomIndex];
+                    }
+
+                    st = themes[chosenKey];
+                    // 3. Quitamos el color usado para que la siguiente tarjeta sea distinta
+                    availableThemes = availableThemes.filter(k => k !== chosenKey);
+                    
+                    // Si nos quedamos sin colores (difícil con 5 temas y 3 tarjetas), reseteamos
+                    if (availableThemes.length === 0) availableThemes = [...themeKeys];
+
+                    let tag = "AVENTURA";
+                    if(sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
+                    else if(sl.includes("caminata")) tag = "CAMINATA";
+                    else if(sl.includes("camping") || sl.includes("guajataka")) tag = "CAMPING";
+
+                    return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${st.b} shadow-sm flex flex-col justify-between font-bold animate-fade-in">
                         <div>
                             <div class="flex items-center justify-between mb-6">
-                                <div class="${cur.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
+                                <div class="${st.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
                                     <span class="text-[10px] uppercase font-bold text-white">${months[ev.m]}</span>
                                     <span class="text-xl font-bold text-white">${ev.d}</span>
                                 </div>
-                                <span class="${cur.tb} ${cur.tc} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
+                                <span class="${st.tb} ${st.tc} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
                             </div>
                             <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 uppercase leading-tight">${ev.summary}</h4>
                         </div>
                     </div>`;
                 }).join('');
             } else {
-                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl"><p class="text-slate-500 font-bold uppercase text-[10px]">Sincronizando agenda scout...</p></div>`;
+                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl"><p class="text-slate-500 font-bold uppercase text-[10px]">Cargando aventuras...</p></div>`;
             }
         }
 
         document.getElementById('toggle-calendar').onclick = () => document.getElementById('google-calendar-section').classList.toggle('hidden');
-        
         window.onload = () => { fetchEvents(); };
     </script>
 </body>
 </html>
+
 
 
