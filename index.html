@@ -52,18 +52,12 @@
         }
 
         @media (min-width: 768px) {
-            .calendar-wrapper {
-                padding-bottom: 50%;
-            }
+            .calendar-wrapper { padding-bottom: 50%; }
         }
 
         .calendar-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
         .logo-shadow {
@@ -98,19 +92,10 @@
             100% { background-position: -200% 0; }
         }
 
-        #lightbox {
-            transition: opacity 0.3s ease;
-        }
-        
         .lightbox-nav-btn {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(5px);
             transition: all 0.2s ease;
-        }
-        
-        .lightbox-nav-btn:hover {
-            background: rgba(234, 88, 12, 0.8);
-            transform: scale(1.1);
         }
     </style>
 </head>
@@ -126,7 +111,7 @@
                          referrerpolicy="no-referrer"
                          class="w-12 h-12 rounded-full border-2 border-orange-500 object-cover logo-shadow">
                     <div>
-                        <span class="block text-lg font-extrabold text-indigo-900 leading-none font-brand font-bold uppercase">TROPA 808</span>
+                        <span class="block text-lg font-extrabold text-indigo-900 leading-none font-brand uppercase">TROPA 808</span>
                         <span class="text-[9px] font-bold text-orange-600 uppercase tracking-tighter">Distrito Majagua PR</span>
                     </div>
                 </div>
@@ -137,7 +122,7 @@
                     <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-indigo-900 hover:text-orange-600 transition">Blog</a>
                     <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="text-indigo-900 hover:text-orange-600 transition">Galería</a>
                     <a href="javascript:void(0)" onclick="switchView('docs')" class="text-orange-600 hover:text-indigo-900 transition flex items-center font-bold">
-                        <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Documentos
+                        <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Recursos
                     </a>
                     <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="bg-orange-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-800 transition shadow-md">Unirse</a>
                 </div>
@@ -150,22 +135,22 @@
 
         <div id="mobile-menu" class="lg:hidden bg-indigo-900 text-white space-y-2 font-bold border-t border-indigo-800">
             <div class="px-6 py-6 flex flex-col space-y-5">
-                <a href="javascript:void(0)" onclick="switchView('main')" class="block py-2 uppercase text-white">Inicio</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="block py-2 uppercase text-white">Eventos</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="block py-2 uppercase text-white">Blog</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="block py-2 uppercase text-white">Galería</a>
-                <a href="javascript:void(0)" onclick="switchView('docs')" class="block py-2 text-orange-400 uppercase">Documentos</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="block py-3 bg-orange-600 text-center rounded-xl text-white uppercase shadow-lg">Unirse ahora</a>
+                <a href="javascript:void(0)" onclick="switchView('main')" class="block py-2 uppercase">Inicio</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="block py-2 uppercase">Eventos</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="block py-2 uppercase">Blog</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="block py-2 uppercase">Galería</a>
+                <a href="javascript:void(0)" onclick="switchView('docs')" class="block py-2 text-orange-400 uppercase">Recursos (PDF)</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="block py-3 bg-orange-600 text-center rounded-xl uppercase shadow-lg">Unirse ahora</a>
             </div>
         </div>
     </nav>
 
-    <!-- Infinity AI ✨ -->
+    <!-- Infinity AI ✨ Botón -->
     <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 z-[60] bg-indigo-600 text-white p-2 md:p-3 rounded-full shadow-2xl flex items-center space-x-2 border-2 border-white group">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white/50 group-hover:border-orange-400 transition-colors">
             <img src="https://lh3.googleusercontent.com/d/1W52m7xHvXriEjFOphtUZVjEA7WdvdreJ" alt="Avatar Infinity AI" class="w-full h-full object-cover">
         </div>
-        <span class="hidden md:inline font-bold pr-2 text-white font-brand font-bold">Infinity AI ✨</span>
+        <span class="hidden md:inline font-bold pr-2 font-brand">Infinity AI ✨</span>
     </button>
 
     <div id="ai-chat-modal" class="fixed bottom-24 right-6 z-[70] hidden w-[90vw] md:w-[420px]">
@@ -176,11 +161,11 @@
                         <img src="https://lh3.googleusercontent.com/d/1W52m7xHvXriEjFOphtUZVjEA7WdvdreJ" alt="Avatar" class="w-full h-full object-cover">
                     </div>
                     <div>
-                        <h4 class="font-black text-sm md:text-base uppercase leading-tight font-brand text-white font-bold">Infinity AI ✨</h4>
-                        <p class="text-[9px] md:text-[10px] font-bold text-indigo-300 uppercase font-brand font-bold">Consultor Scout 24/7</p>
+                        <h4 class="font-black text-sm md:text-base uppercase leading-tight font-brand">Infinity AI ✨</h4>
+                        <p class="text-[9px] md:text-[10px] font-bold text-indigo-300 uppercase">Consultor Scout 24/7</p>
                     </div>
                 </div>
-                <button onclick="toggleAiChat()" class="text-white hover:text-orange-400 p-2"><i class="fas fa-times text-lg text-white"></i></button>
+                <button onclick="toggleAiChat()" class="text-white hover:text-orange-400 p-2"><i class="fas fa-times text-lg"></i></button>
             </div>
             <div id="ai-messages" class="flex-grow p-5 md:p-6 overflow-y-auto space-y-4 bg-slate-50 text-sm leading-relaxed text-indigo-950 font-bold font-brand">
                 <div class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 shadow-sm">
@@ -190,8 +175,8 @@
             <div class="p-4 bg-white border-t border-slate-100">
                 <div class="flex space-x-2">
                     <input type="text" id="ai-input" placeholder="Pregunta algo..." class="flex-grow bg-slate-100 border-none rounded-2xl px-4 py-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none font-bold">
-                    <button onclick="sendAiMessage()" class="bg-orange-600 text-white w-12 h-12 rounded-2xl hover:bg-indigo-900 transition flex items-center justify-center shadow-md">
-                        <i class="fas fa-paper-plane text-white"></i>
+                    <button onclick="sendAiMessage()" id="ai-send-btn" class="bg-orange-600 text-white w-12 h-12 rounded-2xl hover:bg-indigo-900 transition flex items-center justify-center shadow-md">
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
@@ -199,45 +184,44 @@
     </div>
 
     <!-- VISTA PRINCIPAL -->
-    <main id="main-view" class="view-section">
+    <main id="main-view">
         <header id="inicio" class="relative pt-20 overflow-hidden bg-indigo-950 min-h-[60vh] md:min-h-[75vh] flex items-center">
             <div class="absolute inset-0">
                 <img src="https://lh3.googleusercontent.com/d/1G2NinhFshDfRAqPxxjZJTMyY0oShllzv" alt="Portada" class="w-full h-full object-cover opacity-60" referrerpolicy="no-referrer">
             </div>
             <div class="max-w-7xl mx-auto px-6 relative z-10 text-center md:text-left text-white text-shadow">
-                <div class="mb-6 inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 text-[10px] md:text-xs tracking-widest uppercase font-brand font-bold text-white">
+                <div class="mb-6 inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 text-[10px] md:text-xs tracking-widest uppercase font-brand font-bold">
                     <i class="fas fa-compass mr-2"></i> Siempre Listos
                 </div>
-                <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase font-brand font-bold">La <span class="text-orange-500">Infinita</span> Aventura</h1>
+                <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase font-brand">La <span class="text-orange-500">Infinita</span> Aventura</h1>
                 <p class="text-base md:text-xl text-indigo-100 mb-10 max-w-xl font-bold opacity-90">
-                    Sigue nuestra ruta oficial. Actividades, campamentos y servicio comunitario de la Tropa 808 en el Distrito Majagua.
+                    Sigue nuestra ruta oficial. Actividades, campamentos y servicio comunitario de la Tropa 808.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button onclick="scrollToSection('calendario')" class="bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:bg-orange-700 transition uppercase tracking-widest text-xs md:text-sm">Ver Agenda</button>
-                    <button onclick="scrollToSection('contacto')" class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition uppercase tracking-widest text-xs md:text-sm">Unirse</button>
+                    <button onclick="scrollToSection('calendario')" class="bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:bg-orange-700 transition uppercase tracking-widest text-xs">Ver Agenda</button>
+                    <button onclick="scrollToSection('contacto')" class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition uppercase tracking-widest text-xs">Unirse</button>
                 </div>
             </div>
         </header>
 
-        <!-- SECCIÓN DE ESENCIA -->
+        <!-- ESENCIA -->
         <section class="py-20 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="w-full md:w-1/2 flex justify-center">
                         <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" 
-                             alt="Imagen Esencia Tropa 808" 
-                             referrerpolicy="no-referrer"
+                             alt="Esencia" referrerpolicy="no-referrer"
                              class="w-3/4 md:w-3/5 h-auto object-contain rounded-2xl">
                     </div>
                     <div class="w-full md:w-1/2 space-y-6">
-                        <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs font-brand font-bold">Nuestra Esencia</h2>
-                        <h3 class="text-3xl md:text-4xl font-black text-indigo-950 uppercase font-brand leading-tight font-bold">Forjando los líderes del mañana</h3>
+                        <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs font-brand">Nuestra Esencia</h2>
+                        <h3 class="text-3xl md:text-4xl font-black text-indigo-950 uppercase font-brand leading-tight">Forjando los líderes del mañana</h3>
                         <p class="text-slate-600 font-medium leading-relaxed font-bold">
-                            En la Tropa 808, cada actividad es una oportunidad para crecer. Desde técnicas de supervivencia hasta liderazgo comunitario, nuestra misión es formar ciudadanos con valores sólidos y espíritu aventurero.
+                            En la Tropa 808, cada actividad es una oportunidad para crecer. Nuestra misión es formar ciudadanos con valores sólidos y espíritu aventurero.
                         </p>
                         <div class="flex items-center space-x-4">
                             <div class="h-1 w-12 bg-orange-500"></div>
-                            <span class="text-xs font-black uppercase tracking-widest text-indigo-900 font-brand font-bold">Distrito Majagua PR</span>
+                            <span class="text-xs font-black uppercase tracking-widest text-indigo-900 font-brand">Distrito Majagua PR</span>
                         </div>
                     </div>
                 </div>
@@ -247,10 +231,10 @@
         <!-- EVENTOS -->
         <section id="calendario" class="py-20 bg-slate-100 text-indigo-950">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-3 font-brand font-bold">Agenda Oficial</h2>
-                    <h3 class="text-3xl md:text-4xl font-extrabold uppercase font-brand font-bold"><i class="fas fa-hiking mr-3 text-orange-500"></i>Próximas Aventuras</h3>
-                    <p class="text-slate-400 text-[10px] uppercase mt-2 font-bold tracking-widest font-brand font-bold">Sincronizado con Google Calendar (PR AST)</p>
+                <div class="text-center mb-12">
+                    <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-3 font-brand">Agenda Oficial</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold uppercase font-brand"><i class="fas fa-hiking mr-3 text-orange-500"></i>Próximas Aventuras</h3>
+                    <p class="text-slate-400 text-[10px] uppercase mt-2 font-bold tracking-widest font-brand">Sincronizado con Google Calendar (PR AST)</p>
                 </div>
 
                 <div id="event-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
@@ -260,13 +244,13 @@
                 </div>
 
                 <div class="text-center">
-                    <button id="toggle-calendar" class="w-full sm:w-auto inline-flex items-center justify-center bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-xl group uppercase tracking-widest text-xs font-bold">
+                    <button id="toggle-calendar" class="w-full sm:w-auto inline-flex items-center justify-center bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-xl group uppercase tracking-widest text-xs">
                         <i class="fas fa-calendar-alt mr-3 group-hover:scale-110 transition"></i>
                         Ver Calendario Completo
                     </button>
                 </div>
 
-                <div id="google-calendar-section" class="hidden mt-12 animate-fade-in">
+                <div id="google-calendar-section" class="hidden mt-12">
                     <div class="calendar-wrapper border-4 border-white shadow-2xl">
                         <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4" style="border:0" frameborder="0" scrolling="no"></iframe>
                     </div>
@@ -274,33 +258,33 @@
             </div>
         </section>
 
-        <!-- BITÁCORA -->
+        <!-- BITÁCORA (FOTOS ORIGINALES FIJADAS) -->
         <section id="blog" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
-                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 text-center uppercase tracking-tighter font-brand font-bold"><i class="fas fa-journal-whills mr-3 text-indigo-600"></i>Bitácora Scout 808</h3>
+                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 text-center uppercase tracking-tighter font-brand"><i class="fas fa-journal-whills mr-3 text-indigo-600"></i>Bitácora Scout 808</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
                         <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
                         <div class="p-6 md:p-8">
-                            <span class="text-purple-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand font-bold">Homenaje</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand font-bold">Homenaje Walter Murray</h4>
-                            <a href="https://www.facebook.com/share/v/1ARXRLMoVs/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs font-bold"><i class="fab fa-facebook mr-2"></i> Ver Video</a>
+                            <span class="text-purple-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Homenaje</span>
+                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Homenaje Walter Murray</h4>
+                            <a href="https://www.facebook.com/share/v/1ARXRLMoVs/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-facebook mr-2"></i> Ver Video</a>
                         </div>
                     </article>
                     <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
                         <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
                         <div class="p-6 md:p-8">
-                            <span class="text-orange-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand font-bold">Aventura</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand font-bold">Caminata Toro Negro</h4>
-                            <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs font-bold"><i class="fab fa-youtube mr-2"></i> Ver Video</a>
+                            <span class="text-orange-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Aventura</span>
+                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Caminata Toro Negro</h4>
+                            <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-youtube mr-2"></i> Ver Video</a>
                         </div>
                     </article>
                     <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
                         <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
                         <div class="p-6 md:p-8">
-                            <span class="text-green-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand font-bold">Reseña</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand font-bold">Guajataka 2026</h4>
-                            <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs font-bold"><i class="fab fa-instagram mr-2 text-orange-600"></i> Ver Fotos</a>
+                            <span class="text-green-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Reseña</span>
+                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Guajataka 2026</h4>
+                            <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-instagram mr-2 text-orange-600"></i> Ver Fotos</a>
                         </div>
                     </article>
                 </div>
@@ -310,12 +294,12 @@
         <!-- GALERÍA -->
         <section id="galeria" class="py-20 bg-slate-100">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 uppercase tracking-widest font-brand font-bold"><i class="fas fa-camera-retro mr-3 text-orange-500"></i>Galería Visual</h3>
-                <div id="photo-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                    <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" referrerpolicy="no-referrer" onclick="openLightbox(0)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
-                    <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" referrerpolicy="no-referrer" onclick="openLightbox(1)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
-                    <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" referrerpolicy="no-referrer" onclick="openLightbox(2)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
-                    <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" referrerpolicy="no-referrer" onclick="openLightbox(3)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer gallery-item">
+                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 uppercase tracking-widest font-brand"><i class="fas fa-camera-retro mr-3 text-orange-500"></i>Galería Visual</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                    <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" referrerpolicy="no-referrer" onclick="openLightbox(0)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" referrerpolicy="no-referrer" onclick="openLightbox(1)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" referrerpolicy="no-referrer" onclick="openLightbox(2)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
+                    <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" referrerpolicy="no-referrer" onclick="openLightbox(3)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
                 </div>
             </div>
         </section>
@@ -323,7 +307,7 @@
         <!-- CONTACTO -->
         <section id="contacto" class="py-20 bg-scout-gradient">
             <div class="max-w-4xl mx-auto px-6 text-center text-white">
-                <h2 class="text-3xl md:text-5xl font-black mb-8 leading-tight font-brand uppercase font-bold">¿Listo para unirte?</h2>
+                <h2 class="text-3xl md:text-5xl font-black mb-8 leading-tight font-brand uppercase">¿Listo para unirte?</h2>
                 <div class="bg-white rounded-[2.5rem] p-8 md:p-12 text-slate-900 shadow-2xl relative">
                     <form id="join-form" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 font-bold text-left">
                         <div class="space-y-2">
@@ -342,89 +326,92 @@
                             <label class="text-[10px] uppercase text-slate-400 ml-2 font-bold">Email</label>
                             <input type="email" id="join-email" required class="w-full px-5 py-4 rounded-xl bg-slate-100 outline-none focus:ring-2 focus:ring-orange-500 text-sm font-bold">
                         </div>
-                        <button type="submit" id="join-submit-btn" class="md:col-span-2 bg-indigo-900 text-white font-black py-5 rounded-xl hover:bg-orange-600 transition shadow-xl uppercase tracking-widest text-sm mt-2 font-bold">
+                        <button type="submit" class="md:col-span-2 bg-indigo-900 text-white font-black py-5 rounded-xl hover:bg-orange-600 transition shadow-xl uppercase tracking-widest text-sm mt-2 font-bold">
                             Solicitar Información
                         </button>
                     </form>
-                    <div id="join-success" class="hidden py-10 text-center animate-fade-in font-brand font-bold text-indigo-900">
+                    <div id="join-success" class="hidden py-10 text-center font-brand">
                         <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl"><i class="fas fa-check"></i></div>
-                        <h4 class="text-xl font-black uppercase mb-2 font-bold">¡Recibido!</h4>
-                        <p class="text-sm opacity-70 font-bold">¡Siempre Listos! ⚜️</p>
+                        <h4 class="text-xl font-black uppercase mb-2">¡Recibido!</h4>
+                        <p class="text-sm opacity-70">¡Siempre Listos! ⚜️</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- RECURSOS -->
+    <!-- RECURSOS (4 DOCUMENTOS) -->
     <section id="docs-view" class="hidden pt-28 md:pt-32 pb-24 bg-slate-100 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] mb-3 font-brand font-bold">Biblioteca Digital 808</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-indigo-950 font-brand uppercase font-bold">Documentos</h3>
-                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest font-bold">Recursos oficiales para la tropa</p>
+                <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] mb-3 font-brand">Biblioteca Digital 808</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-indigo-950 font-brand uppercase">Documentos Oficiales</h3>
+                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest font-bold">Descarga y completa los formularios necesarios</p>
             </div>
-
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <a href="https://filestore.scouting.org/filestore/HealthSafety/pdf/680-001_ABC.pdf" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-file-medical"></i></div>
-                        <div><h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm font-bold">Formulario Médico (A-B-C)</h4></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Formulario Médico (A-B-C)</h4>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Requisito Anual</p>
+                        </div>
                     </div>
                     <i class="fas fa-download text-orange-600 text-lg group-hover:scale-125 transition"></i>
                 </a>
                 <a href="#" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-user-check"></i></div>
-                        <div><h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm font-bold">Permiso de Excursión</h4></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Permiso de Excursión</h4>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Autorización Padres</p>
+                        </div>
                     </div>
                     <i class="fas fa-download text-orange-600 text-lg group-hover:scale-125 transition"></i>
                 </a>
                 <a href="https://www.scouting.org/training/youth-protection/" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-user-shield"></i></div>
-                        <div><h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm font-bold">Youth Protection</h4></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Youth Protection</h4>
+                            <p class="text-[9px] text-green-600 font-bold uppercase tracking-widest">Entrenamiento Adultos</p>
+                        </div>
                     </div>
                     <i class="fas fa-external-link-alt text-orange-600 text-lg group-hover:scale-125 transition"></i>
                 </a>
                 <a href="https://filestore.scouting.org/filestore/pdf/33088.pdf" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-list-ol"></i></div>
-                        <div><h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm font-bold">Guía de Requisitos</h4></div>
+                        <div>
+                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Guía de Requisitos</h4>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Avance en Rangos</p>
+                        </div>
                     </div>
                     <i class="fas fa-file-pdf text-orange-600 text-lg group-hover:scale-125 transition"></i>
                 </a>
             </div>
 
             <div class="mt-12 text-center">
-                <button onclick="switchView('main')" class="bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-lg uppercase tracking-widest text-xs font-bold">
-                    <i class="fas fa-arrow-left mr-2"></i> Volver al Inicio
-                </button>
+                <button onclick="switchView('main')" class="bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-lg uppercase tracking-widest text-xs">Volver al Inicio</button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-indigo-950 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-            <div class="flex flex-col items-center md:items-start">
-                <div class="flex items-center space-x-4 mb-6 cursor-pointer" onclick="switchView('main')">
-                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" referrerpolicy="no-referrer" class="w-16 h-16 rounded-full border-2 border-orange-500 object-cover">
-                    <div>
-                        <span class="block text-2xl font-black font-brand uppercase tracking-tighter text-white font-bold">TROPA 808</span>
-                        <span class="text-xs font-bold text-orange-400 uppercase tracking-widest font-brand font-bold">Distrito Majagua • PR</span>
-                    </div>
+    <footer class="bg-indigo-950 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="switchView('main')">
+                <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" referrerpolicy="no-referrer" class="w-14 h-14 rounded-full border-2 border-orange-500 object-cover">
+                <div>
+                    <span class="block text-xl font-black font-brand uppercase text-white">TROPA 808</span>
+                    <span class="text-[9px] font-bold text-orange-400 uppercase tracking-widest font-brand">Distrito Majagua • PR</span>
                 </div>
             </div>
-            
-            <div class="flex justify-center items-center">
-                <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" 
-                     alt="Emblema Tropa" 
-                     referrerpolicy="no-referrer"
-                     class="h-24 md:h-32 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
+            <div class="flex flex-col items-center">
+                <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" alt="Emblema" referrerpolicy="no-referrer" class="h-20 w-auto opacity-80 hover:opacity-100 transition">
             </div>
-
-            <div class="flex space-x-8 text-4xl">
+            <div class="flex space-x-6 text-3xl">
                 <a href="https://www.facebook.com/groups/83514280416/" target="_blank" class="hover:text-orange-500 transition text-white"><i class="fab fa-facebook-square"></i></a>
                 <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="hover:text-orange-500 transition text-white"><i class="fab fa-instagram"></i></a>
             </div>
@@ -433,24 +420,48 @@
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none z-[110]" aria-label="Cerrar">&times;</button>
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none">&times;</button>
         <div class="relative w-full max-w-5xl flex items-center justify-center group" onclick="event.stopPropagation()">
-            <button onclick="prevPhoto()" class="absolute left-0 md:-left-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Anterior">
-                <i class="fas fa-chevron-left text-2xl md:text-4xl text-white"></i>
-            </button>
-            <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] md:max-h-[85vh] rounded-lg shadow-2xl animate-fade-in object-contain">
-            <button onclick="nextPhoto()" class="absolute right-0 md:-right-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Siguiente">
-                <i class="fas fa-chevron-right text-2xl md:text-4xl text-white"></i>
-            </button>
+            <button onclick="prevPhoto()" class="absolute left-0 md:-left-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]"><i class="fas fa-chevron-left text-2xl"></i></button>
+            <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain">
+            <button onclick="nextPhoto()" class="absolute right-0 md:-right-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]"><i class="fas fa-chevron-right text-2xl"></i></button>
         </div>
         <div id="lightbox-counter" class="mt-6 text-white font-bold font-brand text-xs uppercase tracking-widest opacity-60"></div>
     </div>
 
-    <!-- Scripts -->
-    <script type="module">
+    <!-- SCRIPTS -->
+    <script>
+        const apiKey = ""; 
+
+        // --- NAVEGACIÓN ---
+        window.switchView = (v) => {
+            document.getElementById('mobile-menu').classList.remove('active');
+            const main = document.getElementById('main-view'), docs = document.getElementById('docs-view');
+            if (v === 'docs') { 
+                main.classList.add('hidden'); docs.classList.remove('hidden'); 
+                main.style.display = 'none'; docs.style.display = 'block';
+            } else { 
+                docs.classList.add('hidden'); main.classList.remove('hidden'); 
+                docs.style.display = 'none'; main.style.display = 'block';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.scrollToSection = (id) => {
+            if (document.getElementById('main-view').style.display === 'none') switchView('main');
+            document.getElementById('mobile-menu').classList.remove('active');
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+            }, 100);
+        };
+
         const mobileBtn = document.getElementById('mobile-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileBtn) mobileBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); };
+        document.addEventListener('click', () => mobileMenu.classList.remove('active'));
 
+        // --- GALERÍA ---
         const galleryImages = [
             "https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo",
             "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg",
@@ -460,202 +471,156 @@
         let currentPhotoIndex = 0;
 
         window.openLightbox = (index) => {
-            const lb = document.getElementById('lightbox');
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
+            const lb = document.getElementById('lightbox'), img = document.getElementById('lightbox-img');
             currentPhotoIndex = index;
             updateLightbox();
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
             document.body.style.overflow = 'hidden';
         };
 
         window.closeLightbox = () => {
-            const lb = document.getElementById('lightbox');
-            lb.classList.add('hidden');
-            lb.classList.remove('flex');
+            document.getElementById('lightbox').classList.add('hidden');
             document.body.style.overflow = 'auto';
         };
 
-        window.nextPhoto = () => {
-            currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length;
-            updateLightbox();
-        };
-
-        window.prevPhoto = () => {
-            currentPhotoIndex = (currentPhotoIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateLightbox();
-        };
+        window.nextPhoto = () => { currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length; updateLightbox(); };
+        window.prevPhoto = () => { currentPhotoIndex = (currentPhotoIndex - 1 + galleryImages.length) % galleryImages.length; updateLightbox(); };
 
         function updateLightbox() {
-            const img = document.getElementById('lightbox-img');
-            const counter = document.getElementById('lightbox-counter');
-            img.src = galleryImages[currentPhotoIndex];
-            counter.innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
+            document.getElementById('lightbox-img').src = galleryImages[currentPhotoIndex];
+            document.getElementById('lightbox-counter').innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
         }
 
-        document.addEventListener('keydown', (e) => {
-            const lb = document.getElementById('lightbox');
-            if (lb.classList.contains('hidden')) return;
-            if (e.key === 'ArrowRight') window.nextPhoto();
-            if (e.key === 'ArrowLeft') window.prevPhoto();
-            if (e.key === 'Escape') window.closeLightbox();
-        });
-
-        window.switchView = (v) => {
-            const main = document.getElementById('main-view'), docs = document.getElementById('docs-view');
-            mobileMenu.classList.remove('active');
-            if (v === 'docs') { 
-                main.classList.add('hidden'); main.style.display = 'none';
-                docs.classList.remove('hidden'); docs.style.display = 'block';
-            } else { 
-                docs.classList.add('hidden'); docs.style.display = 'none';
-                main.classList.remove('hidden'); main.style.display = 'block';
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-
-        window.scrollToSection = (id) => {
-            if (document.getElementById('main-view').style.display === 'none') window.switchView('main');
-            mobileMenu.classList.remove('active');
-            setTimeout(() => { 
-                const el = document.getElementById(id); 
-                if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" }); 
-            }, 100);
-        };
-
-        if(mobileBtn) {
-            mobileBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); };
-            document.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        }
-
-        const calendarEmail = "troop808pr@gmail.com";
-        const iCalUrl = `https://calendar.google.com/calendar/ical/${encodeURIComponent(calendarEmail)}/public/basic.ics?v=${new Date().getTime()}`;
-
-        async function fetchCalendarEvents() {
-            const container = document.getElementById('event-cards-container');
-            let rawICal = null;
-            const proxyAttempts = [
-                `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`,
-                `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}`,
-                `https://thingproxy.freeboard.io/fetch/${iCalUrl}`
-            ];
-            const fetchWithTimeout = async (url, timeout = 4000) => {
-                const controller = new AbortController();
-                const id = setTimeout(() => controller.abort(), timeout);
-                try {
-                    const response = await fetch(url, { signal: controller.signal });
-                    clearTimeout(id);
-                    if (!response.ok) throw new Error();
-                    const text = await response.text();
-                    if (!text || !text.includes("BEGIN:VCALENDAR")) throw new Error();
-                    return text;
-                } catch (err) {
-                    clearTimeout(id);
-                    throw err;
-                }
-            };
-            try { rawICal = await Promise.any(proxyAttempts.map(url => fetchWithTimeout(url))); } catch (e) { 
-                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-500 font-bold uppercase text-[10px]">Agenda no sincronizada.</p></div>`;
-                return;
-            }
-            if (rawICal) {
-                const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
-                const vevents = unfolded.split('BEGIN:VEVENT');
-                vevents.shift();
-                const events = vevents.map(v => {
-                    const s = v.match(/SUMMARY:(.*)/), st = v.match(/DTSTART[;:][^:]*:(\d{8})/);
-                    if (!st) return null;
-                    const ds = st[1], y = parseInt(ds.substring(0,4)), m = parseInt(ds.substring(4,6)) - 1, d = parseInt(ds.substring(6,8)); 
-                    return { summary: s ? s[1].trim() : "Actividad Scout", y, m, d, comp: new Date(y, m, d).getTime() };
-                }).filter(e => e && new Date(e.y, e.m, e.d) >= new Date(2026, 1, 19)).sort((a,b) => a.comp - b.comp).slice(0,3);
-                renderEventCards(events);
-            }
-        }
-
-        function renderEventCards(events) {
-            const container = document.getElementById('event-cards-container'), months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-            const themes = {
-                verde: { border: 'border-green-600', bg: 'bg-green-600', tBg: 'bg-green-100', tC: 'text-green-700' },
-                naranja: { border: 'border-orange-500', bg: 'bg-orange-500', tBg: 'bg-orange-100', tC: 'text-orange-700' },
-                azul: { border: 'border-blue-600', bg: 'bg-blue-600', tBg: 'bg-blue-100', tC: 'text-blue-700' },
-                purpura: { border: 'border-indigo-600', bg: 'bg-indigo-600', tBg: 'bg-indigo-100', tC: 'text-indigo-700' },
-                rojo: { border: 'border-red-600', bg: 'bg-red-600', tBg: 'bg-red-100', tC: 'text-red-700' }
-            };
-            const defaultThemes = [ themes.purpura, themes.naranja, themes.azul ];
-            if (events.length === 0) {
-                container.innerHTML = '<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-400 font-bold uppercase text-[10px]">Sin eventos próximos.</p></div>';
-                return;
-            }
-            container.innerHTML = events.map((ev, i) => {
-                const sl = ev.summary.toLowerCase();
-                let st = defaultThemes[i % defaultThemes.length];
-                for (const k in themes) { if (sl.includes(k)) { st = themes[k]; break; } }
-                let tag = "PRÓXIMA AVENTURA";
-                if (sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
-                else if (sl.includes("caminata")) tag = "CAMINATA";
-                else if (sl.includes("guajataka") || sl.includes("jamborette")) tag = "CAMPING";
-                return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${st.border} shadow-sm flex flex-col justify-between font-bold text-indigo-950 font-brand">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="${st.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
-                                <span class="text-[10px] uppercase font-bold text-white">${months[ev.m]}</span>
-                                <span class="text-xl leading-tight font-bold text-white">${ev.d}</span>
-                            </div>
-                            <span class="${st.tBg} ${st.tC} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
-                        </div>
-                        <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 leading-tight uppercase font-brand">${ev.summary}</h4>
-                    </div>
-                </div>`;
-            }).join('');
-        }
-
-        // --- INFINITY AI ✨ (LÓGICA ACTUALIZADA) ---
+        // --- INFINITY AI ✨ (OPTIMIZADO: GITHUB + SAFARI + ESPACIADO) ---
         window.toggleAiChat = () => document.getElementById('ai-chat-modal').classList.toggle('hidden');
-        
+
+        async function fetchWithBackoff(url, options, retries = 5, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) return await response.json();
+                } catch (err) {}
+                await new Promise(res => setTimeout(res, delay));
+                delay *= 2;
+            }
+            throw new Error('Sin respuesta');
+        }
+
         window.sendAiMessage = async () => {
             const input = document.getElementById('ai-input'), messages = document.getElementById('ai-messages'), text = input.value.trim();
             if (!text) return;
+            
             messages.innerHTML += `<div class="bg-slate-200 p-4 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] font-bold text-xs">${text}</div>`;
             input.value = ""; messages.scrollTop = messages.scrollHeight;
+            
             const lid = 'l-' + Date.now();
             messages.innerHTML += `<div id="${lid}" class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 w-fit font-bold text-xs">Analizando...</div>`;
             messages.scrollTop = messages.scrollHeight;
 
-            const apiKey = ""; // Se inyecta automáticamente o debe ser configurada por el usuario
-            const systemPrompt = `Eres Infinity AI ✨, el consultor experto de la Tropa 808. 
+            const systemPrompt = `Eres Infinity AI ✨, experto de la Tropa 808. 
             AYUDA EXCLUSIVA: Scouting, Camping, Merit Badges y Rangos. 
-            Si el usuario pregunta algo ajeno, responde: "Como consultor de la Tropa 808, mi propósito es ayudarte exclusivamente con temas de Scouting, Camping, Merit Badges y Rangos. ¿En qué aventura scout te puedo apoyar hoy?"
-            REGLA DE FORMATO: Sé extremadamente organizado. Cuando termines una idea con un punto y aparte, utiliza un doble salto de línea (espacio adicional) para separar los bloques de texto. 
+            Si te preguntan otra cosa, responde cortésmente que solo hablas de Scouting.
+            REGLA DE FORMATO CRÍTICA: Sé muy organizado. Al terminar una idea o párrafo con punto y aparte, DEJA UNA LÍNEA EN BLANCO ADICIONAL (Salto de línea doble) para que el texto sea muy fácil de leer.
+            DATOS CLAVE: Próxima reunión el 21 de febrero de 2026. Próximo Camping Guajataka 2026.
             Termina siempre con "Siempre Listos ⚜️".`;
 
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ 
-                        contents: [{ parts: [{ text: text }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
-                    })
-                });
-                const d = await res.json();
-                let rawText = d.candidates?.[0]?.content?.parts?.[0]?.text || "Intenta de nuevo.";
+                const data = await fetchWithBackoff(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            contents: [{ parts: [{ text: text }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    }
+                );
                 
-                // Formateamos para que los saltos de línea sean legibles en HTML y respeten el espacio adicional
-                const formatted = rawText
+                let aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Intenta de nuevo.";
+                const formattedResponse = aiResponse
+                    .replace(/\n\n/g, '<br><br>') 
                     .replace(/\n/g, '<br>')
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                
-                document.getElementById(lid).innerHTML = formatted;
-            } catch (e) { document.getElementById(lid).innerHTML = "Error de conexión."; }
+
+                document.getElementById(lid).innerHTML = formattedResponse;
+            } catch (e) {
+                document.getElementById(lid).innerHTML = "Se perdió la conexión. Por favor, intenta de nuevo.";
+            }
             messages.scrollTop = messages.scrollHeight;
         };
 
         const aiInp = document.getElementById('ai-input');
         if(aiInp) aiInp.onkeypress = (e) => { if (e.key === 'Enter') window.sendAiMessage(); };
-        const toggleC = document.getElementById('toggle-calendar');
-        if(toggleC) toggleC.onclick = () => document.getElementById('google-calendar-section').classList.toggle('hidden');
 
-        fetchCalendarEvents();
+        // --- CALENDARIO (SINCRONIZADO: 21, 24 y 27 FEB) ---
+        const calendarEmail = "troop808pr%40gmail.com";
+        const iCalUrl = `https://calendar.google.com/calendar/ical/${calendarEmail}/public/basic.ics?v=${new Date().getTime()}`;
+
+        async function fetchEvents() {
+            const container = document.getElementById('event-cards-container');
+            const proxies = [`https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`, `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}` ];
+            
+            let rawICal = null;
+            for(let p of proxies) {
+                try {
+                    const res = await fetch(p);
+                    if(res.ok) { rawICal = await res.text(); if(rawICal.includes("BEGIN:VCALENDAR")) break; }
+                } catch(e){}
+            }
+
+            if (rawICal) {
+                const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
+                const vevents = unfolded.split('BEGIN:VEVENT').slice(1);
+                
+                // Filtramos eventos futuros (desde hoy 19 de febrero)
+                const todayComp = new Date(2026, 1, 19).getTime(); 
+                
+                const events = vevents.map(v => {
+                    const s = v.match(/SUMMARY:(.*)/), st = v.match(/DTSTART[;:][^:]*:(\d{8})/);
+                    if (!st) return null;
+                    const ds = st[1], y = parseInt(ds.substring(0,4)), m = parseInt(ds.substring(4,6))-1, d = parseInt(ds.substring(6,8));
+                    return { summary: s ? s[1].trim() : "Evento", y, m, d, comp: new Date(y, m, d).getTime() };
+                }).filter(e => e && e.comp >= todayComp).sort((a,b) => a.comp - b.comp).slice(0,3);
+
+                const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+                const th = [
+                    { b: 'border-indigo-600', bg: 'bg-indigo-600', tb: 'bg-indigo-50', tc: 'text-indigo-600' },
+                    { b: 'border-orange-500', bg: 'bg-orange-500', tb: 'bg-orange-50', tc: 'text-orange-600' },
+                    { b: 'border-green-600', bg: 'bg-green-600', tb: 'bg-green-50', tc: 'text-green-600' }
+                ];
+
+                container.innerHTML = events.map((ev, i) => {
+                    const cur = th[i%3];
+                    let tag = "AVENTURA";
+                    if(ev.summary.toLowerCase().includes("reunion") || ev.summary.toLowerCase().includes("reunión")) tag = "REUNIÓN";
+                    else if(ev.summary.toLowerCase().includes("caminata")) tag = "CAMINATA";
+                    else if(ev.summary.toLowerCase().includes("camping") || ev.summary.toLowerCase().includes("guajataka") || ev.summary.toLowerCase().includes("g-taka")) tag = "CAMPING";
+
+                    return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${cur.b} shadow-sm flex flex-col justify-between font-bold animate-fade-in">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="${cur.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
+                                    <span class="text-[10px] uppercase font-bold text-white">${months[ev.m]}</span>
+                                    <span class="text-xl font-bold text-white">${ev.d}</span>
+                                </div>
+                                <span class="${cur.tb} ${cur.tc} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
+                            </div>
+                            <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 uppercase leading-tight">${ev.summary}</h4>
+                        </div>
+                    </div>`;
+                }).join('');
+            } else {
+                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl"><p class="text-slate-500 font-bold uppercase text-[10px]">Sincronizando agenda scout...</p></div>`;
+            }
+        }
+
+        document.getElementById('toggle-calendar').onclick = () => document.getElementById('google-calendar-section').classList.toggle('hidden');
+        
+        window.onload = () => { fetchEvents(); };
     </script>
 </body>
 </html>
+
 
