@@ -184,7 +184,7 @@
             </div>
             <div id="ai-messages" class="flex-grow p-5 md:p-6 overflow-y-auto space-y-4 bg-slate-50 text-sm leading-relaxed text-indigo-950 font-bold font-brand">
                 <div class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 shadow-sm">
-                    ¡Hola! Soy **Infinity AI**. ¿En qué puedo ayudarte hoy en tu ruta scout? ⚜️
+                    ¡Hola Angel! Soy **Infinity AI**. ¿En qué puedo ayudarte hoy en tu ruta scout? ⚜️
                 </div>
             </div>
             <div class="p-4 bg-white border-t border-slate-100">
@@ -433,25 +433,16 @@
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
-        <!-- Botón Cerrar -->
         <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none z-[110]" aria-label="Cerrar">&times;</button>
-        
         <div class="relative w-full max-w-5xl flex items-center justify-center group" onclick="event.stopPropagation()">
-            <!-- Flecha Izquierda -->
             <button onclick="prevPhoto()" class="absolute left-0 md:-left-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Anterior">
                 <i class="fas fa-chevron-left text-2xl md:text-4xl text-white"></i>
             </button>
-
-            <!-- Imagen Principal -->
             <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] md:max-h-[85vh] rounded-lg shadow-2xl animate-fade-in object-contain">
-
-            <!-- Flecha Derecha -->
             <button onclick="nextPhoto()" class="absolute right-0 md:-right-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]" aria-label="Siguiente">
                 <i class="fas fa-chevron-right text-2xl md:text-4xl text-white"></i>
             </button>
         </div>
-        
-        <!-- Indicador de Foto -->
         <div id="lightbox-counter" class="mt-6 text-white font-bold font-brand text-xs uppercase tracking-widest opacity-60"></div>
     </div>
 
@@ -460,7 +451,6 @@
         const mobileBtn = document.getElementById('mobile-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        // Lógica de Galería Integrada
         const galleryImages = [
             "https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo",
             "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg",
@@ -502,7 +492,6 @@
             counter.innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
         }
 
-        // Soporte para flechas del teclado
         document.addEventListener('keydown', (e) => {
             const lb = document.getElementById('lightbox');
             if (lb.classList.contains('hidden')) return;
@@ -538,20 +527,17 @@
             document.addEventListener('click', () => mobileMenu.classList.remove('active'));
         }
 
-        // --- MOTOR DE CALENDARIO OPTIMIZADO ---
         const calendarEmail = "troop808pr@gmail.com";
         const iCalUrl = `https://calendar.google.com/calendar/ical/${encodeURIComponent(calendarEmail)}/public/basic.ics?v=${new Date().getTime()}`;
 
         async function fetchCalendarEvents() {
             const container = document.getElementById('event-cards-container');
             let rawICal = null;
-
             const proxyAttempts = [
                 `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`,
                 `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}`,
                 `https://thingproxy.freeboard.io/fetch/${iCalUrl}`
             ];
-
             const fetchWithTimeout = async (url, timeout = 4000) => {
                 const controller = new AbortController();
                 const id = setTimeout(() => controller.abort(), timeout);
@@ -567,55 +553,26 @@
                     throw err;
                 }
             };
-
-            try {
-                rawICal = await Promise.any(proxyAttempts.map(url => fetchWithTimeout(url)));
-            } catch (e) { 
-                console.error("Error sincronizando agenda");
-                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-500 font-bold uppercase text-[10px] font-bold">Agenda no sincronizada.</p></div>`;
+            try { rawICal = await Promise.any(proxyAttempts.map(url => fetchWithTimeout(url))); } catch (e) { 
+                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-500 font-bold uppercase text-[10px]">Agenda no sincronizada.</p></div>`;
                 return;
             }
-
             if (rawICal) {
                 const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
                 const vevents = unfolded.split('BEGIN:VEVENT');
                 vevents.shift();
-                
-                const filterYear = 2026;
-                const filterMonth = 1; 
-                const filterDay = 19; 
-
                 const events = vevents.map(v => {
-                    const summaryMatch = v.match(/SUMMARY:(.*)/);
-                    const startMatch = v.match(/DTSTART[;:][^:]*:(\d{8})/);
-                    
-                    if (!startMatch) return null;
-
-                    const ds = startMatch[1]; 
-                    const y = parseInt(ds.substring(0,4));
-                    const m = parseInt(ds.substring(4,6)) - 1;
-                    const d = parseInt(ds.substring(6,8)); 
-
-                    return { 
-                        summary: summaryMatch ? summaryMatch[1].trim() : "Actividad Scout", 
-                        y: y, m: m, d: d,
-                        comp: new Date(y, m, d).getTime()
-                    };
-                }).filter(e => {
-                    if (!e) return false;
-                    const eDate = new Date(e.y, e.m, e.d);
-                    const fDate = new Date(filterYear, filterMonth, filterDay);
-                    return eDate >= fDate;
-                }).sort((a,b) => a.comp - b.comp)
-                  .slice(0,3);
-
+                    const s = v.match(/SUMMARY:(.*)/), st = v.match(/DTSTART[;:][^:]*:(\d{8})/);
+                    if (!st) return null;
+                    const ds = st[1], y = parseInt(ds.substring(0,4)), m = parseInt(ds.substring(4,6)) - 1, d = parseInt(ds.substring(6,8)); 
+                    return { summary: s ? s[1].trim() : "Actividad Scout", y, m, d, comp: new Date(y, m, d).getTime() };
+                }).filter(e => e && new Date(e.y, e.m, e.d) >= new Date(2026, 1, 19)).sort((a,b) => a.comp - b.comp).slice(0,3);
                 renderEventCards(events);
             }
         }
 
         function renderEventCards(events) {
-            const container = document.getElementById('event-cards-container');
-            const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+            const container = document.getElementById('event-cards-container'), months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
             const themes = {
                 verde: { border: 'border-green-600', bg: 'bg-green-600', tBg: 'bg-green-100', tC: 'text-green-700' },
                 naranja: { border: 'border-orange-500', bg: 'bg-orange-500', tBg: 'bg-orange-100', tC: 'text-orange-700' },
@@ -624,57 +581,71 @@
                 rojo: { border: 'border-red-600', bg: 'bg-red-600', tBg: 'bg-red-100', tC: 'text-red-700' }
             };
             const defaultThemes = [ themes.purpura, themes.naranja, themes.azul ];
-
             if (events.length === 0) {
-                container.innerHTML = '<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-400 font-bold uppercase text-[10px] font-bold">Sin eventos próximos.</p></div>';
+                container.innerHTML = '<div class="col-span-3 text-center p-12 bg-white rounded-3xl border border-slate-200"><p class="text-slate-400 font-bold uppercase text-[10px]">Sin eventos próximos.</p></div>';
                 return;
             }
-
             container.innerHTML = events.map((ev, i) => {
-                const summaryLower = ev.summary.toLowerCase();
-                let selectedTheme = defaultThemes[i % defaultThemes.length];
-                for (const colorKey in themes) {
-                    if (summaryLower.includes(colorKey)) { selectedTheme = themes[colorKey]; break; }
-                }
-
-                let tagText = "PRÓXIMA AVENTURA";
-                if (summaryLower.includes("reunion") || summaryLower.includes("reunión")) tagText = "REUNIÓN";
-                else if (summaryLower.includes("caminata")) tagText = "CAMINATA";
-                else if (summaryLower.includes("guajataka") || summaryLower.includes("jamborette")) tagText = "CAMPING";
-
-                return `
-                <div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${selectedTheme.border} shadow-sm flex flex-col justify-between font-bold text-indigo-950 font-brand animate-fade-in">
+                const sl = ev.summary.toLowerCase();
+                let st = defaultThemes[i % defaultThemes.length];
+                for (const k in themes) { if (sl.includes(k)) { st = themes[k]; break; } }
+                let tag = "PRÓXIMA AVENTURA";
+                if (sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
+                else if (sl.includes("caminata")) tag = "CAMINATA";
+                else if (sl.includes("guajataka") || sl.includes("jamborette")) tag = "CAMPING";
+                return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${st.border} shadow-sm flex flex-col justify-between font-bold text-indigo-950 font-brand">
                     <div>
                         <div class="flex items-center justify-between mb-6">
-                            <div class="${selectedTheme.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
-                                <span class="text-[10px] uppercase font-bold text-white font-bold">${months[ev.m]}</span>
-                                <span class="text-xl leading-tight font-bold text-white font-bold">${ev.d}</span>
+                            <div class="${st.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
+                                <span class="text-[10px] uppercase font-bold text-white">${months[ev.m]}</span>
+                                <span class="text-xl leading-tight font-bold text-white">${ev.d}</span>
                             </div>
-                            <span class="${selectedTheme.tBg} ${selectedTheme.tC} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter font-bold">${tagText}</span>
+                            <span class="${st.tBg} ${st.tC} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
                         </div>
-                        <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 leading-tight uppercase font-brand font-bold">${ev.summary}</h4>
+                        <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 leading-tight uppercase font-brand">${ev.summary}</h4>
                     </div>
                 </div>`;
             }).join('');
         }
 
+        // --- INFINITY AI ✨ (LÓGICA ACTUALIZADA) ---
         window.toggleAiChat = () => document.getElementById('ai-chat-modal').classList.toggle('hidden');
+        
         window.sendAiMessage = async () => {
             const input = document.getElementById('ai-input'), messages = document.getElementById('ai-messages'), text = input.value.trim();
             if (!text) return;
-            messages.innerHTML += `<div class="bg-slate-200 p-4 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] font-bold text-xs font-bold">${text}</div>`;
+            messages.innerHTML += `<div class="bg-slate-200 p-4 rounded-2xl rounded-tr-none text-slate-800 ml-auto max-w-[85%] font-bold text-xs">${text}</div>`;
             input.value = ""; messages.scrollTop = messages.scrollHeight;
             const lid = 'l-' + Date.now();
-            messages.innerHTML += `<div id="${lid}" class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 w-fit font-bold font-brand text-xs font-bold text-shadow">Analizando...</div>`;
+            messages.innerHTML += `<div id="${lid}" class="bg-indigo-100 p-4 rounded-2xl rounded-tl-none text-indigo-900 border border-indigo-200 w-fit font-bold text-xs">Analizando...</div>`;
+            messages.scrollTop = messages.scrollHeight;
+
+            const apiKey = ""; // Se inyecta automáticamente o debe ser configurada por el usuario
+            const systemPrompt = `Eres Infinity AI ✨, el consultor experto de la Tropa 808. 
+            AYUDA EXCLUSIVA: Scouting, Camping, Merit Badges y Rangos. 
+            Si el usuario pregunta algo ajeno, responde: "Como consultor de la Tropa 808, mi propósito es ayudarte exclusivamente con temas de Scouting, Camping, Merit Badges y Rangos. ¿En qué aventura scout te puedo apoyar hoy?"
+            REGLA DE FORMATO: Sé extremadamente organizado. Cuando termines una idea con un punto y aparte, utiliza un doble salto de línea (espacio adicional) para separar los bloques de texto. 
+            Termina siempre con "Siempre Listos ⚜️".`;
+
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=`, {
-                    method: 'POST', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ contents: [{ parts: [{ text: text }] }] })
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ 
+                        contents: [{ parts: [{ text: text }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
                 });
                 const d = await res.json();
                 let rawText = d.candidates?.[0]?.content?.parts?.[0]?.text || "Intenta de nuevo.";
-                document.getElementById(lid).innerHTML = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            } catch (e) { document.getElementById(lid).innerHTML = "Error."; }
+                
+                // Formateamos para que los saltos de línea sean legibles en HTML y respeten el espacio adicional
+                const formatted = rawText
+                    .replace(/\n/g, '<br>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                
+                document.getElementById(lid).innerHTML = formatted;
+            } catch (e) { document.getElementById(lid).innerHTML = "Error de conexión."; }
             messages.scrollTop = messages.scrollHeight;
         };
 
@@ -687,3 +658,4 @@
     </script>
 </body>
 </html>
+
