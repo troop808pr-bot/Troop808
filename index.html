@@ -152,19 +152,24 @@
                             PREPARA TU <span class="text-indigo-600 ml-2">MOCHILA</span>
                         </h3>
                     </div>
+                    <!-- Botón con Lógica Mejorada -->
                     <button id="toggle-calendar" class="text-xs font-bold uppercase text-indigo-900 flex items-center group">
-                        <span class="mr-3 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md group-hover:bg-indigo-900 group-hover:text-white transition"><i class="fas fa-calendar"></i></span>
-                        Ver calendario completo
+                        <span id="toggle-icon-container" class="mr-3 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md group-hover:bg-indigo-900 group-hover:text-white transition">
+                            <i id="toggle-icon" class="fas fa-calendar"></i>
+                        </span>
+                        <span id="toggle-text">Ver calendario completo</span>
                     </button>
                 </div>
 
+                <!-- Contenedor de Tarjetas -->
                 <div id="event-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
                     <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
                     <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
                 </div>
 
-                <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
+                <!-- Contenedor del Calendario de Google -->
+                <div id="google-calendar-section" class="hidden transition-all duration-500">
                     <div class="calendar-container shadow-2xl border-4 border-white">
                         <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4"></iframe>
                     </div>
@@ -245,7 +250,7 @@
             </div>
         </section>
 
-        <!-- Formulario con Imagen Centrada y Espaciado Optimizado -->
+        <!-- Formulario con Localización Detallada -->
         <section id="contacto" class="py-24">
             <div class="max-w-4xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
@@ -255,7 +260,7 @@
                             <h4 class="text-3xl font-brand mb-6 uppercase">ÚNETE A LA RUTA</h4>
                             <p class="text-indigo-200 text-sm font-light mb-8">Completa los datos y nos pondremos en contacto pronto.</p>
                             
-                            <!-- IMAGEN CENTRADA Y SIN MARCO - ESPACIADO REDUCIDO -->
+                            <!-- IMAGEN CENTRADA Y SIN MARCO -->
                             <div class="mb-4 flex justify-center">
                                 <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="w-24 h-auto opacity-90" alt="Emblema Scout" referrerpolicy="no-referrer">
                             </div>
@@ -449,7 +454,6 @@
 
         async function fetchEvents() {
             const cachedData = localStorage.getItem('tropa808_v2_events');
-            
             const proxies = [`https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`, `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}` ];
             let rawICal = null;
 
@@ -498,9 +502,6 @@
             }
         }
 
-        /**
-         * Lógica de colores dinámica
-         */
         function renderEventHTML(events) {
             const container = document.getElementById('event-cards-container');
             if(!container) return;
@@ -548,14 +549,38 @@
             }).join('');
         }
 
-        document.getElementById('toggle-calendar').onclick = () => {
-            document.getElementById('google-calendar-section').classList.toggle('hidden');
+        // --- LÓGICA DE INTERCAMBIO (TARJETAS vs GOOGLE CALENDAR) ---
+        document.getElementById('toggle-calendar').onclick = function() {
+            const cards = document.getElementById('event-cards-container');
+            const googleCal = document.getElementById('google-calendar-section');
+            const btnText = document.getElementById('toggle-text');
+            const btnIcon = document.getElementById('toggle-icon');
+
+            if (googleCal.classList.contains('hidden')) {
+                // Ver Calendario
+                cards.classList.add('hidden');
+                googleCal.classList.remove('hidden');
+                btnText.innerText = "Ver próximas salidas";
+                btnIcon.className = "fas fa-th-large"; // Icono de cuadrícula/tarjetas
+                
+                // Scroll suave al inicio de la sección para móviles
+                scrollToSection('calendario');
+            } else {
+                // Ver Tarjetas
+                googleCal.classList.add('hidden');
+                cards.classList.remove('hidden');
+                btnText.innerText = "Ver calendario completo";
+                btnIcon.className = "fas fa-calendar";
+                
+                scrollToSection('calendario');
+            }
         };
 
         window.onload = () => { fetchEvents(); };
     </script>
 </body>
 </html>
+
 
 
 
