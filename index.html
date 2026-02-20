@@ -152,8 +152,8 @@
                             PREPARA TU <span class="text-indigo-600 ml-2">MOCHILA</span>
                         </h3>
                     </div>
-                    <button id="toggle-calendar" class="text-sm md:text-xs font-bold uppercase text-indigo-900 flex items-center group bg-white md:bg-transparent px-4 py-2 md:p-0 rounded-full md:rounded-none shadow-sm md:shadow-none border border-slate-200 md:border-none">
-                        <span class="mr-3 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md group-hover:bg-indigo-900 group-hover:text-white transition"><i class="fas fa-calendar"></i></span>
+                    <button id="toggle-calendar" class="text-[10px] md:text-xs font-bold uppercase text-indigo-900 flex items-center group bg-white md:bg-transparent px-3 py-1.5 md:p-0 rounded-full md:rounded-none shadow-sm md:shadow-none border border-slate-200 md:border-none">
+                        <span class="mr-2 md:mr-3 bg-white w-8 h-8 md:w-10 md:h-10 text-xs md:text-base flex items-center justify-center rounded-full shadow-md group-hover:bg-indigo-900 group-hover:text-white transition"><i class="fas fa-calendar"></i></span>
                         <span id="toggle-text">Ver calendario completo</span>
                     </button>
                 </div>
@@ -304,7 +304,10 @@
     <section id="docs-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-brand text-indigo-950 uppercase leading-none">BIBLIOTECA SCOUT</h2>
+                <h2 class="text-4xl md:text-6xl font-brand text-indigo-950 uppercase leading-none flex items-center justify-center flex-wrap">
+                    <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" alt="Emblema Scout" referrerpolicy="no-referrer">
+                    BIBLIOTECA SCOUT
+                </h2>
                 <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-4">Documentos y formularios oficiales 808</p>
             </div>
 
@@ -454,8 +457,24 @@
 
         async function fetchEvents() {
             const cachedData = localStorage.getItem('tropa808_v2_events');
+            const cacheTime = localStorage.getItem('tropa808_v2_events_time');
+            const now = new Date().getTime();
             
-            const proxies = [`https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`, `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}` ];
+            // 1. Mostrar caché INMEDIATAMENTE si existe (carga ultrarrápida)
+            if (cachedData) {
+                renderEventHTML(JSON.parse(cachedData));
+                
+                // Si el caché tiene menos de 2 horas de antigüedad, no buscamos en internet para ahorrar recursos
+                if (cacheTime && (now - parseInt(cacheTime) < 7200000)) {
+                    return; 
+                }
+            }
+            
+            // 2. Si no hay caché o es viejo, buscamos en internet en segundo plano
+            const proxies = [
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}`,
+                `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}` 
+            ];
             let rawICal = null;
 
             for(let p of proxies) {
@@ -497,9 +516,12 @@
                 .slice(0,3);
 
                 localStorage.setItem('tropa808_v2_events', JSON.stringify(events));
-                renderEventHTML(events);
-            } else if (cachedData) {
-                renderEventHTML(JSON.parse(cachedData));
+                localStorage.setItem('tropa808_v2_events_time', now.toString());
+                renderEventHTML(events); // Actualiza la UI con los datos frescos
+            } else if (!cachedData) {
+                // Si falló el internet y no hay caché
+                const container = document.getElementById('event-cards-container');
+                if(container) container.innerHTML = '<div class="col-span-1 md:col-span-3 text-center text-slate-500 text-sm font-bold uppercase py-10">No hay eventos próximos programados.</div>';
             }
         }
 
@@ -574,6 +596,7 @@
     </script>
 </body>
 </html>
+
 
 
 
