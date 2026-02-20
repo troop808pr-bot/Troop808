@@ -3,408 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tropa Scout 808 - Portal de Aventura</title>
-    <!-- Optimización para motores de búsqueda y redes sociales -->
-    <meta name="description" content="Portal oficial de la Tropa Scout 808, Distrito Majagua PR. Aventuras, campamentos y servicio.">
+    <title>Tropa Scout 808 - Expedición</title>
+    <meta name="description" content="Portal oficial de la Tropa Scout 808. Distrito Majagua PR.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;700&display=swap');
         
         :root {
             --scout-purple: #4c1d95; 
             --scout-orange: #ea580c; 
-            --scout-dark: #1e1b4b;
+            --adventure-dark: #0f172a;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
+            background-color: #f1f5f9;
             -webkit-tap-highlight-color: transparent;
-            background-color: #f8fafc;
-            overflow-x: hidden;
         }
 
-        h1, h2, h3, .font-brand {
-            font-family: 'Montserrat', sans-serif;
-        }
+        .font-brand { font-family: 'Bebas Neue', cursive; letter-spacing: 0.05em; }
 
         .bg-scout-gradient {
-            background: linear-gradient(to right, var(--scout-purple), var(--scout-orange));
+            background: linear-gradient(135deg, var(--scout-purple), var(--scout-orange));
         }
 
-        .calendar-card {
-            transition: all 0.3s ease;
+        /* Efecto Cristal para navegación */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        @media (hover: hover) {
-            .calendar-card:hover {
-                transform: scale(1.02);
-                box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
-            }
+        /* Animación para tarjetas de eventos */
+        .event-card-new {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .event-card-new:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .calendar-wrapper {
+        /* Contenedor de calendario */
+        .calendar-container {
             position: relative;
-            padding-bottom: 100%;
+            padding-bottom: 75%;
             height: 0;
             overflow: hidden;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             background: #eee;
         }
-
-        @media (min-width: 768px) {
-            .calendar-wrapper { padding-bottom: 50%; }
+        @media (min-width: 768px) { .calendar-container { padding-bottom: 50%; } }
+        .calendar-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        .calendar-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-
-        .logo-shadow {
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
-        }
-
-        .text-shadow {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-        }
-
+        /* Menú móvil */
         #mobile-menu {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 0;
-            overflow: hidden;
+            transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+            transform: translateY(-20px);
+            pointer-events: none;
             opacity: 0;
         }
-
         #mobile-menu.active {
-            max-height: 600px;
+            transform: translateY(0);
+            pointer-events: auto;
             opacity: 1;
-            padding-bottom: 1.5rem;
         }
 
-        .shimmer {
-            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .lightbox-nav-btn {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            transition: all 0.2s ease;
+        .bg-pattern {
+            background-image: radial-gradient(#4c1d95 0.5px, transparent 0.5px);
+            background-size: 10px 10px;
+            opacity: 0.1;
         }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
-    <!-- Navegación Superior -->
-    <nav class="fixed w-full z-50 bg-white shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('main')">
-                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo Tropa 808" class="w-12 h-12 rounded-full border-2 border-orange-500 object-cover logo-shadow">
-                    <div>
-                        <span class="block text-lg font-extrabold text-indigo-900 leading-none font-brand uppercase">TROPA 808</span>
-                        <span class="text-[9px] font-bold text-orange-600 uppercase tracking-tighter">Distrito Majagua PR</span>
-                    </div>
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('main')">
+                <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo" class="w-10 h-10 rounded-full border-2 border-orange-500 object-cover shadow-lg" referrerpolicy="no-referrer">
+                <div>
+                    <span class="block text-2xl font-brand text-indigo-950 leading-none">TROPA 808</span>
+                    <span class="text-[9px] font-bold text-orange-600 uppercase">Distrito Majagua PR</span>
                 </div>
-
-                <div class="hidden lg:flex items-center space-x-6 text-sm font-bold uppercase tracking-wide font-brand">
-                    <a href="javascript:void(0)" onclick="switchView('main')" class="text-indigo-900 hover:text-orange-600 transition">Inicio</a>
-                    <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="text-indigo-900 hover:text-orange-600 transition">Eventos</a>
-                    <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-indigo-900 hover:text-orange-600 transition">Blog</a>
-                    <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="text-indigo-900 hover:text-orange-600 transition">Galería</a>
-                    <a href="javascript:void(0)" onclick="switchView('docs')" class="text-orange-600 hover:text-indigo-900 transition flex items-center font-bold">
-                        <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Recursos
-                    </a>
-                    <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="bg-orange-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-800 transition shadow-md">Unirse</a>
-                </div>
-
-                <button id="mobile-btn" class="lg:hidden text-indigo-900 p-2 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
             </div>
+
+            <!-- Menú PC -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="javascript:void(0)" onclick="scrollToSection('inicio')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Inicio</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Eventos</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Bitácora</a>
+                <a href="javascript:void(0)" onclick="switchView('docs')" class="flex items-center text-xs font-bold uppercase text-orange-600 hover:text-indigo-950 transition">
+                    <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Documentos
+                </a>
+                <button onclick="scrollToSection('contacto')" class="bg-indigo-900 text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase shadow-lg hover:bg-orange-600 transition">Unirse</button>
+            </div>
+
+            <button id="mobile-btn" class="lg:hidden text-indigo-950 text-2xl"><i class="fas fa-bars-staggered"></i></button>
         </div>
 
-        <div id="mobile-menu" class="lg:hidden bg-indigo-900 text-white space-y-2 font-bold border-t border-indigo-800">
-            <div class="px-6 py-6 flex flex-col space-y-5">
-                <a href="javascript:void(0)" onclick="switchView('main')" class="block py-2 uppercase">Inicio</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="block py-2 uppercase">Eventos</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="block py-2 uppercase">Blog</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="block py-2 uppercase">Galería</a>
-                <a href="javascript:void(0)" onclick="switchView('docs')" class="block py-2 text-orange-400 uppercase">Recursos (PDF)</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="block py-3 bg-orange-600 text-center rounded-xl uppercase shadow-lg">Unirse ahora</a>
-            </div>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-indigo-950 text-white p-8 flex flex-col space-y-6 shadow-2xl">
+            <a href="javascript:void(0)" onclick="switchView('main')" class="text-lg font-brand uppercase tracking-widest">Inicio</a>
+            <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="text-lg font-brand uppercase tracking-widest">Eventos</a>
+            <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-lg font-brand uppercase tracking-widest">Bitácora</a>
+            <a href="javascript:void(0)" onclick="switchView('docs')" class="text-lg font-brand uppercase tracking-widest text-orange-400">Recursos</a>
+            <button onclick="scrollToSection('contacto')" class="bg-orange-600 text-white py-4 rounded-xl font-brand text-xl">UNIRSE AHORA</button>
         </div>
     </nav>
 
     <!-- VISTA PRINCIPAL -->
     <main id="main-view">
-        <header id="inicio" class="relative pt-20 overflow-hidden bg-indigo-950 min-h-[60vh] md:min-h-[75vh] flex items-center">
-            <div class="absolute inset-0">
-                <img src="https://lh3.googleusercontent.com/d/1G2NinhFshDfRAqPxxjZJTMyY0oShllzv" alt="Portada" class="w-full h-full object-cover opacity-60" referrerpolicy="no-referrer">
+        <!-- Hero Section -->
+        <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20">
+            <div class="absolute inset-0 bg-slate-900">
+                <img src="https://lh3.googleusercontent.com/d/1G2NinhFshDfRAqPxxjZJTMyY0oShllzv" class="w-full h-full object-cover opacity-40" referrerpolicy="no-referrer">
             </div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center md:text-left text-white text-shadow">
-                <div class="mb-6 inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 text-[10px] md:text-xs tracking-widest uppercase font-brand font-bold">
-                    <i class="fas fa-compass mr-2"></i> Siempre Listos
+            <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                <div class="inline-block px-4 py-1.5 bg-orange-600/20 backdrop-blur-md border border-orange-500/30 rounded-full mb-6">
+                    <span class="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Aventura • Honor • Servicio</span>
                 </div>
-                <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase font-brand">La <span class="text-orange-500">Infinita</span> Aventura</h1>
-                <p class="text-base md:text-xl text-indigo-100 mb-10 max-w-xl font-bold opacity-90">
-                    Sigue nuestra ruta oficial. Actividades, campamentos y servicio comunitario de la Tropa 808.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button onclick="scrollToSection('calendario')" class="bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:bg-orange-700 transition uppercase tracking-widest text-xs">Ver Agenda</button>
-                    <button onclick="scrollToSection('contacto')" class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition uppercase tracking-widest text-xs">Unirse</button>
+                <h1 class="text-5xl md:text-8xl font-brand text-white mb-6 leading-none uppercase">EXPLORA EL <span class="text-orange-500">MAÑANA</span></h1>
+                <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">Formamos líderes a través de la naturaleza. Tropa Scout 808: Donde la aventura nunca termina.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('calendario')" class="bg-white text-indigo-950 px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-wider">Ver Agenda</button>
+                    <button onclick="scrollToSection('blog')" class="bg-indigo-900/50 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition uppercase text-sm tracking-wider">Bitácora</button>
                 </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
             </div>
         </header>
 
-        <!-- SECCIÓN ESENCIA -->
-        <section class="py-20 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="w-full md:w-1/2 flex justify-center">
-                        <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" alt="Esencia" referrerpolicy="no-referrer" class="w-3/4 md:w-3/5 h-auto object-contain rounded-2xl">
+        <!-- Sección de Eventos (PREPARA TU MOCHILA) -->
+        <section id="calendario" class="py-24 relative overflow-hidden">
+            <div class="bg-pattern absolute inset-0"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <h2 class="text-orange-600 text-xs font-bold uppercase tracking-widest mb-2">Próximas Salidas</h2>
+                        <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 leading-none flex items-center flex-wrap">
+                            <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" referrerpolicy="no-referrer">
+                            PREPARA TU <span class="text-indigo-600 ml-2">MOCHILA</span>
+                        </h3>
                     </div>
-                    <div class="w-full md:w-1/2 space-y-6">
-                        <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-xs font-brand">Nuestra Esencia</h2>
-                        <h3 class="text-3xl md:text-4xl font-black text-indigo-950 uppercase font-brand leading-tight">Forjando los líderes del mañana</h3>
-                        <p class="text-slate-600 font-medium leading-relaxed font-bold">
-                            En la Tropa 808, cada actividad es una oportunidad para crecer. Nuestra misión es formar ciudadanos con valores sólidos y espíritu aventurero.
-                        </p>
-                        <div class="flex items-center space-x-4">
-                            <div class="h-1 w-12 bg-orange-500"></div>
-                            <span class="text-xs font-black uppercase tracking-widest text-indigo-900 font-brand">Distrito Majagua PR</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EVENTOS -->
-        <section id="calendario" class="py-20 bg-slate-100 text-indigo-950">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-3 font-brand">Agenda Oficial</h2>
-                    <h3 class="text-3xl md:text-4xl font-extrabold uppercase font-brand"><i class="fas fa-hiking mr-3 text-orange-500"></i>Próximas Aventuras</h3>
-                    <p class="text-slate-400 text-[10px] uppercase mt-2 font-bold tracking-widest font-brand">Sincronizado con Google Calendar (PR AST)</p>
-                </div>
-
-                <div id="event-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-                    <div class="shimmer h-64 rounded-[2rem]"></div>
-                    <div class="shimmer h-64 rounded-[2rem]"></div>
-                    <div class="shimmer h-64 rounded-[2rem]"></div>
-                </div>
-
-                <div class="text-center">
-                    <button id="toggle-calendar" class="w-full sm:w-auto inline-flex items-center justify-center bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-xl group uppercase tracking-widest text-xs">
-                        <i class="fas fa-calendar-alt mr-3 group-hover:scale-110 transition"></i>
-                        Ver Calendario Completo
+                    <button id="toggle-calendar" class="text-xs font-bold uppercase text-indigo-900 flex items-center group">
+                        <span class="mr-3 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md group-hover:bg-indigo-900 group-hover:text-white transition"><i class="fas fa-calendar"></i></span>
+                        Ver calendario completo
                     </button>
                 </div>
 
-                <div id="google-calendar-section" class="hidden mt-12">
-                    <div class="calendar-wrapper border-4 border-white shadow-2xl">
-                        <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4" style="border:0" frameborder="0" scrolling="no"></iframe>
+                <div id="event-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
+                </div>
+
+                <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
+                    <div class="calendar-container shadow-2xl border-4 border-white">
+                        <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- BITÁCORA -->
-        <section id="blog" class="py-20 bg-white">
+        <!-- Bitácora (RELATOS DE EXPEDICIÓN) -->
+        <section id="blog" class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-6">
-                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 text-center uppercase tracking-tighter font-brand"><i class="fas fa-journal-whills mr-3 text-indigo-600"></i>Bitácora Scout 808</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
-                        <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
-                        <div class="p-6 md:p-8">
-                            <span class="text-purple-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Homenaje</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Homenaje Walter Murray</h4>
-                            <a href="https://www.facebook.com/share/v/1ARXRLMoVs/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-facebook mr-2"></i> Ver Video</a>
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 mb-4 tracking-tight uppercase flex items-center justify-center flex-wrap">
+                        <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" referrerpolicy="no-referrer">
+                        RELATOS DE EXPEDICIÓN
+                    </h3>
+                    <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <article class="group">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <div class="absolute top-4 left-4 bg-indigo-900 text-white text-[10px] font-bold px-3 py-1 rounded-full">HONOR</div>
                         </div>
+                        <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Homenaje Walter Murray</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Celebrando el legado scout en nuestra comunidad.</p>
+                        <a href="https://www.facebook.com/share/v/1ARXRLMoVs/" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver en Facebook <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
-                    <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
-                        <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
-                        <div class="p-6 md:p-8">
-                            <span class="text-orange-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Aventura</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Caminata Toro Negro</h4>
-                            <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-youtube mr-2"></i> Ver Video</a>
+
+                    <article class="group">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
                         </div>
+                        <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Caminata Toro Negro</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Explorando las cumbres más altas de la isla.</p>
+                        <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver en YouTube <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
-                    <article class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-200">
-                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" referrerpolicy="no-referrer" class="h-56 w-full object-cover">
-                        <div class="p-6 md:p-8">
-                            <span class="text-green-600 font-bold text-[10px] uppercase mb-2 block tracking-widest font-brand">Reseña</span>
-                            <h4 class="text-lg md:text-xl font-bold text-indigo-950 mb-4 leading-tight uppercase font-brand">Guajataka 2026</h4>
-                            <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-indigo-900 font-bold hover:text-orange-600 transition flex items-center text-xs"><i class="fab fa-instagram mr-2 text-orange-600"></i> Ver Fotos</a>
+
+                    <article class="group">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">RESUMEN</div>
                         </div>
+                        <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Guajataka 2026</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Campamento de verano: La experiencia máxima.</p>
+                        <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver Fotos <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- GALERÍA -->
-        <section id="galeria" class="py-20 bg-slate-100">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h3 class="text-2xl md:text-3xl font-black text-indigo-950 mb-10 uppercase tracking-widest font-brand"><i class="fas fa-camera-retro mr-3 text-orange-500"></i>Galería Visual</h3>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                    <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" referrerpolicy="no-referrer" onclick="openLightbox(0)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" referrerpolicy="no-referrer" onclick="openLightbox(1)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" referrerpolicy="no-referrer" onclick="openLightbox(2)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
-                    <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" referrerpolicy="no-referrer" onclick="openLightbox(3)" class="aspect-square rounded-2xl md:rounded-[2rem] object-cover hover:scale-105 transition duration-500 shadow-lg cursor-pointer">
+        <!-- Galería (MOMENTOS 808) -->
+        <section id="galeria" class="py-24 bg-indigo-950 text-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex justify-between items-center mb-12">
+                    <h3 class="text-4xl md:text-5xl font-brand uppercase flex items-center flex-wrap">
+                        <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" referrerpolicy="no-referrer">
+                        MOMENTOS 808
+                    </h3>
+                    <div class="hidden md:block h-px flex-grow bg-white/10 mx-10"></div>
+                    <i class="fas fa-camera-retro text-2xl text-orange-500"></i>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(0)">
+                        <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(1)">
+                        <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(2)">
+                        <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(3)">
+                        <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="py-20 bg-scout-gradient">
-            <div class="max-w-4xl mx-auto px-6 text-center text-white">
-                <h2 class="text-3xl md:text-5xl font-black mb-8 leading-tight font-brand uppercase">¿Listo para unirte?</h2>
-                <div class="bg-white rounded-[2.5rem] p-8 md:p-12 text-slate-900 shadow-2xl relative text-left">
-                    <form id="join-form" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 font-bold">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase text-slate-400 ml-2 font-bold">Nombre Completo</label>
-                            <input type="text" id="join-name" required class="w-full px-5 py-4 rounded-xl bg-slate-100 outline-none focus:ring-2 focus:ring-orange-500 text-sm font-bold">
+        <!-- Formulario con Imagen Centrada y Espaciado Optimizado -->
+        <section id="contacto" class="py-24">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                    <!-- Columna de contacto morada -->
+                    <div class="bg-indigo-900 text-white p-10 md:w-1/3 flex flex-col justify-between relative overflow-hidden text-center">
+                        <div>
+                            <h4 class="text-3xl font-brand mb-6 uppercase">ÚNETE A LA RUTA</h4>
+                            <p class="text-indigo-200 text-sm font-light mb-8">Completa los datos y nos pondremos en contacto pronto.</p>
+                            
+                            <!-- IMAGEN CENTRADA Y SIN MARCO - ESPACIADO REDUCIDO -->
+                            <div class="mb-4 flex justify-center">
+                                <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="w-24 h-auto opacity-90" alt="Emblema Scout" referrerpolicy="no-referrer">
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase text-slate-400 ml-2 font-bold">Edad del Joven</label>
-                            <input type="number" id="join-age" required class="w-full px-5 py-4 rounded-xl bg-slate-100 outline-none focus:ring-2 focus:ring-orange-500 text-sm font-bold">
+
+                        <div>
+                            <span class="block text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Localización</span>
+                            <div class="space-y-2">
+                                <p class="text-xs leading-relaxed text-indigo-50 font-medium italic">Paseo Lineal Río Bayamón, detrás del Hospital San Pablo, en Bayamón, Puerto Rico.</p>
+                                <!-- Enlace de mapa interactivo -->
+                                <a href="https://www.google.com/maps/search/?api=1&query=18.398667,-66.144633" target="_blank" class="text-[11px] font-bold text-orange-200 tracking-wider hover:text-white transition flex items-center justify-center group">
+                                    <i class="fas fa-map-marker-alt mr-2 group-hover:scale-110 transition"></i>
+                                    18° 23.920' N, 66° 08.678' W
+                                </a>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase text-slate-400 ml-2 font-bold">Teléfono</label>
-                            <input type="tel" id="join-phone" required class="w-full px-5 py-4 rounded-xl bg-slate-100 outline-none focus:ring-2 focus:ring-orange-500 text-sm font-bold">
+                    </div>
+                    
+                    <!-- Columna de formulario blanca -->
+                    <div class="p-12 md:w-2/3">
+                        <form id="join-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input type="text" id="join-name" placeholder="Nombre completo" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
+                                <input type="number" id="join-age" placeholder="Edad del joven" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
+                            </div>
+                            <input type="tel" id="join-phone" placeholder="Teléfono de contacto" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
+                            <input type="email" id="join-email" placeholder="Correo electrónico" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
+                            <button type="submit" class="w-full bg-orange-600 text-white py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-indigo-950 transition">Enviar Solicitud</button>
+                        </form>
+                        <div id="join-success" class="hidden text-center py-6">
+                            <i class="fas fa-check-circle text-green-500 text-4xl mb-3"></i>
+                            <p class="font-bold text-indigo-950">¡Mensaje recibido! Siempre Listos.</p>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase text-slate-400 ml-2 font-bold">Email</label>
-                            <input type="email" id="join-email" required class="w-full px-5 py-4 rounded-xl bg-slate-100 outline-none focus:ring-2 focus:ring-orange-500 text-sm font-bold">
-                        </div>
-                        <button type="submit" class="md:col-span-2 bg-indigo-900 text-white font-black py-5 rounded-xl hover:bg-orange-600 transition shadow-xl uppercase tracking-widest text-sm mt-2 font-bold">
-                            Solicitar Información
-                        </button>
-                    </form>
-                    <div id="join-success" class="hidden py-10 text-center font-brand">
-                        <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl"><i class="fas fa-check"></i></div>
-                        <h4 class="text-xl font-black uppercase mb-2">¡Recibido!</h4>
-                        <p class="text-sm opacity-70">¡Siempre Listos! ⚜️</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- RECURSOS -->
-    <section id="docs-view" class="hidden pt-28 md:pt-32 pb-24 bg-slate-100 min-h-screen">
+    <!-- VISTA DOCUMENTOS (RECURSOS) -->
+    <section id="docs-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-orange-600 font-bold tracking-[0.2em] uppercase text-[10px] mb-3 font-brand">Biblioteca Digital 808</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-indigo-950 font-brand uppercase">Documentos Oficiales</h3>
-                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest font-bold">Descarga y completa los formularios necesarios</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-brand text-indigo-950 uppercase leading-none">BIBLIOTECA SCOUT</h2>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-4">Documentos y formularios oficiales 808</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <a href="https://filestore.scouting.org/filestore/HealthSafety/pdf/680-001_ABC.pdf" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-file-medical"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Formulario Médico (A-B-C)</h4>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Requisito Anual</p>
-                        </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="https://filestore.scouting.org/filestore/HealthSafety/pdf/680-001_ABC.pdf" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-indigo-600 group-hover:text-white transition"><i class="fas fa-file-medical"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Formulario Médico ABC</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Indispensable para campamentos</p>
                     </div>
-                    <i class="fas fa-download text-orange-600 text-lg group-hover:scale-125 transition"></i>
+                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
                 </a>
-                <a href="#" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-user-check"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Permiso de Excursión</h4>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Autorización Padres</p>
-                        </div>
+
+                <a href="#" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-orange-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fas fa-user-check"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Permiso Excursión</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Autorización para padres</p>
                     </div>
-                    <i class="fas fa-download text-orange-600 text-lg group-hover:scale-125 transition"></i>
+                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
                 </a>
-                <a href="https://www.scouting.org/training/youth-protection/" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-user-shield"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Youth Protection</h4>
-                            <p class="text-[9px] text-green-600 font-bold uppercase tracking-widest">Entrenamiento Adultos</p>
-                        </div>
+
+                <a href="https://www.scouting.org/training/youth-protection/" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-green-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-green-600 group-hover:text-white transition"><i class="fas fa-user-shield"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Youth Protection</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Enlace oficial entrenamiento</p>
                     </div>
-                    <i class="fas fa-external-link-alt text-orange-600 text-lg group-hover:scale-125 transition"></i>
+                    <i class="fas fa-external-link-alt text-slate-300 group-hover:text-orange-500"></i>
                 </a>
-                <a href="https://filestore.scouting.org/filestore/pdf/33088.pdf" target="_blank" class="bg-white p-6 md:p-8 rounded-[1.5rem] shadow-md border border-slate-100 flex items-center justify-between hover:border-orange-500 transition group">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-list-ol"></i></div>
-                        <div>
-                            <h4 class="font-bold text-indigo-950 uppercase text-xs md:text-sm">Guía de Requisitos</h4>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Avance en Rangos</p>
-                        </div>
+
+                <a href="https://filestore.scouting.org/filestore/pdf/33088.pdf" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-purple-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-purple-600 group-hover:text-white transition"><i class="fas fa-award"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Guía de Requisitos</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Avance en rangos</p>
                     </div>
-                    <i class="fas fa-file-pdf text-orange-600 text-lg group-hover:scale-125 transition"></i>
+                    <i class="fas fa-file-pdf text-slate-300 group-hover:text-orange-500"></i>
                 </a>
             </div>
 
-            <div class="mt-12 text-center">
-                <button onclick="switchView('main')" class="bg-indigo-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-lg uppercase tracking-widest text-xs">Volver al Inicio</button>
+            <div class="mt-16 text-center">
+                <button onclick="switchView('main')" class="bg-indigo-950 text-white px-12 py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-orange-600 transition shadow-xl">Volver al inicio</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-indigo-950 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center space-x-4 cursor-pointer" onclick="switchView('main')">
-                <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" referrerpolicy="no-referrer" class="w-14 h-14 rounded-full border-2 border-orange-500 object-cover">
+    <!-- Footer con degradado Scout -->
+    <footer class="bg-scout-gradient text-white py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-pattern"></div>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
+            <div class="flex items-center space-x-5">
+                <div class="bg-white p-1 rounded-full shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" class="w-16 h-16 rounded-full object-cover shadow-inner" referrerpolicy="no-referrer">
+                </div>
                 <div>
-                    <span class="block text-xl font-black font-brand uppercase text-white">TROPA 808</span>
-                    <span class="text-[9px] font-bold text-orange-400 uppercase tracking-widest font-brand">Distrito Majagua • PR</span>
+                    <span class="block text-4xl font-brand leading-none">TROPA 808</span>
+                    <span class="text-xs font-bold text-white/80 uppercase tracking-widest">Puerto Rico • Distrito Majagua</span>
                 </div>
             </div>
-            <div class="flex flex-col items-center">
-                <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" alt="Emblema" referrerpolicy="no-referrer" class="h-20 w-auto opacity-80 hover:opacity-100 transition">
+            
+            <div class="text-center">
+                <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" class="h-28 mx-auto mb-6 brightness-0 invert opacity-90 hover:opacity-100 transition" referrerpolicy="no-referrer">
+                <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed">© 2026 Scouts de Puerto Rico • Siempre Listos ⚜️</p>
             </div>
-            <div class="flex space-x-6 text-3xl">
-                <a href="https://www.facebook.com/groups/83514280416/" target="_blank" class="hover:text-orange-500 transition text-white"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="hover:text-orange-500 transition text-white"><i class="fab fa-instagram"></i></a>
+            
+            <div class="flex space-x-8">
+                <a href="https://www.facebook.com/groups/83514280416/" target="_blank" class="text-4xl hover:scale-110 hover:text-indigo-900 transition"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-4xl hover:scale-110 hover:text-indigo-900 transition"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-5xl hover:text-orange-500 transition focus:outline-none">&times;</button>
-        <div class="relative w-full max-w-5xl flex items-center justify-center group" onclick="event.stopPropagation()">
-            <button onclick="prevPhoto()" class="absolute left-0 md:-left-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]"><i class="fas fa-chevron-left text-2xl"></i></button>
-            <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain">
-            <button onclick="nextPhoto()" class="absolute right-0 md:-right-20 text-white p-4 rounded-full lightbox-nav-btn z-[110]"><i class="fas fa-chevron-right text-2xl"></i></button>
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-orange-500 transition"><i class="fas fa-times"></i></button>
+        <div class="relative w-full max-w-5xl flex items-center justify-center" onclick="event.stopPropagation()">
+            <button onclick="prevPhoto()" class="absolute left-2 md:-left-20 text-white text-3xl p-4"><i class="fas fa-chevron-left"></i></button>
+            <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain shadow-white/10">
+            <button onclick="nextPhoto()" class="absolute right-2 md:-right-20 text-white text-3xl p-4"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <div id="lightbox-counter" class="mt-6 text-white font-bold font-brand text-xs uppercase tracking-widest opacity-60"></div>
+        <div id="lightbox-counter" class="mt-8 text-white font-bold text-xs uppercase tracking-widest opacity-60"></div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
         // --- NAVEGACIÓN ---
         window.switchView = (v) => {
-            document.getElementById('mobile-menu').classList.remove('active');
+            const menu = document.getElementById('mobile-menu');
+            if(menu) menu.classList.remove('active');
             const main = document.getElementById('main-view'), docs = document.getElementById('docs-view');
-            if (v === 'docs') { 
-                main.classList.add('hidden'); docs.classList.remove('hidden'); 
-                main.style.display = 'none'; docs.style.display = 'block';
-            } else { 
-                docs.classList.add('hidden'); main.classList.remove('hidden'); 
-                docs.style.display = 'none'; main.style.display = 'block';
-            }
+            if (v === 'docs') { main.classList.add('hidden'); docs.classList.remove('hidden'); }
+            else { docs.classList.add('hidden'); main.classList.remove('hidden'); }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
         window.scrollToSection = (id) => {
-            if (document.getElementById('main-view').style.display === 'none') switchView('main');
+            if (document.getElementById('main-view').classList.contains('hidden')) switchView('main');
             document.getElementById('mobile-menu').classList.remove('active');
             setTimeout(() => {
                 const el = document.getElementById(id);
@@ -413,9 +405,10 @@
         };
 
         const mobileBtn = document.getElementById('mobile-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(mobileBtn) mobileBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); };
-        document.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        if(mobileBtn) mobileBtn.onclick = (e) => { 
+            e.stopPropagation(); document.getElementById('mobile-menu').classList.toggle('active'); 
+        };
+        document.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('active'));
 
         // --- GALERÍA ---
         const galleryImages = [
@@ -425,30 +418,24 @@
             "https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4"
         ];
         let currentPhotoIndex = 0;
-
-        window.openLightbox = (index) => {
-            const lb = document.getElementById('lightbox'), img = document.getElementById('lightbox-img');
-            currentPhotoIndex = index;
-            updateLightbox();
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
+        window.openLightbox = (i) => {
+            currentPhotoIndex = i; updateLightbox();
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
             document.body.style.overflow = 'hidden';
         };
-
         window.closeLightbox = () => {
             document.getElementById('lightbox').classList.add('hidden');
             document.body.style.overflow = 'auto';
         };
-
         window.nextPhoto = () => { currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length; updateLightbox(); };
         window.prevPhoto = () => { currentPhotoIndex = (currentPhotoIndex - 1 + galleryImages.length) % galleryImages.length; updateLightbox(); };
-
         function updateLightbox() {
             document.getElementById('lightbox-img').src = galleryImages[currentPhotoIndex];
-            document.getElementById('lightbox-counter').innerText = `FOTO ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
+            document.getElementById('lightbox-counter').innerText = `IMAGEN ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
         }
 
-        // --- CALENDARIO (Corrección de Zona Horaria) ---
+        // --- CALENDARIO (Lógica de Zona Horaria y Colores Dinámicos) ---
         const themes = {
             purpura: { b: 'border-indigo-600', bg: 'bg-indigo-600', tb: 'bg-indigo-50', tc: 'text-indigo-600' },
             naranja: { b: 'border-orange-500', bg: 'bg-orange-500', tb: 'bg-orange-50', tc: 'text-orange-600' },
@@ -461,19 +448,11 @@
         const iCalUrl = `https://calendar.google.com/calendar/ical/${calendarEmail}/public/basic.ics?v=${new Date().getTime()}`;
 
         async function fetchEvents() {
-            const container = document.getElementById('event-cards-container');
-            const cachedData = localStorage.getItem('tropa808_events');
-            const cachedTime = localStorage.getItem('tropa808_events_time');
-            const now = new Date().getTime();
-
-            // Mostrar caché temporal
-            if (cachedData && cachedTime && (now - cachedTime < 3600000)) {
-                renderEventHTML(JSON.parse(cachedData));
-            }
-
-            const proxies = [`https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`, `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}` ];
+            const cachedData = localStorage.getItem('tropa808_v2_events');
             
+            const proxies = [`https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`, `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}` ];
             let rawICal = null;
+
             for(let p of proxies) {
                 try {
                     const res = await fetch(p);
@@ -493,24 +472,18 @@
 
                     const dateStr = stMatch[1]; 
                     let eventDate;
-
                     if (dateStr.includes('T')) {
-                        // Es un evento con hora (Ej: 20260225T010000Z)
-                        // JS lo convierte automáticamente a hora local del sistema
                         const y = dateStr.substring(0, 4), m = dateStr.substring(4, 6), d = dateStr.substring(6, 8);
                         const h = dateStr.substring(9, 11), min = dateStr.substring(11, 13);
                         eventDate = new Date(`${y}-${m}-${d}T${h}:${min}:00Z`);
                     } else {
-                        // Es un evento de todo el día (Ej: 20260224)
                         const y = parseInt(dateStr.substring(0, 4)), m = parseInt(dateStr.substring(4, 6)) - 1, d = parseInt(dateStr.substring(6, 8));
                         eventDate = new Date(y, m, d);
                     }
 
                     return { 
                         summary: s ? s[1].trim() : "Evento", 
-                        y: eventDate.getFullYear(), 
-                        m: eventDate.getMonth(), 
-                        d: eventDate.getDate(), 
+                        y: eventDate.getFullYear(), m: eventDate.getMonth(), d: eventDate.getDate(), 
                         comp: eventDate.getTime() 
                     };
                 })
@@ -518,65 +491,72 @@
                 .sort((a,b) => a.comp - b.comp)
                 .slice(0,3);
 
-                localStorage.setItem('tropa808_events', JSON.stringify(events));
-                localStorage.setItem('tropa808_events_time', now.toString());
+                localStorage.setItem('tropa808_v2_events', JSON.stringify(events));
                 renderEventHTML(events);
-            } else if (!cachedData) {
-                container.innerHTML = `<div class="col-span-3 text-center p-12 bg-white rounded-3xl"><p class="text-slate-500 font-bold uppercase text-[10px]">Sin aventuras próximas...</p></div>`;
+            } else if (cachedData) {
+                renderEventHTML(JSON.parse(cachedData));
             }
         }
 
+        /**
+         * Lógica de colores dinámica
+         */
         function renderEventHTML(events) {
             const container = document.getElementById('event-cards-container');
+            if(!container) return;
+            
             const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-            const themeKeys = Object.keys(themes);
-            let availableThemes = [...themeKeys];
+            const randomPool = ['purpura', 'rojo'];
+            let lastRandomKey = null;
 
             container.innerHTML = events.map((ev, i) => {
                 const sl = ev.summary.toLowerCase();
                 let chosenKey = null;
 
-                // Lógica establecida: Color según el nombre o contenido
                 if (sl.includes('verde')) chosenKey = 'verde';
                 else if (sl.includes('naranja')) chosenKey = 'naranja';
                 else if (sl.includes('azul')) chosenKey = 'azul';
                 else if (sl.includes('rojo')) chosenKey = 'rojo';
                 else if (sl.includes('purpura') || sl.includes('púrpura')) chosenKey = 'purpura';
                 
-                if (!chosenKey || !availableThemes.includes(chosenKey)) {
-                    const randomIndex = Math.floor(Math.random() * availableThemes.length);
-                    chosenKey = availableThemes[randomIndex];
+                if (!chosenKey) {
+                    chosenKey = (lastRandomKey === 'purpura') ? 'rojo' : 'purpura';
+                    lastRandomKey = chosenKey;
                 }
-
+                
                 const st = themes[chosenKey];
-                availableThemes = availableThemes.filter(k => k !== chosenKey);
-                if (availableThemes.length === 0) availableThemes = [...themeKeys];
-
-                let tag = "AVENTURA";
+                let tag = "EVENTO";
                 if(sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
                 else if(sl.includes("caminata")) tag = "CAMINATA";
                 else if(sl.includes("camping") || sl.includes("guajataka")) tag = "CAMPING";
 
-                return `<div class="calendar-card bg-white p-8 rounded-[2rem] border-l-8 ${st.b} shadow-sm flex flex-col justify-between font-bold">
+                return `
+                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="${st.bg} text-white w-14 h-14 rounded-2xl flex flex-col items-center justify-center font-black">
-                                <span class="text-[10px] uppercase font-bold text-white">${months[ev.m]}</span>
-                                <span class="text-xl font-bold text-white">${ev.d}</span>
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center">
+                                <div class="${st.bg} text-white px-4 py-2 rounded-xl text-center shadow-md">
+                                    <span class="block text-[10px] font-bold uppercase leading-tight">${months[ev.m]}</span>
+                                    <span class="block text-2xl font-brand leading-none">${ev.d}</span>
+                                </div>
                             </div>
-                            <span class="${st.tb} ${st.tc} text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">${tag}</span>
+                            <span class="${st.tb} ${st.tc} text-[10px] font-black px-4 py-2 rounded-lg uppercase tracking-widest">${tag}</span>
                         </div>
-                        <h4 class="text-lg md:text-xl font-extrabold text-indigo-950 mb-3 uppercase leading-tight">${ev.summary}</h4>
+                        <h4 class="text-2xl font-brand text-indigo-950 mb-4 leading-tight">${ev.summary}</h4>
                     </div>
                 </div>`;
             }).join('');
         }
 
-        document.getElementById('toggle-calendar').onclick = () => document.getElementById('google-calendar-section').classList.toggle('hidden');
+        document.getElementById('toggle-calendar').onclick = () => {
+            document.getElementById('google-calendar-section').classList.toggle('hidden');
+        };
+
         window.onload = () => { fetchEvents(); };
     </script>
 </body>
 </html>
+
 
 
 
