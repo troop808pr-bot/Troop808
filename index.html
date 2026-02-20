@@ -165,10 +165,18 @@
                 </div>
 
                 <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
-                    <!-- Vista Móvil: Calendario mensual con pestañas habilitadas para que el usuario elija -->
-                    <div class="calendar-container shadow-2xl border-4 border-white block md:hidden" style="padding-bottom: 130%;">
-                        <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4"></iframe>
+                    <!-- Vista Móvil: Botón para abrir en la App / Pantalla completa -->
+                    <div class="block md:hidden bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-8 text-center shadow-inner">
+                        <div class="w-16 h-16 bg-white text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-brand text-indigo-950 mb-2">Calendario Tropa 808</h4>
+                        <p class="text-sm text-slate-500 mb-6 font-medium">Para una mejor experiencia en tu celular, abre el calendario en pantalla completa.</p>
+                        <a href="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico" target="_blank" class="inline-block w-full bg-indigo-900 text-white px-8 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-orange-600 transition">
+                            Abrir Calendario <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
                     </div>
+                    
                     <!-- Vista PC: Modo Mes (Cuadrícula) tradicional -->
                     <div class="calendar-container shadow-2xl border-4 border-white hidden md:block">
                         <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4"></iframe>
@@ -596,6 +604,7 @@
     </script>
 </body>
 </html>
+
 
 
 
