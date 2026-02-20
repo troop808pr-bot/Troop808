@@ -165,16 +165,9 @@
                 </div>
 
                 <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
-                    <!-- Vista Móvil: Botón para abrir en la App / Pantalla completa -->
-                    <div class="block md:hidden bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-8 text-center shadow-inner">
-                        <div class="w-16 h-16 bg-white text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h4 class="text-xl font-brand text-indigo-950 mb-2">Calendario Tropa 808</h4>
-                        <p class="text-sm text-slate-500 mb-6 font-medium">Para una mejor experiencia en tu celular, abre el calendario en pantalla completa.</p>
-                        <a href="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico" target="_blank" class="inline-block w-full bg-indigo-900 text-white px-8 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-orange-600 transition">
-                            Abrir Calendario <i class="fas fa-external-link-alt ml-2"></i>
-                        </a>
+                    <!-- Vista Móvil: Lista completa de eventos (Opción 3 - Diseño Elegante) -->
+                    <div id="mobile-full-events-container" class="block md:hidden flex flex-col gap-6">
+                        <!-- Los eventos completos se inyectarán aquí vía JS manteniendo el diseño de la tropa -->
                     </div>
                     
                     <!-- Vista PC: Modo Mes (Cuadrícula) tradicional -->
@@ -470,7 +463,9 @@
             
             // 1. Mostrar caché INMEDIATAMENTE si existe (carga ultrarrápida)
             if (cachedData) {
-                renderEventHTML(JSON.parse(cachedData));
+                const parsed = JSON.parse(cachedData);
+                renderEventHTML(parsed.slice(0, 3), 'event-cards-container');
+                renderEventHTML(parsed.slice(0, 15), 'mobile-full-events-container'); // Hasta 15 eventos en móvil
                 
                 // Si el caché tiene menos de 2 horas de antigüedad, no buscamos en internet para ahorrar recursos
                 if (cacheTime && (now - parseInt(cacheTime) < 7200000)) {
@@ -520,24 +515,27 @@
                     };
                 })
                 .filter(e => e && e.comp >= (todayComp - 86400000))
-                .sort((a,b) => a.comp - b.comp)
-                .slice(0,3);
+                .sort((a,b) => a.comp - b.comp);
 
                 localStorage.setItem('tropa808_v2_events', JSON.stringify(events));
                 localStorage.setItem('tropa808_v2_events_time', now.toString());
-                renderEventHTML(events); // Actualiza la UI con los datos frescos
+                renderEventHTML(events.slice(0, 3), 'event-cards-container'); 
+                renderEventHTML(events.slice(0, 15), 'mobile-full-events-container'); 
             } else if (!cachedData) {
                 // Si falló el internet y no hay caché
-                const container = document.getElementById('event-cards-container');
-                if(container) container.innerHTML = '<div class="col-span-1 md:col-span-3 text-center text-slate-500 text-sm font-bold uppercase py-10">No hay eventos próximos programados.</div>';
+                const container1 = document.getElementById('event-cards-container');
+                const container2 = document.getElementById('mobile-full-events-container');
+                const errorMsg = '<div class="col-span-1 md:col-span-3 text-center text-slate-500 text-sm font-bold uppercase py-10">No hay eventos próximos programados.</div>';
+                if(container1) container1.innerHTML = errorMsg;
+                if(container2) container2.innerHTML = errorMsg;
             }
         }
 
         /**
          * Lógica de colores dinámica
          */
-        function renderEventHTML(events) {
-            const container = document.getElementById('event-cards-container');
+        function renderEventHTML(events, targetId) {
+            const container = document.getElementById(targetId);
             if(!container) return;
             
             const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
