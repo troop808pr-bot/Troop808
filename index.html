@@ -479,18 +479,25 @@
                 }
             }
             
-            // 2. Si no hay caché o es viejo, buscamos en internet en segundo plano
+            // 2. Si no hay caché o es viejo, buscamos en internet en segundo plano (Carrera de Promesas)
             const proxies = [
                 `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}`,
-                `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}` 
+                `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(iCalUrl)}` // Proxy extra de respaldo para iOS
             ];
             let rawICal = null;
 
-            for(let p of proxies) {
-                try {
+            // Ejecutamos todos los fetch al mismo tiempo y nos quedamos con el primero que responda exitosamente (muy útil en iOS Safari)
+            try {
+                rawICal = await Promise.any(proxies.map(async p => {
                     const res = await fetch(p);
-                    if(res.ok) { rawICal = await res.text(); if(rawICal.includes("BEGIN:VCALENDAR")) break; }
-                } catch(e){}
+                    if (!res.ok) throw new Error("Error en respuesta");
+                    const text = await res.text();
+                    if (!text.includes("BEGIN:VCALENDAR")) throw new Error("No es iCal");
+                    return text;
+                }));
+            } catch (error) {
+                console.log("Todos los servidores fallaron o fueron bloqueados");
             }
 
             if (rawICal) {
@@ -505,10 +512,12 @@
 
                     const dateStr = stMatch[1]; 
                     let eventDate;
+                    
+                    // Ajuste de compatibilidad para Safari (iOS) usando argumentos numéricos puros
                     if (dateStr.includes('T')) {
-                        const y = dateStr.substring(0, 4), m = dateStr.substring(4, 6), d = dateStr.substring(6, 8);
-                        const h = dateStr.substring(9, 11), min = dateStr.substring(11, 13);
-                        eventDate = new Date(`${y}-${m}-${d}T${h}:${min}:00Z`);
+                        const y = parseInt(dateStr.substring(0, 4)), m = parseInt(dateStr.substring(4, 6)) - 1, d = parseInt(dateStr.substring(6, 8));
+                        const h = parseInt(dateStr.substring(9, 11)), min = parseInt(dateStr.substring(11, 13));
+                        eventDate = new Date(Date.UTC(y, m, d, h, min, 0));
                     } else {
                         const y = parseInt(dateStr.substring(0, 4)), m = parseInt(dateStr.substring(4, 6)) - 1, d = parseInt(dateStr.substring(6, 8));
                         eventDate = new Date(y, m, d);
@@ -605,6 +614,7 @@
     </script>
 </body>
 </html>
+
 
 
 
