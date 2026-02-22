@@ -469,11 +469,14 @@
             const cachedData = localStorage.getItem('tropa808_v2_events');
             const cacheTime = localStorage.getItem('tropa808_v2_events_time');
             const now = new Date().getTime();
+            const todayComp = new Date().setHours(0,0,0,0); // Definir "hoy" al inicio para el caché
             
             // 1. Mostrar caché INMEDIATAMENTE si existe (carga ultrarrápida)
             if (cachedData) {
                 const parsed = JSON.parse(cachedData);
-                renderEventHTML(parsed.slice(0, 3), 'event-cards-container');
+                // Filtramos el caché para asegurar que no muestre eventos pasados aunque estén en memoria
+                const validCached = parsed.filter(e => e.comp >= todayComp);
+                renderEventHTML(validCached.slice(0, 3), 'event-cards-container');
                 
                 // Si el caché tiene menos de 2 horas de antigüedad, no buscamos en internet para ahorrar recursos
                 if (cacheTime && (now - parseInt(cacheTime) < 7200000)) {
@@ -505,7 +508,6 @@
             if (rawICal) {
                 const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
                 const vevents = unfolded.split('BEGIN:VEVENT').slice(1);
-                const todayComp = new Date().setHours(0,0,0,0);
                 
                 const events = vevents.map(v => {
                     const s = v.match(/SUMMARY:(.*)/);
@@ -531,7 +533,7 @@
                         comp: eventDate.getTime() 
                     };
                 })
-                .filter(e => e && e.comp >= (todayComp - 86400000))
+                .filter(e => e && e.comp >= todayComp) // <-- FILTRO ESTRICTO: Solo de hoy en adelante
                 .sort((a,b) => a.comp - b.comp);
 
                 localStorage.setItem('tropa808_v2_events', JSON.stringify(events));
@@ -553,23 +555,30 @@
             if(!container) return;
             
             const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-            const randomPool = ['purpura', 'rojo'];
-            let lastRandomKey = null;
+            // Lista de colores de respaldo para asegurar variedad
+            const fallbacks = ['purpura', 'rojo', 'azul', 'naranja', 'verde'];
+            let usedColors = []; // Memoria temporal para no repetir colores
 
             container.innerHTML = events.map((ev, i) => {
                 const sl = ev.summary.toLowerCase();
                 let chosenKey = null;
 
+                // 1. Asignar color si está explícito en el título
                 if (sl.includes('verde')) chosenKey = 'verde';
                 else if (sl.includes('naranja')) chosenKey = 'naranja';
                 else if (sl.includes('azul')) chosenKey = 'azul';
                 else if (sl.includes('rojo')) chosenKey = 'rojo';
                 else if (sl.includes('purpura') || sl.includes('púrpura')) chosenKey = 'purpura';
                 
+                // 2. Si no hay color explícito, buscar el primer color que NO se haya usado todavía
                 if (!chosenKey) {
-                    chosenKey = (lastRandomKey === 'purpura') ? 'rojo' : 'purpura';
-                    lastRandomKey = chosenKey;
+                    chosenKey = fallbacks.find(color => !usedColors.includes(color));
+                    // Respaldo de seguridad por si hay más eventos que colores
+                    if (!chosenKey) chosenKey = fallbacks[i % fallbacks.length]; 
                 }
+                
+                // Registrar el color para no volver a usarlo en la siguiente tarjeta
+                usedColors.push(chosenKey);
                 
                 const st = themes[chosenKey];
                 let tag = "EVENTO";
@@ -616,6 +625,7 @@
     </script>
 </body>
 </html>
+
 
 
 
