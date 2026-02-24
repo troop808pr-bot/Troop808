@@ -86,7 +86,7 @@
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('main')">
-                <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo" class="w-10 h-10 rounded-full border-2 border-orange-500 object-cover shadow-lg" referrerpolicy="no-referrer">
+                <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-orange-500 object-cover shadow-lg" referrerpolicy="no-referrer">
                 <div>
                     <span class="block text-2xl font-brand text-indigo-950 leading-none">TROPA 808</span>
                     <span class="text-[9px] font-bold text-orange-600 uppercase">Distrito Majagua PR</span>
@@ -167,16 +167,35 @@
                 </div>
 
                 <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
-                    <!-- Vista Móvil: Botón para abrir en la App / Pantalla completa -->
-                    <div class="block md:hidden bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-8 text-center shadow-inner">
-                        <div class="w-16 h-16 bg-white text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
-                            <i class="fas fa-calendar-alt"></i>
+                    <!-- Vista Móvil: Calendario embebido + Botones de Sincronización -->
+                    <div class="block md:hidden flex flex-col gap-6">
+                        <!-- Calendario Móvil (Modo Agenda) -->
+                        <div class="calendar-container shadow-2xl border-4 border-white" style="padding-bottom: 130%;">
+                            <iframe src="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&bgcolor=%23ffffff&color=%234285F4"></iframe>
                         </div>
-                        <h4 class="text-xl font-brand text-indigo-950 mb-2">Calendario Tropa 808</h4>
-                        <p class="text-sm text-slate-500 mb-6 font-medium">Para una mejor experiencia en tu celular, abre el calendario en pantalla completa.</p>
-                        <a href="https://calendar.google.com/calendar/embed?src=troop808pr%40gmail.com&ctz=America%2FPuerto_Rico" target="_blank" class="inline-block w-full bg-indigo-900 text-white px-8 py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-orange-600 transition">
-                            Abrir Calendario <i class="fas fa-external-link-alt ml-2"></i>
-                        </a>
+
+                        <!-- Panel de Sincronización -->
+                        <div class="bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-6 text-center shadow-inner">
+                            <h4 class="text-lg font-brand text-indigo-950 mb-2"><i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza tu Agenda</h4>
+                            <p class="text-xs text-slate-500 mb-6 font-medium">Añade el calendario a tu celular para recibir actualizaciones en vivo.</p>
+                            
+                            <div class="space-y-3">
+                                <!-- Botón Google / Android -->
+                                <div>
+                                    <a href="https://calendar.google.com/calendar/r?cid=troop808pr%40gmail.com" target="_blank" class="flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest shadow-md hover:bg-blue-700 transition">
+                                        <i class="fab fa-google mr-3 text-base"></i> Android (Google)
+                                    </a>
+                                    <p class="text-[8px] text-blue-600/80 font-bold uppercase tracking-widest mt-1.5 leading-tight">
+                                        *Si abre en el navegador, presiona "+ Google Calendar" abajo.
+                                    </p>
+                                </div>
+                                
+                                <!-- Botón Apple / iPhone -->
+                                <a href="webcal://calendar.google.com/calendar/ical/troop808pr%40gmail.com/public/basic.ics" class="flex items-center justify-center w-full bg-slate-900 text-white px-6 py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest shadow-md hover:bg-black transition">
+                                    <i class="fab fa-apple mr-3 text-base"></i> iPhone (Apple)
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Vista PC: Modo Mes (Cuadrícula) tradicional -->
@@ -331,7 +350,7 @@
                     <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
                 </a>
 
-                <a href="#" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                <a href="https://drive.google.com/file/d/1vyrqt7FmqvmHmlR9xFJufhyJ7BuwmWGl/view?usp=sharing" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
                     <div class="w-16 h-16 bg-slate-50 text-orange-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fas fa-user-check"></i></div>
                     <div class="flex-grow">
                         <h4 class="font-bold text-indigo-950 text-sm uppercase">Permiso Excursión</h4>
@@ -469,16 +488,30 @@
         const iCalUrl = `https://calendar.google.com/calendar/ical/${calendarEmail}/public/basic.ics?v=${new Date().getTime()}`;
 
         async function fetchEvents() {
-            const cachedData = localStorage.getItem('tropa808_v2_events');
-            const cacheTime = localStorage.getItem('tropa808_v2_events_time');
+            // Cambiamos a v4 para forzar que todos los dispositivos limpien la memoria y descarguen la agenda fresca
+            const cachedData = localStorage.getItem('tropa808_v4_events');
+            const cacheTime = localStorage.getItem('tropa808_v4_events_time');
             const now = new Date().getTime();
-            const todayComp = new Date().setHours(0,0,0,0); // Definir "hoy" al inicio para el caché
+            const todayComp = new Date().setHours(0,0,0,0); 
             
             // 1. Mostrar caché INMEDIATAMENTE si existe (carga ultrarrápida)
             if (cachedData) {
                 const parsed = JSON.parse(cachedData);
                 // Filtramos el caché para asegurar que no muestre eventos pasados aunque estén en memoria
-                const validCached = parsed.filter(e => e.comp >= todayComp);
+                let validCached = parsed.filter(e => e.comp >= todayComp);
+                
+                // Compatibilidad con versión anterior del caché (agrupar si no estaban agrupados)
+                if (validCached.length > 0 && validCached[0].summary) {
+                    const tempGrouped = [];
+                    validCached.forEach(ev => {
+                        const key = `${ev.y}-${ev.m}-${ev.d}`;
+                        let g = tempGrouped.find(x => x.key === key);
+                        if(!g) { g = { key, y:ev.y, m:ev.m, d:ev.d, comp:ev.comp, summaries:[] }; tempGrouped.push(g); }
+                        g.summaries.push(ev.summary);
+                    });
+                    validCached = tempGrouped;
+                }
+
                 renderEventHTML(validCached.slice(0, 3), 'event-cards-container');
                 
                 // Si el caché tiene menos de 2 horas de antigüedad, no buscamos en internet para ahorrar recursos
@@ -495,7 +528,7 @@
             ];
             let rawICal = null;
 
-            // Ejecutamos todos los fetch al mismo tiempo y nos quedamos con el primero que responda exitosamente (muy útil en iOS Safari)
+            // Ejecutamos todos los fetch al mismo tiempo y nos quedamos con el primero que responda exitosamente
             try {
                 rawICal = await Promise.any(proxies.map(async p => {
                     const res = await fetch(p);
@@ -520,11 +553,11 @@
                     const dateStr = stMatch[1]; 
                     let eventDate;
                     
-                    // Ajuste de compatibilidad para Safari (iOS) usando argumentos numéricos puros
+                    // Ajuste de compatibilidad de Zona Horaria (Forzamos hora local para evitar saltos de día)
                     if (dateStr.includes('T')) {
                         const y = parseInt(dateStr.substring(0, 4)), m = parseInt(dateStr.substring(4, 6)) - 1, d = parseInt(dateStr.substring(6, 8));
                         const h = parseInt(dateStr.substring(9, 11)), min = parseInt(dateStr.substring(11, 13));
-                        eventDate = new Date(Date.UTC(y, m, d, h, min, 0));
+                        eventDate = new Date(y, m, d, h, min, 0); // Modificado a hora local
                     } else {
                         const y = parseInt(dateStr.substring(0, 4)), m = parseInt(dateStr.substring(4, 6)) - 1, d = parseInt(dateStr.substring(6, 8));
                         eventDate = new Date(y, m, d);
@@ -539,9 +572,21 @@
                 .filter(e => e && e.comp >= todayComp) // <-- FILTRO ESTRICTO: Solo de hoy en adelante
                 .sort((a,b) => a.comp - b.comp);
 
-                localStorage.setItem('tropa808_v2_events', JSON.stringify(events));
-                localStorage.setItem('tropa808_v2_events_time', now.toString());
-                renderEventHTML(events.slice(0, 3), 'event-cards-container'); 
+                // AGRUPAR EVENTOS DEL MISMO DÍA
+                const groupedEvents = [];
+                events.forEach(ev => {
+                    const dateKey = `${ev.y}-${ev.m}-${ev.d}`;
+                    let group = groupedEvents.find(g => g.key === dateKey);
+                    if (!group) {
+                        group = { key: dateKey, y: ev.y, m: ev.m, d: ev.d, comp: ev.comp, summaries: [] };
+                        groupedEvents.push(group);
+                    }
+                    group.summaries.push(ev.summary);
+                });
+
+                localStorage.setItem('tropa808_v4_events', JSON.stringify(groupedEvents));
+                localStorage.setItem('tropa808_v4_events_time', now.toString());
+                renderEventHTML(groupedEvents.slice(0, 3), 'event-cards-container'); 
             } else if (!cachedData) {
                 // Si falló el internet y no hay caché
                 const container1 = document.getElementById('event-cards-container');
@@ -563,10 +608,11 @@
             let usedColors = []; // Memoria temporal para no repetir colores
 
             container.innerHTML = events.map((ev, i) => {
-                const sl = ev.summary.toLowerCase();
+                const primarySummary = ev.summaries[0]; // Usar el primer evento para definir color base
+                const sl = primarySummary.toLowerCase();
                 let chosenKey = null;
 
-                // 1. Asignar color si está explícito en el título
+                // 1. Asignar color si está explícito en el título del primer evento
                 if (sl.includes('verde')) chosenKey = 'verde';
                 else if (sl.includes('naranja')) chosenKey = 'naranja';
                 else if (sl.includes('azul')) chosenKey = 'azul';
@@ -584,10 +630,20 @@
                 usedColors.push(chosenKey);
                 
                 const st = themes[chosenKey];
+                
+                // Definir etiqueta según cantidad de eventos o tipo
                 let tag = "EVENTO";
-                if(sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
-                else if(sl.includes("caminata")) tag = "CAMINATA";
-                else if(sl.includes("camping") || sl.includes("guajataka")) tag = "CAMPING";
+                if (ev.summaries.length > 1) {
+                    tag = "AGENDA";
+                } else {
+                    if(sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
+                    else if(sl.includes("caminata")) tag = "CAMINATA";
+                    else if(sl.includes("camping") || sl.includes("guajataka")) tag = "CAMPING";
+                }
+
+                // Tamaños de texto dinámicos según cantidad de eventos
+                const textSize = ev.summaries.length > 1 ? 'text-lg md:text-xl' : 'text-2xl';
+                const titlesHtml = ev.summaries.map(s => `<h4 class="${textSize} font-brand text-indigo-950 mb-1 leading-tight">${s}</h4>`).join('<div class="w-12 h-px bg-slate-200 my-3"></div>');
 
                 return `
                 <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
@@ -601,7 +657,8 @@
                             </div>
                             <span class="${st.tb} ${st.tc} text-[10px] font-black px-4 py-2 rounded-lg uppercase tracking-widest">${tag}</span>
                         </div>
-                        <h4 class="text-2xl font-brand text-indigo-950 mb-4 leading-tight">${ev.summary}</h4>
+                        ${ev.summaries.length > 1 ? '<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">Eventos programados:</span>' : ''}
+                        ${titlesHtml}
                     </div>
                 </div>`;
             }).join('');
@@ -628,6 +685,7 @@
     </script>
 </body>
 </html>
+
 
 
 
