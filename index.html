@@ -100,7 +100,7 @@
                 <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Bitácora</a>
                 <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Momentos</a>
                 <a href="javascript:void(0)" onclick="switchView('docs')" class="flex items-center text-xs font-bold uppercase text-orange-600 hover:text-indigo-950 transition">
-                    <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Documentos
+                    <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Recursos
                 </a>
                 <button onclick="scrollToSection('contacto')" class="bg-indigo-900 text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase shadow-lg hover:bg-orange-600 transition">Unirse</button>
             </div>
@@ -212,12 +212,23 @@
                 <div class="text-center mb-16">
                     <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 mb-4 tracking-tight uppercase flex items-center justify-center flex-wrap">
                         <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" referrerpolicy="no-referrer">
-                        RELATOS DE EXPEDICIÓN
+                        BITÁCORA DE LA 808
                     </h3>
                     <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div id="relatos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- NUEVO ARTÍCULO: Caminata con Flecha de Luz -->
+                    <article class="group">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <img src="https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt" alt="Caminata con Flecha de Luz" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
+                        </div>
+                        <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Caminata con Flecha de Luz</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Conoce el plan detallado de nuestra próxima aventura en ruta.</p>
+                        <a href="https://drive.google.com/file/d/1Ix2lsRlmy3ohhLS88AR2HVM6O0HXfMpN/view?usp=sharing" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver Plan <i class="fas fa-arrow-right ml-2"></i></a>
+                    </article>
+
                     <article class="group">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
@@ -247,6 +258,13 @@
                         <p class="text-slate-500 text-sm mb-4 leading-relaxed">Campamento de verano: La experiencia máxima.</p>
                         <a href="https://www.instagram.com/la.infinita.808/" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver Fotos <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
+                </div>
+
+                <!-- Contenedor del Botón Ver Más -->
+                <div id="ver-mas-container" class="hidden mt-12 text-center">
+                    <button onclick="toggleRelatos()" id="btn-ver-mas" class="bg-indigo-50 text-indigo-950 border border-indigo-100 px-8 py-3.5 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-indigo-950 hover:text-white transition shadow-sm flex items-center justify-center mx-auto">
+                        Ver más relatos <i class="fas fa-chevron-down ml-2"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -280,25 +298,25 @@
         </section>
 
         <!-- Formulario con Imagen Centrada y Espaciado Optimizado -->
-        <section id="contacto" class="py-24">
-            <div class="max-w-4xl mx-auto px-6">
+        <section id="contacto" class="py-16">
+            <div class="max-w-3xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
                     <!-- Columna de contacto morada -->
-                    <div class="bg-indigo-900 text-white p-10 md:w-1/3 flex flex-col justify-between relative overflow-hidden text-center">
+                    <div class="bg-indigo-900 text-white p-8 md:w-5/12 flex flex-col justify-between relative overflow-hidden text-center">
                         <div>
-                            <h4 class="text-3xl font-brand mb-6 uppercase">ÚNETE A LA RUTA</h4>
-                            <p class="text-indigo-200 text-sm font-light mb-8">Completa los datos y nos pondremos en contacto pronto.</p>
+                            <h4 class="text-2xl font-brand mb-4 uppercase">ÚNETE A LA RUTA</h4>
+                            <p class="text-indigo-200 text-xs font-light mb-6">Inicia tu aventura scout hoy mismo.</p>
                             
                             <!-- IMAGEN CENTRADA Y SIN MARCO - ESPACIADO REDUCIDO -->
                             <div class="mb-4 flex justify-center">
-                                <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="w-24 h-auto opacity-90" alt="Emblema Scout" referrerpolicy="no-referrer">
+                                <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="w-20 h-auto opacity-90" alt="Emblema Scout" referrerpolicy="no-referrer">
                             </div>
                         </div>
 
                         <div>
                             <span class="block text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Localización</span>
                             <div class="space-y-2">
-                                <p class="text-xs leading-relaxed text-indigo-50 font-medium italic">Paseo Lineal Río Bayamón, detrás del Hospital San Pablo, en Bayamón, Puerto Rico.</p>
+                                <p class="text-xs leading-relaxed text-indigo-50 font-medium italic">Paseo Lineal Río Bayamón, detrás del Hospital San Pablo.</p>
                                 <!-- Enlace de mapa interactivo -->
                                 <a href="https://www.google.com/maps/search/?api=1&query=18.398667,-66.144633" target="_blank" class="text-[11px] font-bold text-orange-200 tracking-wider hover:text-white transition flex items-center justify-center group">
                                     <i class="fas fa-map-marker-alt mr-2 group-hover:scale-110 transition"></i>
@@ -308,21 +326,13 @@
                         </div>
                     </div>
                     
-                    <!-- Columna de formulario blanca -->
-                    <div class="p-12 md:w-2/3">
-                        <form id="join-form" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" id="join-name" placeholder="Nombre completo" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
-                                <input type="number" id="join-age" placeholder="Edad del joven" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
-                            </div>
-                            <input type="tel" id="join-phone" placeholder="Teléfono de contacto" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
-                            <input type="email" id="join-email" placeholder="Correo electrónico" class="w-full border-b-2 border-slate-100 py-3 focus:border-orange-500 outline-none transition text-sm font-medium bg-transparent">
-                            <button type="submit" class="w-full bg-orange-600 text-white py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-indigo-950 transition">Enviar Solicitud</button>
-                        </form>
-                        <div id="join-success" class="hidden text-center py-6">
-                            <i class="fas fa-check-circle text-green-500 text-4xl mb-3"></i>
-                            <p class="font-bold text-indigo-950">¡Mensaje recibido! Siempre Listos.</p>
+                    <!-- Columna de enlace blanca -->
+                    <div class="p-8 md:p-10 md:w-7/12 flex flex-col justify-center items-center text-center">
+                        <div class="mb-6">
+                            <h4 class="text-xl font-bold text-indigo-950 mb-2">Inscripción Oficial</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">Al presionar el botón serás redirigido al portal oficial de Scouting America para completar el registro en la Tropa 808.</p>
                         </div>
+                        <a href="https://my.scouting.org/VES/OnlineReg/1.0.0/?tu=UF-MB-661taa0808" target="_blank" class="inline-block bg-orange-600 text-white px-8 py-3.5 rounded-xl font-bold uppercase text-xs tracking-widest shadow-xl hover:bg-indigo-950 transition">Enviar Solicitud</a>
                     </div>
                 </div>
             </div>
@@ -353,7 +363,7 @@
                 <a href="https://drive.google.com/file/d/1vyrqt7FmqvmHmlR9xFJufhyJ7BuwmWGl/view?usp=sharing" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
                     <div class="w-16 h-16 bg-slate-50 text-orange-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-orange-600 group-hover:text-white transition"><i class="fas fa-user-check"></i></div>
                     <div class="flex-grow">
-                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Permiso Excursión</h4>
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Permiso de Salida</h4>
                         <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Autorización para padres</p>
                     </div>
                     <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
@@ -376,10 +386,200 @@
                     </div>
                     <i class="fas fa-file-pdf text-slate-300 group-hover:text-orange-500"></i>
                 </a>
+
+                <a href="javascript:void(0)" onclick="switchView('insignia')" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-slate-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-medal"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Proceso para insignia de merito</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Pasos a seguir</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
+                </a>
             </div>
 
             <div class="mt-16 text-center">
                 <button onclick="switchView('main')" class="bg-indigo-950 text-white px-12 py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-orange-600 transition shadow-xl">Volver al inicio</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA INSIGNIA DE MÉRITO -->
+    <section id="insignia-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Botón de regreso -->
+            <button onclick="switchView('docs')" class="mb-10 flex items-center text-xs font-bold text-slate-500 hover:text-orange-600 transition uppercase tracking-widest">
+                <i class="fas fa-arrow-left mr-2"></i> Volver a Recursos
+            </button>
+
+            <!-- Encabezado -->
+            <div class="text-center mb-16">
+                <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" alt="Emblema Scout" class="mx-auto h-20 md:h-24 w-auto mb-6 object-contain drop-shadow-lg" referrerpolicy="no-referrer">
+                <h2 class="text-3xl md:text-5xl font-brand text-indigo-950 uppercase leading-none flex items-center justify-center gap-3">
+                    <i class="fas fa-award text-yellow-500"></i>
+                    Insignia de Mérito
+                </h2>
+            </div>
+
+            <!-- Línea de tiempo -->
+            <div class="relative border-l-4 border-indigo-200 ml-4 md:ml-8 space-y-8 pb-8">
+                
+                <!-- Paso 1 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">1</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-lightbulb text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 1</h3>
+                            <p class="text-indigo-950 font-medium">El Scout desarrolla un interés en una insignia de mérito y puede comenzar a trabajar en los requisitos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">2</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-comments text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 2</h3>
+                            <p class="text-indigo-950 font-medium">El Scout y el Scoutmaster discuten el interés del Scout en la insignia de mérito.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">3</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-address-book text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 3</h3>
+                            <p class="text-indigo-950 font-medium">El Scoutmaster documenta la conversación y proporciona al Scout al menos un contacto de consejero.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">4</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-phone-alt text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 4</h3>
+                            <p class="text-indigo-950 font-medium">El Scout se pone en contacto con el consejero.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 5 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">5</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-clipboard-check text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 5</h3>
+                            <p class="text-indigo-950 font-medium">El consejero evalúa cualquier requisito trabajado antes de la discusión inicial con el Scoutmaster.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 6 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">6</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-users text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 6</h3>
+                            <p class="text-indigo-950 font-medium">El Scout, el compañero del Scout y el consejero se reúnen (a menudo varias veces).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 7 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">7</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-chart-line text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 7</h3>
+                            <p class="text-indigo-950 font-medium">El progreso parcial se registra a medida que se completan los requisitos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 8 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">8</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-check-square text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 8</h3>
+                            <p class="text-indigo-950 font-medium">El Scout termina los requisitos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 9 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">9</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-thumbs-up text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 9</h3>
+                            <p class="text-indigo-950 font-medium">El consejero aprueba la finalización.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 10 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">10</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-file-upload text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 10</h3>
+                            <p class="text-indigo-950 font-medium">El Scout entrega la evidencia de finalización al Scoutmaster.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 11 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-indigo-600 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">11</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-orange-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-indigo-50 p-3 rounded-lg text-indigo-600 hidden sm:block"><i class="fas fa-folder-open text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 11</h3>
+                            <p class="text-indigo-950 font-medium">El Scoutmaster documenta la finalización de la insignia de mérito.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 12 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[18px] md:-left-[20px] top-4 w-8 h-8 md:w-10 md:h-10 bg-white border-4 border-yellow-500 text-yellow-500 rounded-full flex items-center justify-center font-bold text-sm shadow-md z-10">12</div>
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border border-slate-100 flex items-start gap-4 hover:border-yellow-500 transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="bg-yellow-50 p-3 rounded-lg text-yellow-600 hidden sm:block"><i class="fas fa-medal text-xl w-6 text-center"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-400 text-xs mb-1 uppercase tracking-wider">Paso 12</h3>
+                            <p class="text-indigo-950 font-medium">El Scout recibe la insignia de mérito.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota al pie -->
+            <div class="mt-8 bg-white border-l-4 border-yellow-500 p-6 rounded-r-xl shadow-md flex items-start gap-4">
+                <i class="fas fa-info-circle text-indigo-600 text-2xl mt-0.5"></i>
+                <p class="text-indigo-950 font-medium text-sm md:text-base">
+                    <strong>Nota Importante:</strong> El Scoutmaster puede delegar su función en otro líder adulto.
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <button onclick="switchView('docs')" class="bg-indigo-950 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-orange-600 transition shadow-xl">
+                    Regresar
+                </button>
             </div>
         </div>
     </section>
@@ -401,9 +601,18 @@
             <div class="text-center flex flex-col items-center">
                 <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" class="h-28 mx-auto mb-6 brightness-0 invert opacity-90 hover:opacity-100 transition" referrerpolicy="no-referrer">
                 <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed mb-4">© 2026 Scouts de Puerto Rico • Siempre Listos ⚜️</p>
-                <a href="https://www.scoutingpr.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
-                    Concilio de Puerto Rico <i class="fas fa-external-link-alt ml-2"></i>
-                </a>
+                
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="https://www.scoutingpr.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
+                        Concilio PR <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                    <a href="https://my.scouting.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
+                        My.Scouting <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                    <a href="https://advancements.scouting.org/login?redirectTo=https%3A%2F%2Fadvancements.scouting.org%2F" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
+                        Scoutbook <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
             </div>
             
             <div class="flex space-x-8">
@@ -429,9 +638,25 @@
         window.switchView = (v) => {
             const menu = document.getElementById('mobile-menu');
             if(menu) menu.classList.remove('active');
-            const main = document.getElementById('main-view'), docs = document.getElementById('docs-view');
-            if (v === 'docs') { main.classList.add('hidden'); docs.classList.remove('hidden'); }
-            else { docs.classList.add('hidden'); main.classList.remove('hidden'); }
+            
+            const main = document.getElementById('main-view');
+            const docs = document.getElementById('docs-view');
+            const insignia = document.getElementById('insignia-view');
+            
+            // Ocultar todas las vistas
+            main.classList.add('hidden');
+            docs.classList.add('hidden');
+            if(insignia) insignia.classList.add('hidden');
+            
+            // Mostrar la seleccionada
+            if (v === 'docs') { 
+                docs.classList.remove('hidden'); 
+            } else if (v === 'insignia') { 
+                if(insignia) insignia.classList.remove('hidden'); 
+            } else { 
+                main.classList.remove('hidden'); 
+            }
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
@@ -681,10 +906,57 @@
             }
         };
 
-        window.onload = () => { fetchEvents(); };
+        // --- LÓGICA PARA VER MÁS RELATOS ---
+        function initRelatos() {
+            const grid = document.getElementById('relatos-grid');
+            if (!grid) return;
+            const articles = grid.querySelectorAll('article');
+            const btnContainer = document.getElementById('ver-mas-container');
+            
+            if (articles.length > 3) {
+                // Ocultar a partir del 4to artículo (índice 3)
+                for (let i = 3; i < articles.length; i++) {
+                    articles[i].classList.add('hidden', 'relato-extra');
+                }
+                if(btnContainer) btnContainer.classList.remove('hidden');
+            } else {
+                if(btnContainer) btnContainer.classList.add('hidden');
+            }
+        }
+
+        window.toggleRelatos = () => {
+            const extras = document.querySelectorAll('.relato-extra');
+            const btn = document.getElementById('btn-ver-mas');
+            let isExpanded = false;
+
+            extras.forEach(el => {
+                if (el.classList.contains('hidden')) {
+                    el.classList.remove('hidden');
+                    isExpanded = true;
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            if (isExpanded) {
+                btn.innerHTML = 'Ver menos relatos <i class="fas fa-chevron-up ml-2"></i>';
+            } else {
+                btn.innerHTML = 'Ver más relatos <i class="fas fa-chevron-down ml-2"></i>';
+                // Regresa el scroll suavemente al título para no perderse
+                setTimeout(() => {
+                    document.getElementById('blog').scrollIntoView({behavior: 'smooth', block: 'start'});
+                }, 100);
+            }
+        };
+
+        window.onload = () => { 
+            fetchEvents(); 
+            initRelatos(); // Inicializa la lógica de los relatos al cargar
+        };
     </script>
 </body>
 </html>
+
 
 
 
