@@ -662,13 +662,19 @@
             docs.classList.add('hidden');
             if(insignia) insignia.classList.add('hidden');
             
-            // Mostrar la seleccionada
+            // Mostrar la seleccionada y actualizar URL
             if (v === 'docs') { 
                 docs.classList.remove('hidden'); 
+                try { window.history.pushState(null, null, '#recursos'); } catch(e) {}
             } else if (v === 'insignia') { 
                 if(insignia) insignia.classList.remove('hidden'); 
+                try { window.history.pushState(null, null, '#insignia'); } catch(e) {}
             } else { 
                 main.classList.remove('hidden'); 
+                // Limpiar URL si venimos de recursos o insignia para no dejar rastros
+                if (window.location.hash === '#recursos' || window.location.hash === '#insignia') {
+                    try { window.history.pushState(null, null, window.location.pathname + window.location.search); } catch(e) {}
+                }
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -966,10 +972,18 @@
         window.onload = () => { 
             fetchEvents(); 
             initRelatos(); // Inicializa la lógica de los relatos al cargar
+            
+            // Comprobar la URL para cargar la vista directamente si alguien la comparte
+            if (window.location.hash === '#recursos') {
+                switchView('docs');
+            } else if (window.location.hash === '#insignia') {
+                switchView('insignia');
+            }
         };
     </script>
 </body>
 </html>
+
 
 
 
