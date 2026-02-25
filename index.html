@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tropa Scout 808 - Expedición</title>
-    <meta name="description" content="Portal oficial de la Tropa Scout 808. Distrito Majagua PR.">
+    <title>Tropa Scout 808 - Expedición | Bayamón, Puerto Rico</title>
+    <meta name="description" content="Portal oficial de la Tropa Scout 808. Distrito Majagua, Bayamón PR. Únete a la aventura, desarrolla liderazgo y sirve a tu comunidad.">
+    <meta name="keywords" content="Tropa 808, Scouts Puerto Rico, BSA, Distrito Majagua, Escultismo, Bayamón, Jóvenes, Aventura, Campamento, Naturaleza">
+    
+    <!-- Etiquetas Open Graph para Redes Sociales y SEO -->
+    <meta property="og:title" content="Tropa Scout 808 - Expedición | Bayamón, PR">
+    <meta property="og:description" content="Portal oficial de la Tropa Scout 808. Formamos líderes a través de la naturaleza.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
+    <meta property="og:type" content="website">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -15,6 +22,10 @@
             --scout-purple: #4c1d95; 
             --scout-orange: #ea580c; 
             --adventure-dark: #0f172a;
+        }
+
+        html {
+            scroll-padding-top: 5rem; /* Asegura que los enlaces de ancla respeten el menú fijo */
         }
 
         body {
@@ -95,46 +106,49 @@
 
             <!-- Menú PC -->
             <div class="hidden lg:flex items-center space-x-8">
-                <a href="javascript:void(0)" onclick="scrollToSection('inicio')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Inicio</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Eventos</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Bitácora</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Momentos</a>
+                <a href="#inicio" onclick="switchView('main')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Inicio</a>
+                <a href="#calendario" onclick="switchView('main')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Agenda</a>
+                <a href="#blog" onclick="switchView('main')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Bitácora</a>
+                <a href="#galeria" onclick="switchView('main')" class="text-xs font-bold uppercase text-slate-600 hover:text-indigo-900 transition">Momentos</a>
                 <a href="javascript:void(0)" onclick="switchView('docs')" class="flex items-center text-xs font-bold uppercase text-orange-600 hover:text-indigo-950 transition">
                     <i class="fas fa-file-pdf mr-2 text-orange-600"></i> Recursos
                 </a>
-                <button onclick="scrollToSection('contacto')" class="bg-indigo-900 text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase shadow-lg hover:bg-orange-600 transition">Unirse</button>
+                <a href="#contacto" onclick="switchView('main')" class="bg-indigo-900 text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase shadow-lg hover:bg-orange-600 transition">Unirse</a>
             </div>
 
-            <button id="mobile-btn" class="lg:hidden text-indigo-950 text-2xl"><i class="fas fa-bars-staggered"></i></button>
+            <button id="mobile-btn" class="lg:hidden text-indigo-950 text-2xl" aria-label="Abrir menú"><i class="fas fa-bars-staggered"></i></button>
         </div>
 
         <!-- Menú Móvil -->
         <div id="mobile-menu" class="lg:hidden absolute top-20 left-0 w-full bg-indigo-950 text-white p-8 flex flex-col space-y-6 shadow-2xl">
-            <a href="javascript:void(0)" onclick="switchView('main')" class="text-lg font-brand uppercase tracking-widest">Inicio</a>
-            <a href="javascript:void(0)" onclick="scrollToSection('calendario')" class="text-lg font-brand uppercase tracking-widest">Eventos</a>
-            <a href="javascript:void(0)" onclick="scrollToSection('blog')" class="text-lg font-brand uppercase tracking-widest">Bitácora</a>
-            <a href="javascript:void(0)" onclick="scrollToSection('galeria')" class="text-lg font-brand uppercase tracking-widest">Momentos</a>
+            <a href="#inicio" onclick="switchView('main'); document.getElementById('mobile-menu').classList.remove('active');" class="text-lg font-brand uppercase tracking-widest">Inicio</a>
+            <a href="#calendario" onclick="switchView('main'); document.getElementById('mobile-menu').classList.remove('active');" class="text-lg font-brand uppercase tracking-widest">Agenda</a>
+            <a href="#blog" onclick="switchView('main'); document.getElementById('mobile-menu').classList.remove('active');" class="text-lg font-brand uppercase tracking-widest">Bitácora</a>
+            <a href="#galeria" onclick="switchView('main'); document.getElementById('mobile-menu').classList.remove('active');" class="text-lg font-brand uppercase tracking-widest">Momentos</a>
             <a href="javascript:void(0)" onclick="switchView('docs')" class="text-lg font-brand uppercase tracking-widest text-orange-400">Recursos</a>
-            <button onclick="scrollToSection('contacto')" class="bg-orange-600 text-white py-4 rounded-xl font-brand text-xl">UNIRSE AHORA</button>
+            <a href="#contacto" onclick="switchView('main'); document.getElementById('mobile-menu').classList.remove('active');" class="bg-orange-600 text-white py-4 rounded-xl font-brand text-xl text-center block">UNIRSE AHORA</a>
         </div>
     </nav>
 
     <!-- VISTA PRINCIPAL -->
-    <main id="main-view">
+    <main id="main-view" class="flex flex-col">
         <!-- Hero Section -->
-        <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20">
+        <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 order-1">
             <div class="absolute inset-0 bg-slate-900">
-                <img src="https://lh3.googleusercontent.com/d/1G2NinhFshDfRAqPxxjZJTMyY0oShllzv" class="w-full h-full object-cover opacity-40" referrerpolicy="no-referrer">
+                <img src="https://lh3.googleusercontent.com/d/1G2NinhFshDfRAqPxxjZJTMyY0oShllzv" alt="Scouts explorando la naturaleza en Puerto Rico" class="w-full h-full object-cover opacity-40" referrerpolicy="no-referrer">
             </div>
             <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
                 <div class="inline-block px-4 py-1.5 bg-orange-600/20 backdrop-blur-md border border-orange-500/30 rounded-full mb-6">
                     <span class="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Aventura • Honor • Servicio</span>
                 </div>
-                <h1 class="text-5xl md:text-8xl font-brand text-white mb-6 leading-none uppercase">TU PRÓXIMA GRAN <span class="text-orange-500">AVENTURA</span> EMPIEZA HOY</h1>
+                <h1 class="text-4xl md:text-7xl font-brand text-white mb-6 leading-none uppercase">
+                    <span class="block text-2xl md:text-4xl mb-2 text-indigo-300 tracking-widest">TROPA SCOUT 808</span>
+                    TU PRÓXIMA GRAN <span class="text-orange-500">AVENTURA</span> EMPIEZA HOY
+                </h1>
                 <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">Formamos líderes a través de la naturaleza. Tropa Scout 808: Donde la aventura nunca termina.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('calendario')" class="bg-white text-indigo-950 px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-wider">Ver Agenda</button>
-                    <button onclick="scrollToSection('blog')" class="bg-indigo-900/50 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition uppercase text-sm tracking-wider">Bitácora</button>
+                    <a href="#calendario" class="inline-block bg-white text-indigo-950 px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-wider">Ver Agenda</a>
+                    <a href="#galeria" class="inline-block bg-indigo-900/50 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition uppercase text-sm tracking-wider">Momentos</a>
                 </div>
             </div>
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
@@ -143,7 +157,7 @@
         </header>
 
         <!-- Sección de Eventos (PREPARA TU MOCHILA) -->
-        <section id="calendario" class="py-24 relative overflow-hidden">
+        <section id="calendario" class="py-24 relative overflow-hidden order-2 lg:order-3">
             <div class="bg-pattern absolute inset-0"></div>
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -207,7 +221,7 @@
         </section>
 
         <!-- Bitácora (RELATOS DE EXPEDICIÓN) -->
-        <section id="blog" class="py-24 bg-white">
+        <section id="blog" class="py-24 bg-white order-3 lg:order-2">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 mb-4 tracking-tight uppercase flex items-center justify-center flex-wrap">
@@ -221,7 +235,7 @@
                     <!-- NUEVO ARTÍCULO: Caminata con Flecha de Luz -->
                     <article class="group">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
-                            <img src="https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt" alt="Caminata con Flecha de Luz" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <img src="https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt" alt="Tropa 808 en Caminata con Flecha de Luz" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
                         </div>
                         <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Caminata con Flecha de Luz</h4>
@@ -231,7 +245,7 @@
 
                     <article class="group">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
-                            <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" alt="Homenaje a Walter Murray Tropa 808" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-indigo-900 text-white text-[10px] font-bold px-3 py-1 rounded-full">HONOR</div>
                         </div>
                         <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Homenaje Walter Murray</h4>
@@ -241,7 +255,7 @@
 
                     <article class="group">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
-                            <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" alt="Caminata de los Scouts en el Bosque Estatal Toro Negro" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
                         </div>
                         <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Caminata Toro Negro</h4>
@@ -251,7 +265,7 @@
 
                     <article class="group">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
-                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
+                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="Resumen del campamento de verano Guajataka 2026" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">RESUMEN</div>
                         </div>
                         <h4 class="text-xl font-bold text-indigo-950 mb-3 uppercase tracking-tight">Guajataka 2026</h4>
@@ -270,7 +284,7 @@
         </section>
 
         <!-- Galería (MOMENTOS 808) -->
-        <section id="galeria" class="py-24 bg-indigo-950 text-white">
+        <section id="galeria" class="py-24 bg-indigo-950 text-white order-4">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center mb-12">
                     <h3 class="text-4xl md:text-5xl font-brand uppercase flex items-center flex-wrap">
@@ -282,23 +296,23 @@
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(0)">
-                        <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                        <img src="https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo" alt="Momento Scout 1 Tropa 808" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
                     </div>
                     <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(1)">
-                        <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                        <img src="https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg" alt="Momento Scout 2 Tropa 808" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
                     </div>
                     <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(2)">
-                        <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                        <img src="https://lh3.googleusercontent.com/d/1kYTjnBWYuPNK9d-AGCqIz4G-i-2buw8j" alt="Momento Scout 3 Tropa 808" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
                     </div>
                     <div class="overflow-hidden rounded-xl aspect-square cursor-pointer" onclick="openLightbox(3)">
-                        <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
+                        <img src="https://lh3.googleusercontent.com/d/1sf4NMBDyT-JkwfzjmGJU6HlEdYRzD9z4" alt="Momento Scout 4 Tropa 808" class="w-full h-full object-cover hover:scale-110 transition duration-500" referrerpolicy="no-referrer">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Formulario con Imagen Centrada y Espaciado Optimizado -->
-        <section id="contacto" class="py-16">
+        <section id="contacto" class="py-16 order-5">
             <div class="max-w-3xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
                     <!-- Columna de contacto morada -->
@@ -600,7 +614,7 @@
             
             <div class="text-center flex flex-col items-center">
                 <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" class="h-28 mx-auto mb-6 brightness-0 invert opacity-90 hover:opacity-100 transition" referrerpolicy="no-referrer">
-                <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed mb-4">© 2026 Scouts de Puerto Rico • Siempre Listos ⚜️</p>
+                <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed mb-4">© 2026 Tropa 808 de Puerto Rico • Siempre Listos ⚜️</p>
                 
                 <div class="flex flex-wrap justify-center gap-3">
                     <a href="https://www.scoutingpr.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
@@ -956,6 +970,7 @@
     </script>
 </body>
 </html>
+
 
 
 
