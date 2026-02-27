@@ -856,42 +856,51 @@
             if(!container) return;
             
             const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-            const fallbacks = ['purpura', 'rojo', 'azul', 'naranja', 'verde'];
-            let usedColors = []; 
-
-            container.innerHTML = events.map((ev, i) => {
+            const allColors = ['purpura', 'naranja', 'verde', 'azul', 'rojo'];
+            
+            // Paso 1: Identificar colores explícitos primero para no repetirlos
+            let usedColors = [];
+            const processedEvents = events.map(ev => {
                 const primaryEvent = ev.summaries[0]; 
                 const sl = primaryEvent.text.toLowerCase();
-                let chosenKey = null;
+                let explicitColor = null;
 
-                // Forzar el color del card según la fuente del evento principal
-                if (primaryEvent.source === 'oa') chosenKey = 'rojo';
-                else if (primaryEvent.source === 'distrito') chosenKey = 'azul';
+                if (primaryEvent.source === 'oa') explicitColor = 'rojo';
+                else if (primaryEvent.source === 'distrito') explicitColor = 'azul';
                 else {
-                    if (sl.includes('verde')) chosenKey = 'verde';
-                    else if (sl.includes('naranja')) chosenKey = 'naranja';
-                    else if (sl.includes('azul')) chosenKey = 'azul';
-                    else if (sl.includes('rojo')) chosenKey = 'rojo';
-                    else if (sl.includes('purpura') || sl.includes('púrpura')) chosenKey = 'purpura';
-                    
-                    if (!chosenKey) {
-                        chosenKey = fallbacks.find(color => !usedColors.includes(color));
-                        if (!chosenKey) chosenKey = fallbacks[i % fallbacks.length]; 
-                    }
+                    if (sl.includes('verde')) explicitColor = 'verde';
+                    else if (sl.includes('naranja')) explicitColor = 'naranja';
+                    else if (sl.includes('azul')) explicitColor = 'azul';
+                    else if (sl.includes('rojo') || sl.includes('roja')) explicitColor = 'rojo';
+                    else if (sl.includes('purpura') || sl.includes('púrpura') || sl.includes('violeta')) explicitColor = 'purpura';
+                }
+
+                if (explicitColor) usedColors.push(explicitColor);
+                return { ...ev, explicitColor, primaryEvent, sl };
+            });
+
+            // Paso 2: Generar HTML asegurando colores diferentes
+            container.innerHTML = processedEvents.map((ev, i) => {
+                let chosenKey = ev.explicitColor;
+
+                // Si no tiene color explícito, buscar uno que no se haya usado en las otras tarjetas
+                if (!chosenKey) {
+                    chosenKey = allColors.find(color => !usedColors.includes(color));
+                    if (!chosenKey) chosenKey = allColors[i % allColors.length]; // Respaldo extremo
+                    usedColors.push(chosenKey); // Registrar para no repetirlo
                 }
                 
-                usedColors.push(chosenKey);
                 const st = themes[chosenKey];
                 
                 let tag = "EVENTO";
                 if (ev.summaries.length > 1) {
                     tag = "AGENDA MULTIPLE";
                 } else {
-                    if(sl.includes("reunion") || sl.includes("reunión")) tag = "REUNIÓN";
-                    else if(sl.includes("caminata")) tag = "CAMINATA";
-                    else if(sl.includes("camping") || sl.includes("guajataka")) tag = "CAMPING";
-                    else if(primaryEvent.source === 'oa') tag = "ORDER OF THE ARROW";
-                    else if(primaryEvent.source === 'distrito') tag = "DISTRITO";
+                    if(ev.sl.includes("reunion") || ev.sl.includes("reunión")) tag = "REUNIÓN";
+                    else if(ev.sl.includes("caminata")) tag = "CAMINATA";
+                    else if(ev.sl.includes("camping") || ev.sl.includes("guajataka")) tag = "CAMPING";
+                    else if(ev.primaryEvent.source === 'oa') tag = "ORDER OF THE ARROW";
+                    else if(ev.primaryEvent.source === 'distrito') tag = "DISTRITO";
                 }
 
                 const textSize = ev.summaries.length > 1 ? 'text-lg md:text-xl' : 'text-2xl';
@@ -1079,6 +1088,7 @@
     </script>
 </body>
 </html>
+
 
 
 
