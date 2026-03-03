@@ -654,6 +654,24 @@
                     </div>
                     <i class="fas fa-chevron-right text-slate-300 group-hover:text-orange-500"></i>
                 </a>
+
+                <a href="https://filestore.scouting.org/filestore/pdf/512-728_WB_fillable.pdf" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-yellow-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-yellow-600 group-hover:text-white transition"><i class="fas fa-star"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Eagle Scout Rank Application</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Solicitud oficial de rango</p>
+                    </div>
+                    <i class="fas fa-file-pdf text-slate-300 group-hover:text-orange-500"></i>
+                </a>
+
+                <a href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/eagle-scout-workbook/" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
+                    <div class="w-16 h-16 bg-slate-50 text-teal-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-teal-600 group-hover:text-white transition"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-indigo-950 text-sm uppercase">Eagle Scout Project Workbook</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest italic">Guía de proyecto de servicio</p>
+                    </div>
+                    <i class="fas fa-external-link-alt text-slate-300 group-hover:text-orange-500"></i>
+                </a>
             </div>
 
             <div class="mt-16 text-center">
@@ -841,6 +859,122 @@
         </div>
     </section>
 
+    <!-- VISTA PLAN DE CAMINATA PREMIUM -->
+    <div id="caminata-plan-view" class="hidden min-h-screen bg-slate-50">
+        <!-- Barra de navegación superior -->
+        <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 md:px-6 py-3 md:py-4 shadow-sm">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <button onclick="switchView('main'); setTimeout(() => window.scrollToSection('blog'), 100);" class="flex items-center text-[10px] md:text-xs font-bold text-slate-500 hover:text-orange-600 transition uppercase tracking-widest bg-slate-50 px-3 md:px-4 py-2 rounded-lg border border-slate-200">
+                    <i class="fas fa-arrow-left mr-2"></i> Volver a Bitácora
+                </button>
+                <span class="text-[9px] md:text-[10px] font-bold text-indigo-900 uppercase tracking-widest flex items-center"><img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-4 mr-2" alt="Flor de Lis" referrerpolicy="no-referrer"> <span class="hidden sm:inline">Plan de Aventura</span><span class="sm:hidden">Plan</span></span>
+            </div>
+        </div>
+
+        <!-- Hero del Plan -->
+        <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 flex items-center justify-center bg-center bg-cover border-b-8 border-orange-600" style="background-image: url('https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt');">
+            <div class="absolute inset-0 bg-indigo-950/80 backdrop-blur-sm"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+                <span class="bg-orange-600 text-white font-bold uppercase tracking-widest text-[10px] px-4 py-1.5 rounded-full mb-6 inline-block shadow-lg">Tropa y Manada 808</span>
+                <h2 class="text-4xl md:text-6xl font-brand mb-6 leading-none flex items-center justify-center flex-wrap gap-4">
+                    <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-12 md:h-16 w-auto drop-shadow-xl" alt="Emblema Scout" referrerpolicy="no-referrer">
+                    CAMINATA CON FLECHAS DE LUZ
+                </h2>
+                <p class="text-lg md:text-xl font-light text-indigo-100 leading-relaxed max-w-2xl mx-auto">Introduciendo a nuestros futuros Scouts a la aventura, enseñando supervivencia y fortaleciendo nuestra hermandad en la naturaleza.</p>
+            </div>
+        </section>
+
+        <!-- Contenido Resumido -->
+        <section class="max-w-6xl mx-auto px-6 py-16 -mt-10 relative z-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- Columna 1: Logística y Detalles -->
+                <div class="md:col-span-2 space-y-6 md:space-y-8">
+                    <!-- Tarjeta Info Principal -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100 flex flex-col sm:flex-row gap-6 items-start">
+                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shrink-0"><i class="far fa-calendar-alt"></i></div>
+                        <div>
+                            <h3 class="font-brand text-2xl text-indigo-950 mb-4">Coordenadas de la Misión</h3>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li><strong class="text-indigo-900">Fecha:</strong> Sábado 28 de febrero de 2026</li>
+                                <li><strong class="text-indigo-900">Horario:</strong> 7:30 a.m. a 2:00 p.m.</li>
+                                <li><strong class="text-indigo-900">Lugar:</strong> Parque Julio E. Monagas, Bayamón (Glorieta cerca de fogatas)</li>
+                                <li><strong class="text-indigo-900">Costo / Comida:</strong> $5.00 (Incluye almuerzo: Hamburgers). <em class="text-slate-400 block mt-1">*Deben venir desayunados.</em></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Itinerario -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100">
+                        <h3 class="font-brand text-2xl text-indigo-950 mb-6 flex items-center"><i class="fas fa-map-signs text-orange-500 mr-3"></i> Itinerario del Día</h3>
+                        <div class="space-y-4">
+                            <div class="flex gap-4 items-start p-3 hover:bg-slate-50 rounded-xl transition">
+                                <span class="font-bold text-indigo-600 text-sm w-20 shrink-0">7:30 AM</span>
+                                <p class="text-sm text-slate-600"><strong class="text-indigo-900 block">Llegada y Apertura</strong> Parque Monagas.</p>
+                            </div>
+                            <div class="flex gap-4 items-start p-3 hover:bg-slate-50 rounded-xl transition">
+                                <span class="font-bold text-indigo-600 text-sm w-20 shrink-0">8:15 AM</span>
+                                <p class="text-sm text-slate-600"><strong class="text-indigo-900 block">Aventura en Ruta</strong> Subida a la Torre de observación.</p>
+                            </div>
+                            <div class="flex gap-4 items-start p-3 hover:bg-slate-50 rounded-xl transition">
+                                <span class="font-bold text-indigo-600 text-sm w-20 shrink-0">10:00 AM</span>
+                                <p class="text-sm text-slate-600"><strong class="text-indigo-900 block">Cápsulas Scoutcraft</strong> Estaciones de Primeros Auxilios, Mapas, Fuegos y Nudos.</p>
+                            </div>
+                            <div class="flex gap-4 items-start p-3 hover:bg-slate-50 rounded-xl transition">
+                                <span class="font-bold text-orange-600 text-sm w-20 shrink-0">12:00 PM</span>
+                                <p class="text-sm text-slate-600"><strong class="text-indigo-900 block">Almuerzo</strong> Compartir de la Tropa y Manada.</p>
+                            </div>
+                            <div class="flex gap-4 items-start p-3 hover:bg-slate-50 rounded-xl transition">
+                                <span class="font-bold text-indigo-600 text-sm w-20 shrink-0">1:30 PM</span>
+                                <p class="text-sm text-slate-600"><strong class="text-indigo-900 block">Clausura</strong> Rosas, Espinas y Capullos. Salida a las 2:00 PM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Equipo y Descarga -->
+                <div class="space-y-6 md:space-y-8">
+                    <!-- Uniforme y Equipo -->
+                    <div class="bg-indigo-950 p-6 md:p-8 rounded-3xl shadow-2xl text-white relative overflow-hidden">
+                        <i class="fas fa-backpack text-6xl text-white/5 absolute -top-2 -right-2"></i>
+                        <h3 class="font-brand text-2xl text-orange-400 mb-4 relative z-10">Prepara tu Mochila</h3>
+                        
+                        <div class="mb-5 relative z-10">
+                            <span class="block text-[10px] font-bold uppercase tracking-widest text-indigo-300 mb-1">Uniforme</span>
+                            <p class="text-sm font-light leading-relaxed"><strong class="text-white">Clase B</strong> (Camiseta anaranjada), pantalón scout, botas, gorra, pañuelo y bordón.</p>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <span class="block text-[10px] font-bold uppercase tracking-widest text-indigo-300 mb-2">Day Pack (10+3 Esenciales)</span>
+                            <ul class="text-xs font-light space-y-2">
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Linterna y Agua</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Bloqueador solar y Repelente</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Muda extra y Poncho</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Cuchilla y Fósforos</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Mapa, Brújula y First Aid</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Trail Mix</li>
+                                <li><i class="fas fa-check text-orange-500 mr-2"></i> Chubs, Soga (6ft) y Silbato</li>
+                                <li class="mt-3 pt-3 border-t border-white/20 text-orange-200"><i class="fas fa-utensils mr-2"></i> Mess Kit (plato, tenedor, vaso)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Descarga del Permiso -->
+                    <div class="bg-orange-50 p-6 md:p-8 rounded-3xl shadow-inner border-2 border-orange-200 text-center">
+                        <div class="w-16 h-16 bg-white text-orange-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-md"><i class="fas fa-file-signature"></i></div>
+                        <h3 class="font-brand text-2xl text-indigo-950 mb-2">Permiso Oficial</h3>
+                        <p class="text-xs text-slate-600 mb-6 px-2">Ningún Scout podrá participar sin el permiso escrito y firmado por sus padres.</p>
+                        
+                        <a href="https://drive.google.com/file/d/1Ix2lsRlmy3ohhLS88AR2HVM6O0HXfMpN/view?usp=sharing" target="_blank" class="block w-full bg-orange-600 text-white py-3.5 rounded-xl font-bold uppercase text-[11px] tracking-widest shadow-xl hover:bg-indigo-950 hover:-translate-y-1 transition-all duration-300 group">
+                            Descargar PDF <i class="fas fa-download ml-2 group-hover:animate-bounce"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
     <!-- Footer con degradado Scout -->
     <footer class="bg-scout-gradient text-white py-20 px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-pattern"></div>
@@ -953,12 +1087,14 @@
             const docs = document.getElementById('docs-view');
             const insignia = document.getElementById('insignia-view');
             const conoce = document.getElementById('conoce-mas-view');
+            const caminataPlan = document.getElementById('caminata-plan-view');
             
             // Ocultar todas las vistas
             main.classList.add('hidden');
             docs.classList.add('hidden');
             if(insignia) insignia.classList.add('hidden');
             if(conoce) conoce.classList.add('hidden');
+            if(caminataPlan) caminataPlan.classList.add('hidden');
             
             // Mostrar la seleccionada y actualizar URL
             if (v === 'docs') { 
@@ -970,10 +1106,13 @@
             } else if (v === 'conoce-mas') { 
                 if(conoce) conoce.classList.remove('hidden'); 
                 try { window.history.pushState(null, null, '#conoce-mas'); } catch(e) {}
+            } else if (v === 'caminata-plan') {
+                if(caminataPlan) caminataPlan.classList.remove('hidden'); 
+                try { window.history.pushState(null, null, '#plan-caminata'); } catch(e) {}
             } else { 
                 main.classList.remove('hidden'); 
                 // Limpiar URL si venimos de subpáginas para no dejar rastros
-                if (window.location.hash === '#recursos' || window.location.hash === '#insignia' || window.location.hash === '#conoce-mas') {
+                if (window.location.hash === '#recursos' || window.location.hash === '#insignia' || window.location.hash === '#conoce-mas' || window.location.hash === '#plan-caminata') {
                     try { window.history.pushState(null, null, window.location.pathname + window.location.search); } catch(e) {}
                 }
             }
@@ -1541,11 +1680,14 @@
                 switchView('insignia');
             } else if (window.location.hash === '#conoce-mas') {
                 switchView('conoce-mas');
+            } else if (window.location.hash === '#plan-caminata') {
+                switchView('caminata-plan');
             }
         };
     </script>
 </body>
 </html>
+
 
 
 
