@@ -61,11 +61,16 @@
 
         /* Animación para tarjetas de eventos */
         .event-card-new {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
         .event-card-new:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .event-card-new:active {
+            transform: scale(0.98);
         }
 
         /* Menú móvil */
@@ -403,8 +408,11 @@
         </div>
 
         <!-- 1. Hero Bienvenida (Pág 2) -->
-        <section class="relative min-h-[75vh] md:h-[70vh] flex items-center justify-center bg-scroll md:bg-fixed bg-center bg-cover py-16 md:py-0" style="background-image: url('https://images.unsplash.com/photo-1533557999718-d7b38d3fc154?auto=format&fit=crop&w=1920&q=80');">
-            <div class="absolute inset-0 bg-indigo-950/80"></div>
+        <section class="relative min-h-[75vh] md:h-[70vh] flex items-center justify-center bg-indigo-950 py-16 md:py-0 overflow-hidden">
+            <div class="absolute inset-0 bg-pattern opacity-10"></div>
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl"></div>
+            
             <div class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center text-white mt-10 md:mt-0">
                 <span class="text-orange-500 font-bold uppercase tracking-widest text-xs md:text-sm mb-3 md:mb-4 block animate-fade-in-up">El Comienzo</span>
                 <h2 class="text-4xl sm:text-5xl md:text-7xl font-brand mb-4 md:mb-6 leading-none flex items-center justify-center flex-wrap">
@@ -1453,6 +1461,56 @@
             }, 300);
         };
 
+        // Función para abrir el modal desde las tarjetas de "Prepara tu Mochila"
+        window.openCardModal = (compTime) => {
+            const ev = globalRawEvents.find(e => e.comp === compTime);
+            if (!ev) return;
+
+            document.getElementById('modal-title').innerText = ev.title;
+            document.getElementById('modal-color').style.backgroundColor = ev.backgroundColor;
+            
+            let tagText = "Tropa 808";
+            if (ev.source === 'oa') tagText = "Order of the Arrow";
+            else if (ev.source === 'distrito') tagText = "Distrito Majagua";
+            document.getElementById('modal-tag').innerText = tagText;
+            
+            const d = new Date(ev.comp);
+            const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            let dateStr = d.toLocaleDateString('es-ES', dateOpts);
+            dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+            document.getElementById('modal-date').innerText = dateStr;
+            
+            if (ev.allDay) {
+                document.getElementById('modal-time').innerText = "Todo el día";
+            } else {
+                const timeOpts = { hour: 'numeric', minute: '2-digit', hour12: true };
+                let timeStr = d.toLocaleTimeString('es-ES', timeOpts);
+                if (ev.end) {
+                    try {
+                        const endD = new Date(ev.end);
+                        if (!isNaN(endD)) {
+                            timeStr += " - " + endD.toLocaleTimeString('es-ES', timeOpts);
+                        }
+                    } catch(e) {}
+                }
+                timeStr = timeStr.replace(/a\.?\s*m\.?/gi, 'AM').replace(/p\.?\s*m\.?/gi, 'PM');
+                document.getElementById('modal-time').innerText = timeStr;
+            }
+            
+            const locContainer = document.getElementById('modal-location-container');
+            if (ev.extendedProps && ev.extendedProps.location && ev.extendedProps.location.trim() !== "") {
+                document.getElementById('modal-location').innerText = ev.extendedProps.location;
+                locContainer.classList.remove('hidden');
+            } else {
+                locContainer.classList.add('hidden');
+            }
+            
+            const modal = document.getElementById('event-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            document.body.style.overflow = 'hidden';
+        };
+
         function renderEventHTML(events, targetId) {
             const container = document.getElementById(targetId);
             if(!container) return;
@@ -1511,7 +1569,7 @@
                 }).join('<div class="w-12 h-px bg-slate-200 my-3"></div>');
 
                 return `
-                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
+                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full" onclick="openCardModal(${ev.comp})">
                     <div>
                         <div class="flex items-center justify-between mb-8">
                             <div class="flex items-center">
