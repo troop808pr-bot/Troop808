@@ -370,14 +370,17 @@
                             </div>
                         </div>
 
-                        <div>
-                            <span class="block text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Localización</span>
-                            <div class="space-y-2">
-                                <p class="text-xs leading-relaxed text-indigo-50 font-medium italic">Paseo Lineal Río Bayamón, detrás del Hospital San Pablo.</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=18.398667,-66.144633" target="_blank" class="text-[11px] font-bold text-orange-200 tracking-wider hover:text-white transition flex items-center justify-center group">
-                                    <i class="fas fa-map-marker-alt mr-2 group-hover:scale-110 transition"></i>
-                                    18° 23.920' N, 66° 08.678' W
-                                </a>
+                        <div class="space-y-6 mt-4">
+                            <!-- Localización -->
+                            <div>
+                                <span class="block text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Localización</span>
+                                <div class="space-y-2">
+                                    <p class="text-[11px] leading-relaxed text-indigo-50 font-medium italic px-2">Paseo Lineal Río Bayamón, detrás del Hospital San Pablo.</p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=18.398667,-66.144633" target="_blank" class="text-[11px] font-bold text-orange-200 tracking-wider hover:text-white transition flex items-center justify-center group">
+                                        <i class="fas fa-map-marker-alt mr-2 group-hover:scale-110 transition"></i>
+                                        18° 23.920' N, 66° 08.678' W
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -536,9 +539,10 @@
                             <li>La cinta ondulada amarilla exhibe nuestro distrito: Distrito Majagua.</li>
                         </ul>
                     </div>
+                    
                     <div class="group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
-                        <div class="w-20 h-20 md:w-24 md:h-24 mx-auto bg-indigo-900 rounded-2xl flex items-center justify-center mb-6 md:mb-8 border border-indigo-600 shadow-2xl group-hover:-rotate-6 group-hover:border-orange-500 transition duration-500">
-                            <i class="fas fa-infinity text-3xl md:text-4xl text-indigo-300 group-hover:text-orange-400 transition"></i>
+                        <div class="w-20 h-20 md:w-24 md:h-24 mx-auto bg-indigo-900 rounded-2xl flex items-center justify-center mb-6 md:mb-8 border border-indigo-600 shadow-2xl group-hover:-rotate-6 group-hover:border-orange-500 transition duration-500 overflow-hidden p-2">
+                            <img src="https://lh3.googleusercontent.com/d/1qR29gfzwhMQ4vAcYlfUF1LfYAMd6ak2F" alt="Logo Místico 808" class="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition" referrerpolicy="no-referrer">
                         </div>
                         <h4 class="font-brand text-xl md:text-2xl mb-3 md:mb-4 text-orange-400 text-center">Nuestro Logo Místico</h4>
                         <p class="text-xs md:text-sm text-indigo-200 leading-relaxed font-light mb-3">Nuestra Tropa fue fundada el 22 de agosto del año 2008. Este día se celebró la primera reunión en el antiguo Moisty Park, en la azotea del Centro comercial Santa Rosa Mall.</p>
@@ -546,6 +550,7 @@
                         <p class="text-xs md:text-sm text-indigo-200 leading-relaxed font-light mb-3">Nuestro Logo Místico se obtiene al rotar 90° el número de la Tropa 808 y unir los ochos en el centro del cero. Nuestros números ahora forman el poderoso símbolo de infinito.</p>
                         <p class="text-xs md:text-sm text-indigo-200 leading-relaxed font-light">Representa el nacimiento de nuestra Tropa para la permanencia absoluta en el tiempo. Un elemento unificador que sirve como punto de encuentro de generaciones pasadas, presentes y futuras.</p>
                     </div>
+
                     <div class="group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto rounded-full flex items-center justify-center mb-6 md:mb-8 shadow-2xl transition duration-500 relative overflow-hidden border-2 md:border-4 border-indigo-600 group-hover:border-white group-hover:scale-110">
                             <div class="absolute inset-0 flex -z-10">
@@ -986,18 +991,44 @@
     <!-- Footer con degradado Scout -->
     <footer class="bg-scout-gradient text-white py-20 px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-pattern"></div>
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
-            <div class="flex items-center space-x-5">
-                <div class="bg-white p-1 rounded-full shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" class="w-16 h-16 rounded-full object-cover shadow-inner" referrerpolicy="no-referrer">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-12 relative z-10">
+            
+            <!-- Columna Izquierda: Logo y Contacto -->
+            <div class="flex flex-col items-center md:items-start gap-6">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-white p-1 rounded-full shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" class="w-16 h-16 rounded-full object-cover shadow-inner" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="block text-4xl font-brand leading-none">TROPA 808</span>
+                        <span class="text-xs font-bold text-white/80 uppercase tracking-widest">Puerto Rico • Distrito Majagua</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="block text-4xl font-brand leading-none">TROPA 808</span>
-                    <span class="text-xs font-bold text-white/80 uppercase tracking-widest">Puerto Rico • Distrito Majagua</span>
+                
+                <div class="flex flex-col space-y-3 mt-2">
+                    <a href="tel:+17876007857" class="text-sm font-medium text-white/80 hover:text-white transition flex items-center group">
+                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mr-3 group-hover:bg-orange-500 transition">
+                            <i class="fas fa-phone text-orange-400 group-hover:text-white"></i>
+                        </div>
+                        (787) 600-7857
+                    </a>
+                    <a href="mailto:aesant808@gmail.com" class="text-sm font-medium text-white/80 hover:text-white transition flex items-center group">
+                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mr-3 group-hover:bg-orange-500 transition">
+                            <i class="fas fa-envelope text-orange-400 group-hover:text-white"></i>
+                        </div>
+                        aesant808@gmail.com
+                    </a>
+                    <a href="mailto:abadbrito@gmail.com" class="text-sm font-medium text-white/80 hover:text-white transition flex items-center group">
+                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mr-3 group-hover:bg-orange-500 transition">
+                            <i class="fas fa-envelope text-orange-400 group-hover:text-white"></i>
+                        </div>
+                        abadbrito@gmail.com
+                    </a>
                 </div>
             </div>
             
-            <div class="text-center flex flex-col items-center">
+            <!-- Columna Central: Redes y Enlaces -->
+            <div class="text-center flex flex-col items-center pt-2 md:pt-0">
                 <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" class="h-28 mx-auto mb-6 brightness-0 invert opacity-90 hover:opacity-100 transition" referrerpolicy="no-referrer">
                 <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed mb-4">© 2026 Tropa 808 de Puerto Rico • Siempre Listos ⚜️</p>
                 
@@ -1745,6 +1776,7 @@
     </script>
 </body>
 </html>
+
 
 
 
