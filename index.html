@@ -1108,8 +1108,11 @@
                 </div>
             </div>
             
-            <div class="mt-8">
-                <button onclick="closeEventModal()" class="w-full bg-indigo-950 text-white py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:bg-orange-600 transition shadow-md">
+            <div class="mt-8 flex flex-col gap-3">
+                <a id="modal-agenda-btn" href="#" target="_blank" class="hidden w-full bg-orange-600 text-white py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:bg-orange-700 transition shadow-md text-center items-center justify-center">
+                    <i class="fas fa-file-pdf mr-2 text-base"></i> Ver Agenda del Día
+                </a>
+                <button onclick="closeEventModal()" class="w-full bg-indigo-950 text-white py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest hover:bg-indigo-900 transition shadow-md">
                     Entendido
                 </button>
             </div>
@@ -1474,6 +1477,21 @@
                         locContainer.classList.add('hidden');
                     }
                     
+                    // Lógica para botón de Agenda dinámico
+                    const agendaBtn = document.getElementById('modal-agenda-btn');
+                    const eventDateObj = new Date(ev.start);
+                    // Detecta solo el 7 de marzo de 2026 (mes 2 en JavaScript)
+                    const isAgendaDate = (eventDateObj.getFullYear() === 2026 && eventDateObj.getMonth() === 2 && eventDateObj.getDate() === 7);
+                    
+                    if (isAgendaDate) {
+                        agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
+                        agendaBtn.classList.remove('hidden');
+                        agendaBtn.classList.add('flex');
+                    } else {
+                        agendaBtn.classList.add('hidden');
+                        agendaBtn.classList.remove('flex');
+                    }
+                    
                     // Mostrar el Modal
                     document.getElementById('event-modal').classList.remove('hidden');
                     // Retraso para la animación de entrada
@@ -1534,6 +1552,21 @@
                 locContainer.classList.remove('hidden');
             } else {
                 locContainer.classList.add('hidden');
+            }
+            
+            // Lógica para botón de Agenda dinámico
+            const agendaBtn = document.getElementById('modal-agenda-btn');
+            // 'd' ya está definido más arriba como new Date(ev.comp)
+            // Detecta solo el 7 de marzo de 2026 (mes 2 en JavaScript)
+            const isAgendaDate = (d.getFullYear() === 2026 && d.getMonth() === 2 && d.getDate() === 7);
+            
+            if (isAgendaDate) {
+                agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
+                agendaBtn.classList.remove('hidden');
+                agendaBtn.classList.add('flex');
+            } else {
+                agendaBtn.classList.add('hidden');
+                agendaBtn.classList.remove('flex');
             }
             
             const modal = document.getElementById('event-modal');
