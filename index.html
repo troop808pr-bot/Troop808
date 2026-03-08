@@ -1353,7 +1353,7 @@
                                 end: endStr,
                                 allDay: !dateStr.includes('T'),
                                 y: eventDate.getFullYear(), m: eventDate.getMonth(), d: eventDate.getDate(), 
-                                comp: eventDate.getTime(),
+                                comp: eventDate.getTime() + Math.random(),
                                 backgroundColor: calBgColor,
                                 borderColor: 'transparent',
                                 extendedProps: {
@@ -1394,7 +1394,7 @@
                     group = { key: dateKey, y: ev.y, m: ev.m, d: ev.d, comp: ev.comp, summaries: [] };
                     groupedEvents.push(group);
                 }
-                group.summaries.push({ text: ev.title, source: ev.source });
+                group.summaries.push({ text: ev.title, source: ev.source, comp: ev.comp });
             });
             renderEventHTML(groupedEvents.slice(0, 3), 'event-cards-container'); 
 
@@ -1629,11 +1629,11 @@
 
                 const textSize = ev.summaries.length > 1 ? 'text-lg md:text-xl' : 'text-2xl';
                 const titlesHtml = ev.summaries.map(s => {
-                    return `<div class="flex items-start mb-2"><h4 class="${textSize} font-brand text-indigo-950 leading-tight">${s.text}</h4></div>`;
+                    return `<div class="flex items-start mb-2 cursor-pointer group" onclick="openCardModal(${s.comp})"><h4 class="${textSize} font-brand text-indigo-950 leading-tight group-hover:text-orange-600 transition">${s.text}</h4></div>`;
                 }).join('<div class="w-12 h-px bg-slate-200 my-3"></div>');
 
                 return `
-                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full" onclick="openCardModal(${ev.comp})">
+                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center justify-between mb-8">
                             <div class="flex items-center">
@@ -1809,6 +1809,9 @@
     </script>
 </body>
 </html>
+
+
+
 
 
 
