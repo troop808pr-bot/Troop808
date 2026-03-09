@@ -7,15 +7,6 @@
     
     <!-- FAVICON (El logo que aparece en Google y pestañas) -->
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
-    <link rel="apple-touch-icon" href="https://lh3.googleus<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tropa 808 - La Infinita | Bayamón, Puerto Rico</title>
-    
-    <!-- FAVICON (El logo que aparece en Google y pestañas) -->
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
     
     <meta name="description" content="Portal oficial de la Tropa Scout 808. Distrito Majagua, Bayamón PR. Únete a la aventura, desarrolla liderazgo y sirve a tu comunidad.">
@@ -1173,6 +1164,17 @@
                         <p id="modal-location" class="text-sm font-medium text-slate-700 leading-snug"></p>
                     </div>
                 </div>
+                
+                <!-- Notas / Descripción -->
+                <div id="modal-description-container" class="flex items-start gap-4 hidden">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                        <i class="fas fa-align-left text-lg"></i>
+                    </div>
+                    <div class="pt-1 w-full">
+                        <h5 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Detalles / Notas</h5>
+                        <div id="modal-description" class="text-sm font-medium text-slate-700 leading-snug break-words"></div>
+                    </div>
+                </div>
             </div>
             
             <div class="mt-8 flex flex-col gap-3">
@@ -1542,6 +1544,14 @@
                     } else {
                         locContainer.classList.add('hidden');
                     }
+
+                    const descContainer = document.getElementById('modal-description-container');
+                    if (ev.extendedProps.description && ev.extendedProps.description.trim() !== "") {
+                        document.getElementById('modal-description').innerHTML = ev.extendedProps.description;
+                        descContainer.classList.remove('hidden');
+                    } else {
+                        descContainer.classList.add('hidden');
+                    }
                     
                     const agendaBtn = document.getElementById('modal-agenda-btn');
                     const eventDateObj = new Date(ev.start);
@@ -1612,6 +1622,14 @@
                 locContainer.classList.remove('hidden');
             } else {
                 locContainer.classList.add('hidden');
+            }
+
+            const descContainer = document.getElementById('modal-description-container');
+            if (ev.extendedProps && ev.extendedProps.description && ev.extendedProps.description.trim() !== "") {
+                document.getElementById('modal-description').innerHTML = ev.extendedProps.description;
+                descContainer.classList.remove('hidden');
+            } else {
+                descContainer.classList.add('hidden');
             }
             
             const agendaBtn = document.getElementById('modal-agenda-btn');
