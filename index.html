@@ -7,6 +7,15 @@
     
     <!-- FAVICON (El logo que aparece en Google y pestañas) -->
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
+    <link rel="apple-touch-icon" href="https://lh3.googleus<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropa 808 - La Infinita | Bayamón, Puerto Rico</title>
+    
+    <!-- FAVICON (El logo que aparece en Google y pestañas) -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H">
     
     <meta name="description" content="Portal oficial de la Tropa Scout 808. Distrito Majagua, Bayamón PR. Únete a la aventura, desarrolla liderazgo y sirve a tu comunidad.">
@@ -19,6 +28,33 @@
     <meta property="og:type" content="website">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-100px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <!-- Librería FullCalendar -->
@@ -31,12 +67,13 @@
         :root {
             --scout-purple: #4c1d95; 
             --scout-orange: #ea580c; 
-            --scout-blue: #312e81; /* Actualizado al azul del botón Unirse */
+            --scout-blue: #312e81; 
             --adventure-dark: #0f172a;
         }
 
         html {
-            scroll-padding-top: 5rem; /* Asegura que los enlaces de ancla respeten el menú fijo */
+            scroll-padding-top: 5rem;
+            overflow-x: hidden;
         }
 
         body {
@@ -44,6 +81,7 @@
             scroll-behavior: smooth;
             background-color: #f1f5f9;
             -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
         }
 
         .font-brand { font-family: 'Bebas Neue', cursive; letter-spacing: 0.05em; }
@@ -52,14 +90,12 @@
             background: linear-gradient(135deg, var(--scout-purple), var(--scout-orange));
         }
 
-        /* Efecto Cristal para navegación */
         .glass-nav {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Animación para tarjetas de eventos */
         .event-card-new {
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -73,7 +109,6 @@
             transform: scale(0.98);
         }
 
-        /* Menú móvil */
         #mobile-menu {
             transition: transform 0.4s ease-in-out, opacity 0.3s ease;
             transform: translateY(-20px);
@@ -90,6 +125,36 @@
             background-image: radial-gradient(#4c1d95 0.5px, transparent 0.5px);
             background-size: 10px 10px;
             opacity: 0.1;
+        }
+
+        /* Clases utilitarias para animaciones al hacer scroll (Mobile First - De abajo hacia arriba) */
+        .reveal-right, .reveal-left, .reveal-bottom {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1);
+        }
+
+        .reveal-active {
+            opacity: 1 !important;
+            transform: translate(0, 0) !important;
+        }
+
+        /* En Desktop (PC) respetamos la animación lateral original */
+        @media (min-width: 768px) {
+            .reveal-right {
+                transform: translateX(100px);
+                transition: all 0.8s ease-out;
+            }
+            
+            .reveal-left {
+                transform: translateX(-100px);
+                transition: all 0.8s ease-out;
+            }
+
+            .reveal-bottom {
+                transform: translateY(100px);
+                transition: all 0.8s ease-out;
+            }
         }
 
         /* Estilos personalizados para FullCalendar */
@@ -109,7 +174,6 @@
         .fc-day-today { background-color: #fffbeb !important; }
         .fc .fc-list-event:hover td { background-color: #f8fafc; }
         
-        /* Ajuste móvil para los botones del calendario */
         @media (max-width: 768px) {
             .fc-header-toolbar { justify-content: center !important; flex-direction: column; }
             .fc-toolbar-chunk { display: flex; justify-content: center; width: 100%; margin-bottom: 0.5rem; }
@@ -158,9 +222,9 @@
     </nav>
 
     <!-- VISTA PRINCIPAL -->
-    <main id="main-view" class="flex flex-col">
+    <main id="main-view" class="flex flex-col overflow-hidden">
         <!-- Hero Section -->
-        <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 order-1">
+        <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 order-1 scroll-reveal reveal-left">
             <div class="absolute inset-0 bg-slate-900">
                 <img src="https://lh3.googleusercontent.com/d/1e9DkISlz9mIpVl6P0s4TBHPttzgAasNU" alt="Scouts explorando la naturaleza en Puerto Rico" class="w-full h-full object-cover opacity-40" referrerpolicy="no-referrer">
             </div>
@@ -183,7 +247,7 @@
         <section id="calendario" class="py-24 relative overflow-hidden order-3 lg:order-4">
             <div class="bg-pattern absolute inset-0"></div>
             <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 scroll-reveal reveal-left">
                     <div>
                         <h2 class="text-orange-600 text-xs font-bold uppercase tracking-widest mb-2">Próximas Salidas</h2>
                         <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 leading-none flex items-center flex-wrap">
@@ -197,13 +261,14 @@
                     </button>
                 </div>
 
+                <!-- Tarjetas Escaladas (Izquierda, Abajo, Derecha) -->
                 <div id="event-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
-                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
-                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse"></div>
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse scroll-reveal reveal-left"></div>
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse scroll-reveal reveal-bottom"></div>
+                    <div class="h-64 bg-slate-200 rounded-3xl animate-pulse scroll-reveal reveal-right"></div>
                 </div>
 
-                <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500">
+                <div id="google-calendar-section" class="hidden mt-8 transition-all duration-500 scroll-reveal reveal-bottom">
                     
                     <!-- Botones de Filtro -->
                     <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8" id="calendar-filters">
@@ -260,7 +325,7 @@
         <!-- Bitácora (RELATOS DE EXPEDICIÓN) -->
         <section id="blog" class="py-24 bg-white order-4 lg:order-3">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-reveal reveal-bottom">
                     <h3 class="text-4xl md:text-5xl font-brand text-indigo-950 mb-4 tracking-tight uppercase flex items-center justify-center flex-wrap">
                         <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" alt="Flor de Lis Scout" referrerpolicy="no-referrer">
                         BITÁCORA DE LA 808
@@ -269,8 +334,8 @@
                 </div>
 
                 <div id="relatos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- ARTÍCULO 1 (El Baúl de los Recuerdos) -->
-                    <article class="group">
+                    <!-- ARTÍCULO 1 - Izquierda -->
+                    <article class="group scroll-reveal reveal-left">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://lh3.googleusercontent.com/d/1Z-B_ZrqbUD162ijZkV6RUT_DxcyXjQ3J" alt="El Baúl de los Recuerdos Tropa 808" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">HISTORIA</div>
@@ -281,8 +346,8 @@
                         <a href="https://tropa808.blogspot.com/2011/" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Visitar Blog <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 2 (Caminata con Flecha de Luz) -->
-                    <article class="group">
+                    <!-- ARTÍCULO 2 - Abajo a Arriba -->
+                    <article class="group scroll-reveal reveal-bottom">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt" alt="Tropa 808 en Caminata con Flecha de Luz" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
@@ -293,8 +358,8 @@
                         <a href="https://drive.google.com/file/d/1Ix2lsRlmy3ohhLS88AR2HVM6O0HXfMpN/view?usp=sharing" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver Plan <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 3 (Caminata Toro Negro) -->
-                    <article class="group">
+                    <!-- ARTÍCULO 3 - Derecha -->
+                    <article class="group scroll-reveal reveal-right">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" alt="Caminata de los Scouts en el Bosque Estatal Toro Negro" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">CAMINATA</div>
@@ -305,8 +370,8 @@
                         <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver en YouTube <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 4 (Homenaje Walter Murray) -->
-                    <article class="group">
+                    <!-- ARTÍCULO 4 (Extra) - Entra desde la izquierda al estar en la primera columna -->
+                    <article class="group scroll-reveal reveal-left">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" alt="Homenaje a Walter Murray Tropa 808" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
                             <div class="absolute top-4 left-4 bg-indigo-900 text-white text-[10px] font-bold px-3 py-1 rounded-full">HONOR</div>
@@ -319,7 +384,7 @@
                 </div>
 
                 <!-- Contenedor del Botón Ver Más -->
-                <div id="ver-mas-container" class="hidden mt-12 text-center">
+                <div id="ver-mas-container" class="hidden mt-12 text-center scroll-reveal reveal-bottom">
                     <button onclick="toggleRelatos()" id="btn-ver-mas" class="bg-indigo-50 text-indigo-950 border border-indigo-100 px-8 py-3.5 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-indigo-950 hover:text-white transition shadow-sm flex items-center justify-center mx-auto">
                         Ver más relatos <i class="fas fa-chevron-down ml-2"></i>
                     </button>
@@ -328,7 +393,7 @@
         </section>
 
         <!-- Galería (MOMENTOS 808) -->
-        <section id="galeria" class="py-24 bg-indigo-950 text-white order-5">
+        <section id="galeria" class="py-24 bg-indigo-950 text-white order-5 scroll-reveal reveal-right">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center mb-12">
                     <h3 class="text-4xl md:text-5xl font-brand uppercase flex items-center flex-wrap">
@@ -356,7 +421,7 @@
         </section>
 
         <!-- Formulario de Contacto -->
-        <section id="contacto" class="py-16 order-6">
+        <section id="contacto" class="py-16 order-6 scroll-reveal reveal-left">
             <div class="max-w-3xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
                     <!-- Columna de contacto morada -->
@@ -411,13 +476,13 @@
         </div>
 
         <!-- 1. Hero Bienvenida (Pág 2) -->
-        <section class="relative min-h-[75vh] md:h-[70vh] flex items-center justify-center bg-indigo-950 py-16 md:py-0 overflow-hidden">
+        <section class="relative min-h-[75vh] md:h-[70vh] flex items-center justify-center bg-indigo-950 py-16 md:py-0 overflow-hidden scroll-reveal reveal-right">
             <div class="absolute inset-0 bg-pattern opacity-10"></div>
             <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl"></div>
             
             <div class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center text-white mt-10 md:mt-0">
-                <span class="text-orange-500 font-bold uppercase tracking-widest text-xs md:text-sm mb-3 md:mb-4 block animate-fade-in-up">El Comienzo</span>
+                <span class="text-orange-500 font-bold uppercase tracking-widest text-xs md:text-sm mb-3 md:mb-4 block scroll-reveal reveal-bottom">El Comienzo</span>
                 <h2 class="text-4xl sm:text-5xl md:text-7xl font-brand mb-4 md:mb-6 leading-none flex items-center justify-center flex-wrap">
                     <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-2 md:mr-4 inline-block align-middle drop-shadow-xl" alt="Emblema Scout" referrerpolicy="no-referrer">
                     CARTA DE BIENVENIDA
@@ -425,7 +490,7 @@
                 <p class="text-base sm:text-lg md:text-xl font-light text-indigo-100 mb-6 leading-relaxed italic px-2">"El movimiento es un gran juego, pero un juego con un propósito." <br><span class="text-xs md:text-sm font-bold opacity-80 not-italic mt-2 block">- Baden Powell</span></p>
                 <div class="w-16 md:w-24 h-1 bg-orange-500 mx-auto mb-6 md:mb-8"></div>
                 <p class="text-sm md:text-base text-slate-200 max-w-2xl mx-auto leading-relaxed mb-8 px-2">Bienvenido al movimiento juvenil más grande del mundo presente en más de 216 países. A partir de este momento comienzas una gran aventura junto con tus compañeros de patrulla. Esperamos que tu paso por la Tropa sea una aventura inolvidable en tu vida.</p>
-                <div class="text-orange-500 animate-fade-in-up" style="animation-delay: 0.5s;">
+                <div class="text-orange-500 scroll-reveal reveal-bottom" style="transition-delay: 0.3s;">
                     <p class="text-xl sm:text-2xl md:text-3xl font-brand tracking-wide">Alberto "Quique" Santiago</p>
                     <p class="text-[10px] md:text-sm font-bold uppercase tracking-widest text-orange-600 mt-1">Scoutmaster</p>
                 </div>
@@ -436,7 +501,7 @@
         <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
             <div class="absolute -top-40 -right-40 w-72 md:w-96 h-72 md:h-96 bg-orange-100 rounded-full blur-3xl opacity-50"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-                <div class="text-center mb-12 md:mb-16">
+                <div class="text-center mb-12 md:mb-16 scroll-reveal reveal-bottom">
                     <h3 class="text-3xl sm:text-4xl md:text-5xl font-brand text-indigo-950 uppercase flex items-center justify-center flex-wrap leading-tight">
                         <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-2 md:mr-4 inline-block align-middle drop-shadow-md" alt="Emblema Scout" referrerpolicy="no-referrer">
                         Nuestra Brújula
@@ -445,7 +510,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     <!-- Tarjeta Mision -->
-                    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
+                    <div class="scroll-reveal reveal-left bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
                         <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-orange-500 group-hover:text-white transition duration-500 text-orange-600 text-xl md:text-2xl shadow-sm">
                             <i class="fas fa-bullseye"></i>
                         </div>
@@ -453,7 +518,7 @@
                         <p class="text-slate-600 text-sm leading-relaxed">Preparar jóvenes que puedan tomar decisiones éticas y morales por el resto de sus vidas, a través de la enseñanza de valores resumidos en la Ley y Promesa Escucha.</p>
                     </div>
                     <!-- Tarjeta Objetivos -->
-                    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
+                    <div class="scroll-reveal reveal-bottom bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
                         <div class="w-14 h-14 md:w-16 md:h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-indigo-600 group-hover:text-white transition duration-500 text-indigo-600 text-xl md:text-2xl shadow-sm">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -465,7 +530,7 @@
                         </ul>
                     </div>
                     <!-- Tarjeta Valores -->
-                    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
+                    <div class="scroll-reveal reveal-right bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-lg hover:shadow-2xl md:hover:-translate-y-3 transition duration-500 border border-slate-100 group">
                         <div class="w-14 h-14 md:w-16 md:h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-green-600 group-hover:text-white transition duration-500 text-green-600 text-xl md:text-2xl shadow-sm">
                             <i class="fas fa-heart"></i>
                         </div>
@@ -482,7 +547,7 @@
         </section>
 
         <!-- 3. Historia y Orígenes (Pág 5) -->
-        <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+        <section class="py-16 md:py-24 bg-white relative overflow-hidden scroll-reveal reveal-left">
             <div class="absolute left-0 top-0 w-1/2 h-full bg-indigo-50/30 rounded-r-[200px] -z-10 hidden lg:block"></div>
             <div class="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
                 <div class="flex flex-col items-center text-center">
@@ -517,7 +582,7 @@
         <section class="py-16 md:py-24 bg-indigo-950 text-white relative">
             <div class="absolute inset-0 bg-pattern opacity-10"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-                <div class="text-center mb-12 md:mb-20">
+                <div class="text-center mb-12 md:mb-20 scroll-reveal reveal-bottom">
                     <h3 class="text-3xl sm:text-4xl md:text-5xl font-brand uppercase text-white flex items-center justify-center flex-wrap leading-tight">
                         <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-2 md:mr-4 inline-block align-middle drop-shadow-md" alt="Emblema Scout" referrerpolicy="no-referrer">
                         Símbolos 808
@@ -526,7 +591,7 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 px-2 md:px-4">
-                    <div class="group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
+                    <div class="scroll-reveal reveal-left group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
                         <div class="w-24 h-24 md:w-28 md:h-28 mx-auto bg-indigo-900 rounded-full mb-6 md:mb-8 border-2 md:border-4 border-indigo-600 shadow-2xl group-hover:scale-110 group-hover:border-orange-500 transition duration-500 flex items-center justify-center p-1 overflow-hidden">
                             <img src="https://lh3.googleusercontent.com/d/1mdpTyX-qRWk6B-rmHygfS9H6X6Lv5O4H" alt="Logo Oficial Tropa 808" class="w-full h-full object-contain" referrerpolicy="no-referrer">
                         </div>
@@ -540,7 +605,7 @@
                         </ul>
                     </div>
                     
-                    <div class="group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
+                    <div class="scroll-reveal reveal-bottom group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto bg-indigo-900 rounded-2xl flex items-center justify-center mb-6 md:mb-8 border border-indigo-600 shadow-2xl group-hover:-rotate-6 group-hover:border-orange-500 transition duration-500 overflow-hidden p-2">
                             <img src="https://lh3.googleusercontent.com/d/1qR29gfzwhMQ4vAcYlfUF1LfYAMd6ak2F" alt="Logo Místico 808" class="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition" referrerpolicy="no-referrer">
                         </div>
@@ -551,7 +616,7 @@
                         <p class="text-xs md:text-sm text-indigo-200 leading-relaxed font-light">Representa el nacimiento de nuestra Tropa para la permanencia absoluta en el tiempo. Un elemento unificador que sirve como punto de encuentro de generaciones pasadas, presentes y futuras.</p>
                     </div>
 
-                    <div class="group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
+                    <div class="scroll-reveal reveal-right group relative bg-indigo-900/40 p-6 md:p-8 rounded-3xl border border-indigo-700/50 hover:bg-indigo-900/60 transition duration-500">
                         <div class="w-20 h-20 md:w-24 md:h-24 mx-auto rounded-full flex items-center justify-center mb-6 md:mb-8 shadow-2xl transition duration-500 relative overflow-hidden border-2 md:border-4 border-indigo-600 group-hover:border-white group-hover:scale-110">
                             <div class="absolute inset-0 flex -z-10">
                                 <div class="w-1/2 bg-orange-500"></div><div class="w-1/2 bg-purple-600"></div>
@@ -571,7 +636,7 @@
         </section>
 
         <!-- 5. Actividades / Drone Video (Pág 11) -->
-        <section class="py-16 md:py-32 relative bg-scroll md:bg-fixed bg-center bg-cover border-b-8 border-orange-600" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80');">
+        <section class="py-16 md:py-32 relative bg-scroll md:bg-fixed bg-center bg-cover border-b-8 border-orange-600 scroll-reveal reveal-right" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80');">
             <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
                 <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
@@ -614,7 +679,7 @@
     <!-- VISTA DOCUMENTOS (RECURSOS) -->
     <section id="docs-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 scroll-reveal reveal-right">
                 <h2 class="text-4xl md:text-6xl font-brand text-indigo-950 uppercase leading-none flex items-center justify-center flex-wrap">
                     <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" class="h-[1em] w-auto mr-3 inline-block align-middle" alt="Emblema Scout" referrerpolicy="no-referrer">
                     BIBLIOTECA SCOUT
@@ -622,7 +687,7 @@
                 <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-4">Documentos y formularios oficiales 808</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-reveal reveal-left" style="transition-delay: 0.2s;">
                 <a href="https://filestore.scouting.org/filestore/HealthSafety/pdf/680-001_ABC.pdf" target="_blank" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex items-center group hover:border-orange-500 transition">
                     <div class="w-16 h-16 bg-slate-50 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mr-6 group-hover:bg-indigo-600 group-hover:text-white transition"><i class="fas fa-file-medical"></i></div>
                     <div class="flex-grow">
@@ -687,7 +752,7 @@
                 </a>
             </div>
 
-            <div class="mt-16 text-center">
+            <div class="mt-16 text-center scroll-reveal reveal-right" style="transition-delay: 0.4s;">
                 <button onclick="switchView('main')" class="bg-indigo-950 text-white px-12 py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-orange-600 transition shadow-xl">Volver al inicio</button>
             </div>
         </div>
@@ -702,7 +767,7 @@
             </button>
 
             <!-- Encabezado -->
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 scroll-reveal reveal-right">
                 <img src="https://lh3.googleusercontent.com/d/1gIjwEdzzXzPWpsIFC6P7LMff1q9uiVcR" alt="Emblema Scout" class="mx-auto h-20 md:h-24 w-auto mb-6 object-contain drop-shadow-lg" referrerpolicy="no-referrer">
                 <h2 class="text-3xl md:text-5xl font-brand text-indigo-950 uppercase leading-none flex items-center justify-center gap-3">
                     <i class="fas fa-award text-yellow-500"></i>
@@ -720,7 +785,7 @@
             </div>
 
             <!-- Línea de tiempo -->
-            <div class="relative border-l-4 border-indigo-200 ml-4 md:ml-8 space-y-8 pb-8">
+            <div class="relative border-l-4 border-indigo-200 ml-4 md:ml-8 space-y-8 pb-8 scroll-reveal reveal-left" style="transition-delay: 0.2s;">
                 
                 <!-- Paso 1 a 12 (Simplificado visualmente en HTML) -->
                 <div class="relative pl-8 md:pl-12 group">
@@ -857,14 +922,14 @@
             </div>
 
             <!-- Nota al pie -->
-            <div class="mt-8 bg-white border-l-4 border-yellow-500 p-6 rounded-r-xl shadow-md flex items-start gap-4">
+            <div class="mt-8 bg-white border-l-4 border-yellow-500 p-6 rounded-r-xl shadow-md flex items-start gap-4 scroll-reveal reveal-right" style="transition-delay: 0.4s;">
                 <i class="fas fa-info-circle text-indigo-600 text-2xl mt-0.5"></i>
                 <p class="text-indigo-950 font-medium text-sm md:text-base">
                     <strong>Nota Importante:</strong> El Scoutmaster puede delegar su función en otro líder adulto.
                 </p>
             </div>
 
-            <div class="mt-12">
+            <div class="mt-12 scroll-reveal reveal-left" style="transition-delay: 0.6s;">
                 <button onclick="switchView('docs')" class="bg-indigo-950 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-orange-600 transition shadow-xl">
                     Regresar
                 </button>
@@ -885,7 +950,7 @@
         </div>
 
         <!-- Hero del Plan -->
-        <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 flex items-center justify-center bg-center bg-cover border-b-8 border-orange-600" style="background-image: url('https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt');">
+        <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 flex items-center justify-center bg-center bg-cover border-b-8 border-orange-600 scroll-reveal reveal-right" style="background-image: url('https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt');">
             <div class="absolute inset-0 bg-indigo-950/80 backdrop-blur-sm"></div>
             <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
                 <span class="bg-orange-600 text-white font-bold uppercase tracking-widest text-[10px] px-4 py-1.5 rounded-full mb-6 inline-block shadow-lg">Tropa y Manada 808</span>
@@ -898,7 +963,7 @@
         </section>
 
         <!-- Contenido Resumido -->
-        <section class="max-w-6xl mx-auto px-6 py-16 -mt-10 relative z-20">
+        <section class="max-w-6xl mx-auto px-6 py-16 -mt-10 relative z-20 scroll-reveal reveal-left" style="transition-delay: 0.2s;">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 
                 <!-- Columna 1: Logística y Detalles -->
@@ -1032,15 +1097,17 @@
                 <img src="https://lh3.googleusercontent.com/d/1JxxI4W3lAWXwNc9A31-PvO2F7P2OX9WM" class="h-28 mx-auto mb-6 brightness-0 invert opacity-90 hover:opacity-100 transition" referrerpolicy="no-referrer">
                 <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest leading-relaxed mb-4">© 2026 Tropa 808 de Puerto Rico • Siempre Listos ⚜️</p>
                 
-                <div class="flex flex-wrap justify-center gap-3">
-                    <a href="https://www.scoutingpr.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
-                        Concilio PR <i class="fas fa-external-link-alt ml-2"></i>
+                <div class="flex flex-wrap justify-center items-center gap-4 md:gap-5 mt-2">
+                    <a href="https://www.scoutingpr.org/" target="_blank" class="flex items-center text-[10px] md:text-xs font-bold text-white/70 hover:text-white transition-colors duration-300 uppercase tracking-widest group">
+                        Concilio PR <i class="fas fa-arrow-right ml-2 text-[10px] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-400 transition-all"></i>
                     </a>
-                    <a href="https://my.scouting.org/" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
-                        My.Scouting <i class="fas fa-external-link-alt ml-2"></i>
+                    <span class="hidden md:block text-white/20 text-xs font-light">|</span>
+                    <a href="https://my.scouting.org/" target="_blank" class="flex items-center text-[10px] md:text-xs font-bold text-white/70 hover:text-white transition-colors duration-300 uppercase tracking-widest group">
+                        My.Scouting <i class="fas fa-arrow-right ml-2 text-[10px] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-400 transition-all"></i>
                     </a>
-                    <a href="https://advancements.scouting.org/login?redirectTo=https%3A%2F%2Fadvancements.scouting.org%2F" target="_blank" class="inline-flex items-center px-5 py-2 border border-white/20 rounded-full text-[10px] font-bold text-white hover:bg-white hover:text-indigo-900 transition uppercase tracking-widest shadow-sm">
-                        Scoutbook <i class="fas fa-external-link-alt ml-2"></i>
+                    <span class="hidden md:block text-white/20 text-xs font-light">|</span>
+                    <a href="https://advancements.scouting.org/login?redirectTo=https%3A%2F%2Fadvancements.scouting.org%2F" target="_blank" class="flex items-center text-[10px] md:text-xs font-bold text-white/70 hover:text-white transition-colors duration-300 uppercase tracking-widest group">
+                        Scoutbook <i class="fas fa-arrow-right ml-2 text-[10px] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-orange-400 transition-all"></i>
                     </a>
                 </div>
             </div>
@@ -1138,6 +1205,10 @@
             if(conoce) conoce.classList.add('hidden');
             if(caminataPlan) caminataPlan.classList.add('hidden');
             
+            // --- FIX DE ANIMACIONES ---
+            // Removemos "reveal-active" para que los elementos se reinicien al cambiar de vista
+            document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.remove('reveal-active'));
+            
             // Mostrar la seleccionada y actualizar URL
             if (v === 'docs') { 
                 docs.classList.remove('hidden'); 
@@ -1153,13 +1224,17 @@
                 try { window.history.pushState(null, null, '#plan-caminata'); } catch(e) {}
             } else { 
                 main.classList.remove('hidden'); 
-                // Limpiar URL si venimos de subpáginas para no dejar rastros
                 if (window.location.hash === '#recursos' || window.location.hash === '#insignia' || window.location.hash === '#conoce-mas' || window.location.hash === '#plan-caminata') {
                     try { window.history.pushState(null, null, window.location.pathname + window.location.search); } catch(e) {}
                 }
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Re-ejecutar observer de animaciones para nuevas vistas
+            setTimeout(() => {
+                revealElements();
+            }, 100);
         };
 
         window.scrollToSection = (id) => {
@@ -1179,6 +1254,24 @@
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) mobileMenu.classList.remove('active');
         });
+
+        // --- OBSERVER DE ANIMACIONES (SCROLL REVEAL) ---
+        function revealElements() {
+            var reveals = document.querySelectorAll(".scroll-reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                // FIX: Omitir elementos que están ocultos porque pertenecen a otra vista
+                if (reveals[i].offsetParent === null) continue;
+
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50; // Umbral ajustado para que se active más rápido
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("reveal-active");
+                }
+            }
+        }
+        window.addEventListener("scroll", revealElements);
 
         // --- GALERÍA ---
         const galleryImages = [
@@ -1205,7 +1298,7 @@
             document.getElementById('lightbox-counter').innerText = `IMAGEN ${currentPhotoIndex + 1} DE ${galleryImages.length}`;
         }
 
-        // --- CALENDARIO (Lógica Integrada para Tropa, OA y Distrito) ---
+        // --- CALENDARIO ---
         const themes = {
             purpura: { b: 'border-indigo-600', bg: 'bg-indigo-600', tb: 'bg-indigo-50', tc: 'text-indigo-600' },
             naranja: { b: 'border-orange-500', bg: 'bg-orange-500', tb: 'bg-orange-50', tc: 'text-orange-600' },
@@ -1220,14 +1313,12 @@
             distrito: "887a472df723b4721b7c9f23649439b2b73bc64a94eb40d4c1e776df955977ba%40group.calendar.google.com"
         };
 
-        // Variables Globales para el calendario FullCalendar
         let globalRawEvents = [];
         let calendarInstance = null;
 
         async function fetchEvents() {
-            // Cambiamos caché a v10 para purgar memorias de horas anteriores
-            const cachedData = localStorage.getItem('tropa808_v10_events');
-            const cacheTime = localStorage.getItem('tropa808_v10_events_time');
+            const cachedData = localStorage.getItem('tropa808_v11_events');
+            const cacheTime = localStorage.getItem('tropa808_v11_events_time');
             const now = new Date().getTime();
             const todayComp = new Date().setHours(0,0,0,0); 
             
@@ -1246,7 +1337,6 @@
             try {
                 const promises = calendars.map(async (cal) => {
                     const iCalUrl = `https://calendar.google.com/calendar/ical/${cal.id}/public/basic.ics?v=${now}`;
-                    // Proxies con forzado de no-cache para asegurar que descargue los horarios actualizados
                     const proxies = [
                         `https://api.allorigins.win/raw?url=${encodeURIComponent(iCalUrl)}&nocache=${now}`,
                         `https://corsproxy.io/?${encodeURIComponent(iCalUrl)}`,
@@ -1265,7 +1355,6 @@
                     } catch (error) {}
 
                     if (rawICal) {
-                        // Unificar líneas cortadas por el formato ICS
                         const unfolded = rawICal.replace(/\r?\n[ \t]/g, "");
                         const vevents = unfolded.split('BEGIN:VEVENT').slice(1);
                         
@@ -1281,13 +1370,11 @@
                             const dateStr = stMatch[1]; 
                             let eventDate, endDate = null;
                             
-                            // Formateador ISO sin zona horaria para forzar la hora local en FullCalendar
                             const pad = n => String(n).padStart(2, '0');
                             const formatLocalISO = (d) => {
                                 return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:00`;
                             };
 
-                            // Convertidor maestro: Convierte todo forzosamente a reloj de Puerto Rico
                             const parseIcsDateForPR = (str) => {
                                 if (!str.includes('T')) {
                                     const y = parseInt(str.substring(0, 4), 10), m = parseInt(str.substring(4, 6), 10) - 1, d = parseInt(str.substring(6, 8), 10);
@@ -1299,21 +1386,17 @@
                                 
                                 if (isUTC) {
                                     const dObj = new Date(Date.UTC(y, m, d, h, min, 0));
-                                    const prTimeMs = dObj.getTime() - (4 * 60 * 60 * 1000); // Restar 4 horas para PR
+                                    const prTimeMs = dObj.getTime() - (4 * 60 * 60 * 1000);
                                     const prDate = new Date(prTimeMs);
-                                    // Extraemos las horas corregidas
                                     return new Date(prDate.getUTCFullYear(), prDate.getUTCMonth(), prDate.getUTCDate(), prDate.getUTCHours(), prDate.getUTCMinutes(), 0);
                                 } else {
-                                    return new Date(y, m, d, h, min, 0); // Asume que ya viene en PR
+                                    return new Date(y, m, d, h, min, 0);
                                 }
                             };
 
                             eventDate = parseIcsDateForPR(dateStr);
-                            if (endMatch) {
-                                endDate = parseIcsDateForPR(endMatch[1]);
-                            }
+                            if (endMatch) endDate = parseIcsDateForPR(endMatch[1]);
 
-                            // Textos de fecha listos para el Grid de FullCalendar
                             let startStr, endStr = null;
                             if (!dateStr.includes('T')) {
                                 startStr = `${dateStr.substring(0, 4)}-${dateStr.substring(4, 6)}-${dateStr.substring(6, 8)}`;
@@ -1329,20 +1412,18 @@
                                 }
                             }
 
-                            // Colores para el calendario FullCalendar (Mantiene identidad)
-                            let calBgColor = '#4c1d95'; // Purpura por defecto (Tropa)
+                            let calBgColor = '#4c1d95'; 
                             const summaryLower = s ? s[1].toLowerCase() : "";
                             
-                            if (cal.source === 'oa') calBgColor = '#dc2626'; // Rojo
-                            else if (cal.source === 'distrito') calBgColor = '#2563eb'; // Azul
+                            if (cal.source === 'oa') calBgColor = '#dc2626';
+                            else if (cal.source === 'distrito') calBgColor = '#2563eb';
                             else {
-                                if (summaryLower.includes('verde')) calBgColor = '#16a34a'; // Verde
-                                else if (summaryLower.includes('naranja')) calBgColor = '#ea580c'; // Naranja
-                                else if (summaryLower.includes('azul')) calBgColor = '#2563eb'; // Azul
-                                else if (summaryLower.includes('rojo') || summaryLower.includes('roja')) calBgColor = '#dc2626'; // Rojo
+                                if (summaryLower.includes('verde')) calBgColor = '#16a34a';
+                                else if (summaryLower.includes('naranja')) calBgColor = '#ea580c';
+                                else if (summaryLower.includes('azul')) calBgColor = '#2563eb';
+                                else if (summaryLower.includes('rojo') || summaryLower.includes('roja')) calBgColor = '#dc2626';
                             }
 
-                            // Limpiar descripción de códigos extraños de iCal
                             let cleanDesc = descMatch ? descMatch[1].trim() : "";
                             cleanDesc = cleanDesc.replace(/\\n/g, '<br>').replace(/\\,/g, ',').replace(/\\;/g, ';');
 
@@ -1370,8 +1451,8 @@
                 globalRawEvents = results.flat().sort((a,b) => a.comp - b.comp);
 
                 if (globalRawEvents.length > 0) {
-                    localStorage.setItem('tropa808_v10_events', JSON.stringify(globalRawEvents));
-                    localStorage.setItem('tropa808_v10_events_time', now.toString());
+                    localStorage.setItem('tropa808_v11_events', JSON.stringify(globalRawEvents));
+                    localStorage.setItem('tropa808_v11_events_time', now.toString());
                     processAndRender(todayComp);
                 } else if (!cachedData) {
                     const container1 = document.getElementById('event-cards-container');
@@ -1382,9 +1463,7 @@
             }
         }
 
-        // Centraliza la preparación de tarjetas y la creación del FullCalendar
         function processAndRender(todayComp) {
-            // 1. Renderizar tarjetas (Solo eventos futuros)
             const futureEvents = globalRawEvents.filter(e => e.comp >= todayComp);
             const groupedEvents = [];
             futureEvents.forEach(ev => {
@@ -1398,7 +1477,6 @@
             });
             renderEventHTML(groupedEvents.slice(0, 3), 'event-cards-container'); 
 
-            // 2. Renderizar FullCalendar
             if (!calendarInstance) {
                 initFullCalendar();
             } else {
@@ -1407,14 +1485,13 @@
             }
         }
 
-        // Inicializador de FullCalendar
         function initFullCalendar() {
             var calendarEl = document.getElementById('calendar-custom');
             if (!calendarEl) return;
 
             calendarInstance = new FullCalendar.Calendar(calendarEl, {
-                timeZone: 'America/Puerto_Rico', // Obliga al calendario a procesar todo en hora de PR
-                firstDay: 0, // 0 = Domingo, 1 = Lunes
+                timeZone: 'America/Puerto_Rico',
+                firstDay: 0,
                 initialView: window.innerWidth < 768 ? 'listMonth' : 'dayGridMonth',
                 locale: 'es',
                 headerToolbar: {
@@ -1425,36 +1502,27 @@
                 buttonText: { today: 'Hoy', month: 'Mes', list: 'Agenda' },
                 events: globalRawEvents,
                 height: 'auto',
-                
-                // Fuerza el formato de 12 horas (AM/PM) en las cajitas del calendario
                 eventTimeFormat: {
                     hour: 'numeric',
                     minute: '2-digit',
-                    omitZeroMinute: true, // Si es en punto (ej. 9:00) mostrará "9 AM" para verse más limpio
+                    omitZeroMinute: true,
                     meridiem: 'short',
                     hour12: true
                 },
-                
                 eventClick: function(info) {
-                    // Interceptamos el click y abrimos nuestro propio Modal elegante
                     info.jsEvent.preventDefault();
-                    
                     const ev = info.event;
                     
-                    // Configurar Título y Color
                     document.getElementById('modal-title').innerText = ev.title;
                     document.getElementById('modal-color').style.backgroundColor = ev.backgroundColor;
                     
-                    // Configurar Tag superior
                     let tagText = "Tropa 808";
                     if (ev.extendedProps.source === 'oa') tagText = "Order of the Arrow";
                     else if (ev.extendedProps.source === 'distrito') tagText = "Distrito Majagua";
                     document.getElementById('modal-tag').innerText = tagText;
                     
-                    // Formatear Fecha con el motor exacto de FullCalendar
                     document.getElementById('modal-date').innerText = info.view.calendar.formatDate(ev.start, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                     
-                    // Formatear Hora con el motor exacto de FullCalendar para evitar desfases
                     if (ev.allDay) {
                         document.getElementById('modal-time').innerText = "Todo el día";
                     } else {
@@ -1463,12 +1531,10 @@
                         if (ev.end) {
                             timeStr += " - " + info.view.calendar.formatDate(ev.end, opts);
                         }
-                        // Limpiar formato para que diga AM/PM limpio y estético
                         timeStr = timeStr.replace(/a\.?\s*m\.?/gi, 'AM').replace(/p\.?\s*m\.?/gi, 'PM');
                         document.getElementById('modal-time').innerText = timeStr;
                     }
                     
-                    // Configurar Lugar
                     const locContainer = document.getElementById('modal-location-container');
                     if (ev.extendedProps.location && ev.extendedProps.location.trim() !== "") {
                         document.getElementById('modal-location').innerText = ev.extendedProps.location;
@@ -1477,10 +1543,8 @@
                         locContainer.classList.add('hidden');
                     }
                     
-                    // Lógica para botón de Agenda dinámico
                     const agendaBtn = document.getElementById('modal-agenda-btn');
                     const eventDateObj = new Date(ev.start);
-                    // Detecta solo el 7 de marzo de 2026 (mes 2 en JavaScript)
                     const isAgendaDate = (eventDateObj.getFullYear() === 2026 && eventDateObj.getMonth() === 2 && eventDateObj.getDate() === 7);
                     
                     if (isAgendaDate) {
@@ -1492,16 +1556,13 @@
                         agendaBtn.classList.remove('flex');
                     }
                     
-                    // Mostrar el Modal
                     document.getElementById('event-modal').classList.remove('hidden');
-                    // Retraso para la animación de entrada
                     setTimeout(() => { document.getElementById('event-modal').classList.remove('opacity-0'); }, 10);
                     document.body.style.overflow = 'hidden';
                 }
             });
         }
 
-        // Función para cerrar el modal de eventos
         window.closeEventModal = () => {
             document.getElementById('event-modal').classList.add('opacity-0');
             setTimeout(() => { 
@@ -1510,7 +1571,6 @@
             }, 300);
         };
 
-        // Función para abrir el modal desde las tarjetas de "Prepara tu Mochila"
         window.openCardModal = (compTime) => {
             const ev = globalRawEvents.find(e => e.comp === compTime);
             if (!ev) return;
@@ -1554,10 +1614,7 @@
                 locContainer.classList.add('hidden');
             }
             
-            // Lógica para botón de Agenda dinámico
             const agendaBtn = document.getElementById('modal-agenda-btn');
-            // 'd' ya está definido más arriba como new Date(ev.comp)
-            // Detecta solo el 7 de marzo de 2026 (mes 2 en JavaScript)
             const isAgendaDate = (d.getFullYear() === 2026 && d.getMonth() === 2 && d.getDate() === 7);
             
             if (isAgendaDate) {
@@ -1582,7 +1639,6 @@
             const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
             const allColors = ['purpura', 'naranja', 'verde', 'azul', 'rojo'];
             
-            // Paso 1: Identificar colores explícitos primero para no repetirlos
             let usedColors = [];
             const processedEvents = events.map(ev => {
                 const primaryEvent = ev.summaries[0]; 
@@ -1603,15 +1659,13 @@
                 return { ...ev, explicitColor, primaryEvent, sl };
             });
 
-            // Paso 2: Generar HTML asegurando colores diferentes
             container.innerHTML = processedEvents.map((ev, i) => {
                 let chosenKey = ev.explicitColor;
 
-                // Si no tiene color explícito, buscar uno que no se haya usado en las otras tarjetas
                 if (!chosenKey) {
                     chosenKey = allColors.find(color => !usedColors.includes(color));
-                    if (!chosenKey) chosenKey = allColors[i % allColors.length]; // Respaldo extremo
-                    usedColors.push(chosenKey); // Registrar para no repetirlo
+                    if (!chosenKey) chosenKey = allColors[i % allColors.length];
+                    usedColors.push(chosenKey); 
                 }
                 
                 const st = themes[chosenKey];
@@ -1630,10 +1684,15 @@
                 const textSize = ev.summaries.length > 1 ? 'text-lg md:text-xl' : 'text-2xl';
                 const titlesHtml = ev.summaries.map(s => {
                     return `<div class="flex items-start mb-2 cursor-pointer group" onclick="openCardModal(${s.comp})"><h4 class="${textSize} font-brand text-indigo-950 leading-tight group-hover:text-orange-600 transition">${s.text}</h4></div>`;
-                }).join('<div class="w-12 h-px bg-slate-200 my-3"></div>');
+                }).join('<div class="w-full h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent my-4"></div>');
+                
+                let revealDir = "reveal-bottom";
+                if(i % 3 === 0) revealDir = "reveal-left";
+                else if(i % 3 === 1) revealDir = "reveal-bottom";
+                else if(i % 3 === 2) revealDir = "reveal-right";
 
                 return `
-                <div class="event-card-new bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
+                <div class="event-card-new scroll-reveal ${revealDir} bg-white rounded-3xl p-8 border-b-8 ${st.b} shadow-xl flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center justify-between mb-8">
                             <div class="flex items-center">
@@ -1649,6 +1708,8 @@
                     </div>
                 </div>`;
             }).join('');
+            
+            setTimeout(() => revealElements(), 100);
         }
 
         window.filterCalendar = (type) => {
@@ -1657,7 +1718,6 @@
             const btnOa = document.getElementById('btn-filtro-oa');
             const btnDistrito = document.getElementById('btn-filtro-distrito');
 
-            // Reiniciar botones
             [btnTodos, btnTropa, btnOa, btnDistrito].forEach(btn => {
                 if(btn) btn.className = "bg-white border px-5 py-2.5 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-sm hover:scale-105 hover:opacity-80";
             });
@@ -1666,7 +1726,6 @@
             if(btnOa) btnOa.classList.add('text-red-700', 'border-red-200');
             if(btnDistrito) btnDistrito.classList.add('text-blue-700', 'border-blue-200');
 
-            // Activar botón seleccionado
             let activeBtn;
             if(type === 'todos') { activeBtn = btnTodos; if(activeBtn) { activeBtn.classList.remove('bg-white', 'text-indigo-900'); activeBtn.classList.add('bg-indigo-900', 'text-white'); } }
             if(type === 'tropa') { activeBtn = btnTropa; if(activeBtn) { activeBtn.classList.remove('bg-white', 'text-indigo-900'); activeBtn.classList.add('bg-indigo-900', 'text-white'); } }
@@ -1675,7 +1734,6 @@
             
             if(activeBtn) activeBtn.classList.add('shadow-md');
 
-            // Filtrar eventos del FullCalendar al instante
             if (calendarInstance) {
                 let filteredEvents = globalRawEvents;
                 if (type !== 'todos') {
@@ -1685,7 +1743,6 @@
                 calendarInstance.addEventSource(filteredEvents);
             }
 
-            // --- LÓGICA DE SINCRONIZACIÓN DINÁMICA ---
             const syncBtnGoogle = document.getElementById('sync-btn-google');
             const syncBtnApple = document.getElementById('sync-btn-apple');
             const syncTitle = document.getElementById('sync-title');
@@ -1700,13 +1757,11 @@
 
             let selectedCalId = type === 'todos' ? calIdsEncoded.tropa : calIdsEncoded[type];
 
-            // Actualizar enlaces de los botones de descarga
             if (syncBtnGoogle && syncBtnApple) {
                 syncBtnGoogle.href = `https://calendar.google.com/calendar/r?cid=${selectedCalId}`;
                 syncBtnApple.href = `webcal://calendar.google.com/calendar/ical/${selectedCalId}/public/basic.ics`;
             }
 
-            // Actualizar textos y visibilidad de los botones/advertencia
             if (type === 'todos') {
                 if (syncTitle) syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza tu Agenda`;
                 if (syncButtonsContainer) syncButtonsContainer.classList.add('hidden');
@@ -1734,15 +1789,28 @@
                 const eventCards = document.getElementById('event-cards-container');
                 const toggleText = document.getElementById('toggle-text');
                 
-                // Alternar visibilidad de ambos contenedores
                 if(googleCal) googleCal.classList.toggle('hidden');
                 if(eventCards) eventCards.classList.toggle('hidden');
                 
-                // Cambiar texto y forzar renderizado de FullCalendar
                 if (googleCal && !googleCal.classList.contains('hidden')) {
                     if(toggleText) toggleText.innerText = "Ver próximos eventos";
                     if (calendarInstance) {
-                        setTimeout(() => { calendarInstance.render(); }, 10);
+                        setTimeout(() => { 
+                            calendarInstance.render(); 
+                            
+                            // Auto-scroll y animación en TODAS las pantallas (Mobile y Desktop)
+                            googleCal.classList.add('reveal-active');
+                            
+                            // Ajustamos el margen dependiendo de si es celular o PC
+                            const headerOffset = window.innerWidth < 768 ? 85 : 100; 
+                            const elementPosition = googleCal.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }, 50);
                     }
                 } else {
                     if(toggleText) toggleText.innerText = "Ver calendario completo";
@@ -1750,7 +1818,6 @@
             };
         }
 
-        // --- LÓGICA PARA VER MÁS RELATOS ---
         function initRelatos() {
             const grid = document.getElementById('relatos-grid');
             if (!grid) return;
@@ -1805,10 +1872,13 @@
             } else if (window.location.hash === '#plan-caminata') {
                 switchView('caminata-plan');
             }
+            
+            revealElements();
         };
     </script>
 </body>
 </html>
+
 
 
 
