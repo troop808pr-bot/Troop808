@@ -1555,10 +1555,16 @@
                     
                     const agendaBtn = document.getElementById('modal-agenda-btn');
                     const eventDateObj = new Date(ev.start);
-                    const isAgendaDate = (eventDateObj.getFullYear() === 2026 && eventDateObj.getMonth() === 2 && eventDateObj.getDate() === 7);
+                    const y = eventDateObj.getFullYear();
+                    const m = eventDateObj.getMonth();
+                    const day = eventDateObj.getDate();
                     
-                    if (isAgendaDate) {
+                    if (y === 2026 && m === 2 && day === 7) {
                         agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
+                        agendaBtn.classList.remove('hidden');
+                        agendaBtn.classList.add('flex');
+                    } else if (y === 2026 && m === 2 && day === 21) {
+                        agendaBtn.href = "https://drive.google.com/file/d/1jp9nwElsW2vMXalx3cXZMecV2_BRUxBv/view?usp=sharing";
                         agendaBtn.classList.remove('hidden');
                         agendaBtn.classList.add('flex');
                     } else {
@@ -1633,10 +1639,16 @@
             }
             
             const agendaBtn = document.getElementById('modal-agenda-btn');
-            const isAgendaDate = (d.getFullYear() === 2026 && d.getMonth() === 2 && d.getDate() === 7);
+            const y = d.getFullYear();
+            const m = d.getMonth();
+            const day = d.getDate();
             
-            if (isAgendaDate) {
+            if (y === 2026 && m === 2 && day === 7) {
                 agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
+                agendaBtn.classList.remove('hidden');
+                agendaBtn.classList.add('flex');
+            } else if (y === 2026 && m === 2 && day === 21) {
+                agendaBtn.href = "https://drive.google.com/file/d/1jp9nwElsW2vMXalx3cXZMecV2_BRUxBv/view?usp=sharing";
                 agendaBtn.classList.remove('hidden');
                 agendaBtn.classList.add('flex');
             } else {
