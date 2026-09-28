@@ -1,0 +1,32 @@
+name: Actualizar Calendario de la Tropa 808
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-calendar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generar JSON del Calendario
+        run: |
+          node build-calendar.js
+
+      - name: Guardar y Push de events.json
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add events.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "update: actualización automática de eventos del calendario" && git push)
