@@ -114,7 +114,6 @@
             opacity: 0.1;
         }
 
-        /* Clases utilitarias para animaciones al hacer scroll (Mobile First - De abajo hacia arriba) */
         .reveal-right, .reveal-left, .reveal-bottom {
             opacity: 0;
             transform: translateY(50px);
@@ -126,7 +125,6 @@
             transform: translate(0, 0) !important;
         }
 
-        /* En Desktop (PC) respetamos la animación lateral original */
         @media (min-width: 768px) {
             .reveal-right {
                 transform: translateX(100px);
@@ -147,7 +145,6 @@
 </head>
 <body>
 
-    <!-- Navegación -->
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('main')">
@@ -186,7 +183,6 @@
         </div>
     </nav>
 
-    <!-- VISTA PRINCIPAL -->
     <main id="main-view" class="flex flex-col overflow-hidden">
         <!-- Hero Section -->
         <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 order-1 scroll-reveal reveal-left">
@@ -208,7 +204,6 @@
             </div>
         </header>
 
-        <!-- Bitácora (RELATOS DE EXPEDICIÓN) -->
         <section id="blog" class="py-24 bg-white order-2">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal reveal-bottom">
@@ -220,7 +215,6 @@
                 </div>
 
                 <div id="relatos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- ARTÍCULO 1 - Izquierda -->
                     <article class="group scroll-reveal reveal-left">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://lh3.googleusercontent.com/d/1Z-B_ZrqbUD162ijZkV6RUT_DxcyXjQ3J" alt="El Baúl de los Recuerdos Tropa 808" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
@@ -232,7 +226,6 @@
                         <a href="https://tropa808.blogspot.com/2011/" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Visitar Blog <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 2 - Abajo a Arriba -->
                     <article class="group scroll-reveal reveal-bottom">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://lh3.googleusercontent.com/d/1jSEM9VcuZSXgt2K1mqwQddY5LQdj3Iwt" alt="Tropa 808 en Caminata con Flecha de Luz" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
@@ -244,7 +237,6 @@
                         <a href="javascript:void(0)" onclick="switchView('caminata-plan')" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver Plan <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 3 - Derecha -->
                     <article class="group scroll-reveal reveal-right">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://photos.zeepuertorico.com/OROCOVIS-JAYUYA-JUANA%20D%C3%8DAZ-Bosque%20Estatal%20de%20Toro%20Negro%5EP1030411-BIG.jpg" alt="Caminata de los Scouts en el Bosque Estatal Toro Negro" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
@@ -256,7 +248,6 @@
                         <a href="https://youtu.be/NL5QVFGtXrQ" target="_blank" class="text-orange-600 font-bold text-xs uppercase tracking-widest flex items-center">Ver en YouTube <i class="fas fa-arrow-right ml-2"></i></a>
                     </article>
 
-                    <!-- ARTÍCULO 4 (Extra) -->
                     <article class="group scroll-reveal reveal-left">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <img src="https://www.primerahora.com/pf/api/v3/content/fetch/image-resizer-v1?query=%7B%22website%22%3A%22primera-hora%22%2C%22imageUrl%22%3A%22https%3A%2F%2Farc-anglerfish-arc2-prod-gfrmedia.s3.amazonaws.com%2Fpublic%2FVSPXEF4ZSVHSFHBMRQLYFCB2K4.jpg%22%2C%22width%22%3A1200%2C%22height%22%3A675%2C%22redirect%22%3A%221%22%2C%22external%22%3A%221%22%7D" alt="Homenaje a Walter Murray Tropa 808" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700" referrerpolicy="no-referrer">
@@ -269,7 +260,6 @@
                     </article>
                 </div>
 
-                <!-- Contenedor del Botón Ver Más -->
                 <div id="ver-mas-container" class="hidden mt-12 text-center scroll-reveal reveal-bottom">
                     <button onclick="toggleRelatos()" id="btn-ver-mas" class="bg-indigo-50 text-indigo-950 border border-indigo-100 px-8 py-3.5 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-indigo-950 hover:text-white transition shadow-sm flex items-center justify-center mx-auto">
                         Ver más relatos <i class="fas fa-chevron-down ml-2"></i>
@@ -278,7 +268,6 @@
             </div>
         </section>
 
-        <!-- Galería (MOMENTOS 808) -->
         <section id="galeria" class="py-24 bg-indigo-950 text-white order-3 scroll-reveal reveal-right">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center mb-12">
@@ -306,11 +295,9 @@
             </div>
         </section>
 
-        <!-- Formulario de Contacto / Inscripción (Aparece justo después de Momentos 808) -->
         <section id="contacto" class="py-16 order-4 scroll-reveal reveal-left">
             <div class="max-w-3xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-                    <!-- Columna de contacto morada -->
                     <div class="bg-indigo-900 text-white p-8 md:w-5/12 flex flex-col justify-between relative overflow-hidden text-center">
                         <div>
                             <h4 class="text-2xl font-brand mb-4 uppercase">ÚNETE A LA RUTA</h4>
@@ -322,7 +309,6 @@
                         </div>
 
                         <div class="space-y-6 mt-4">
-                            <!-- Localización -->
                             <div>
                                 <span class="block text-[10px] font-bold text-orange-400 uppercase tracking-widest mb-2">Localización</span>
                                 <div class="space-y-2">
@@ -336,7 +322,6 @@
                         </div>
                     </div>
                     
-                    <!-- Columna de enlace blanca -->
                     <div class="p-8 md:p-10 md:w-7/12 flex flex-col justify-center items-center text-center">
                         <div class="mb-6">
                             <h4 class="text-xl font-bold text-indigo-950 mb-2">Inscripción Oficial</h4>
@@ -349,9 +334,7 @@
         </section>
     </main>
 
-    <!-- VISTA CONOCE MÁS -->
     <div id="conoce-mas-view" class="hidden min-h-screen bg-white pt-20">
-        <!-- Barra de navegación superior para volver -->
         <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 md:px-6 py-3 md:py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
                 <button onclick="switchView('main')" class="flex items-center text-[10px] md:text-xs font-bold text-slate-500 hover:text-orange-600 transition uppercase tracking-widest bg-slate-50 px-3 md:px-4 py-2 rounded-lg border border-slate-200">
@@ -361,7 +344,6 @@
             </div>
         </div>
 
-        <!-- Carta Bienvenida -->
         <section class="relative min-h-[75vh] md:h-[70vh] flex items-center justify-center bg-indigo-950 py-16 md:py-0 overflow-hidden scroll-reveal reveal-right">
             <div class="absolute inset-0 bg-pattern opacity-10"></div>
             <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
@@ -383,7 +365,6 @@
             </div>
         </section>
 
-        <!-- Misión y Valores -->
         <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
             <div class="absolute -top-40 -right-40 w-72 md:w-96 h-72 md:h-96 bg-orange-100 rounded-full blur-3xl opacity-50"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
@@ -429,12 +410,10 @@
             </div>
         </section>
 
-        <!-- Historia y Orígenes -->
         <section class="py-16 md:py-24 bg-white relative overflow-hidden scroll-reveal reveal-left">
             <div class="absolute left-0 top-0 w-1/2 h-full bg-indigo-50/30 rounded-r-[200px] -z-10 hidden lg:block"></div>
             <div class="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
                 <div class="flex flex-col items-center text-center">
-
                     <span class="text-orange-600 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3 block flex items-center justify-center"><i class="fas fa-history mr-2"></i> Orígenes</span>
                     <h3 class="text-3xl sm:text-4xl md:text-6xl font-brand text-indigo-950 mb-8 md:mb-10 leading-none">¿QUIÉNES <span class="text-indigo-600">SOMOS?</span></h3>
                     
@@ -461,7 +440,6 @@
             </div>
         </section>
 
-        <!-- Identidad Visual -->
         <section class="py-16 md:py-24 bg-indigo-950 text-white relative">
             <div class="absolute inset-0 bg-pattern opacity-10"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
@@ -518,7 +496,6 @@
             </div>
         </section>
 
-        <!-- Actividades / Foto -->
         <section class="py-16 md:py-32 relative bg-scroll md:bg-fixed bg-center bg-cover border-b-8 border-orange-600 scroll-reveal reveal-right" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80');">
             <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
             <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
@@ -556,7 +533,6 @@
         </section>
     </div>
 
-    <!-- VISTA DOCUMENTOS (RECURSOS) -->
     <section id="docs-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16 scroll-reveal reveal-right">
@@ -638,7 +614,6 @@
         </div>
     </section>
 
-    <!-- VISTA INSIGNIA DE MÉRITO -->
     <section id="insignia-view" class="hidden pt-32 pb-24 bg-slate-50 min-h-screen">
         <div class="max-w-4xl mx-auto px-6">
             <button onclick="switchView('docs')" class="mb-10 flex items-center text-xs font-bold text-slate-500 hover:text-orange-600 transition uppercase tracking-widest">
@@ -811,7 +786,6 @@
         </div>
     </section>
 
-    <!-- VISTA PLAN DE CAMINATA PREMIUM -->
     <div id="caminata-plan-view" class="hidden min-h-screen bg-slate-50 pt-20">
         <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 md:px-6 py-3 md:py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -913,7 +887,6 @@
         </section>
     </div>
 
-    <!-- VISTA AGENDA -->
     <div id="agenda-view" class="hidden min-h-screen bg-slate-50 pb-24 pt-20">
         <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 md:px-6 py-3 md:py-4 shadow-sm">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -979,7 +952,6 @@
                 </div>
             </div>
 
-            <!-- Panel de Sincronización -->
             <div class="bg-indigo-50 border-2 border-indigo-100 rounded-3xl p-6 text-center shadow-inner max-w-2xl mx-auto">
                 <h4 id="sync-title" class="text-lg font-brand text-indigo-950 mb-2"><i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza tu Agenda</h4>
                 <p class="text-xs text-slate-500 mb-6 font-medium">
@@ -1016,7 +988,6 @@
         </div>
     </div>
 
-    <!-- Footer con degradado Scout -->
     <footer class="bg-scout-gradient text-white py-20 px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-pattern"></div>
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-12 relative z-10">
@@ -1123,7 +1094,6 @@
             }
         }
 
-        // --- INTEGRACIÓN OFICIAL DE GOOGLE CALENDAR OPTIMIZADA ---
         window.filterGoogleCalendar = (type) => {
             currentCalendarFilter = type || 'todos';
             updateCalendarDisplay(true); // Recargar iFrames cuando cambia la categoría
@@ -1195,8 +1165,9 @@
             if (currentCalendarFilter === 'oa') selectedSources = srcOA;
             if (currentCalendarFilter === 'distrito') selectedSources = srcDistrito;
 
-            const baseAgendaUrl = `https://calendar.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es&wkst=1&bgcolor=%23ffffff${selectedSources}`;
-            const baseMonthUrl = `https://calendar.google.com/calendar/embed?mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es&wkst=1&bgcolor=%23ffffff${selectedSources}`;
+            // Formato 12 horas AM/PM asegurado especificando el idioma es-419 (Latinoamérica) y la zona horaria America/Puerto_Rico
+            const baseAgendaUrl = `https://calendar.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es-419&ctz=America%2FPuerto_Rico${selectedSources}`;
+            const baseMonthUrl = `https://calendar.google.com/calendar/embed?mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es-419&ctz=America%2FPuerto_Rico${selectedSources}`;
 
             // Precargar o actualizar iFrames cuando cambia la categoría
             if (filterChanged || iframeAgenda.src !== baseAgendaUrl) {
@@ -1260,7 +1231,6 @@
             }
         }
 
-        // --- ANIMACIONES DE SCROLL ---
         window.revealElements = () => {
             const reveals = document.querySelectorAll('.scroll-reveal');
             const windowHeight = window.innerHeight;
@@ -1282,7 +1252,6 @@
             }
         });
 
-        // --- NAVEGACIÓN ---
         window.switchView = (v) => {
             const menu = document.getElementById('mobile-menu');
             if(menu) menu.classList.remove('active');
@@ -1351,7 +1320,6 @@
             if (mobileMenu) mobileMenu.classList.remove('active');
         });
 
-        // --- GALERÍA / LIGHTBOX ---
         const galleryImages = [
             "https://lh3.googleusercontent.com/d/1Ki7G_Ctx5589PBCSPHmpIL9Miz5DYkCo",
             "https://lh3.googleusercontent.com/d/1Rt9i2-rrZrGoqFChKSQCOS9LfiiSSrIg",
@@ -1387,7 +1355,6 @@
             openLightbox(currentPhotoIndex);
         };
 
-        // --- MANEJO DE RELATOS Y VISTAS (BITÁCORA) ---
         function initRelatos() {
             const grid = document.getElementById('relatos-grid');
             if (!grid) return;
