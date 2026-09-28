@@ -1,0 +1,1260 @@
+[
+  {
+    "title": "Retorno OA",
+    "source": "oa",
+    "start": "2026-02-27",
+    "end": "2026-03-02",
+    "allDay": true,
+    "y": 2026,
+    "m": 1,
+    "d": 27,
+    "comp": 1772150400000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Parque del Norte en Hatillo",
+      "description": ""
+    }
+  },
+  {
+    "title": "Caminata Monagas",
+    "source": "tropa",
+    "start": "2026-02-28",
+    "end": "2026-03-01",
+    "allDay": true,
+    "y": 2026,
+    "m": 1,
+    "d": 28,
+    "comp": 1772236800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Parque Nacional Julio E. Monagas",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase A/Violeta)",
+    "source": "tropa",
+    "start": "2026-03-07T09:00:00",
+    "end": "2026-03-07T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 2,
+    "d": 7,
+    "comp": 1772874000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase B/Anaranjado)",
+    "source": "tropa",
+    "start": "2026-03-14T09:00:00",
+    "end": "2026-03-14T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 2,
+    "d": 14,
+    "comp": 1773478800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": ""
+    }
+  },
+  {
+    "title": "Mesa Redonda",
+    "source": "distrito",
+    "start": "2026-03-17T19:00:00",
+    "end": "2026-03-17T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 2,
+    "d": 17,
+    "comp": 1773774000000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Virtual",
+      "description": ""
+    }
+  },
+  {
+    "title": "Brotherhood",
+    "source": "oa",
+    "start": "2026-03-21",
+    "end": "2026-03-23",
+    "allDay": true,
+    "y": 2026,
+    "m": 2,
+    "d": 21,
+    "comp": 1774051200000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase B/Verde)",
+    "source": "tropa",
+    "start": "2026-03-21T09:00:00",
+    "end": "2026-03-21T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 2,
+    "d": 21,
+    "comp": 1774083600000,
+    "backgroundColor": "#16a34a",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": "Conferencia de SM / Reunión de Padres"
+    }
+  },
+  {
+    "title": "Cruce de Puente - Manada 808",
+    "source": "tropa",
+    "start": "2026-03-28",
+    "end": "2026-03-29",
+    "allDay": true,
+    "y": 2026,
+    "m": 2,
+    "d": 28,
+    "comp": 1774656000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "La Casita de la Manada 808",
+      "description": "La Tropa llegara a las 9:00 y estaremos trabajando en el puente y la fogata hasta las 3:00p.m. Luego nos iremos a nuestras casas a asearnos y regresaremos a las 5:30p.m."
+    }
+  },
+  {
+    "title": "Casa Abierta (Clase A)",
+    "source": "tropa",
+    "start": "2026-04-04",
+    "end": "2026-04-05",
+    "allDay": true,
+    "y": 2026,
+    "m": 3,
+    "d": 4,
+    "comp": 1775260800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Plaza las Americas",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase A/Violeta)",
+    "source": "tropa",
+    "start": "2026-04-11T09:00:00",
+    "end": "2026-04-11T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 3,
+    "d": 11,
+    "comp": 1775898000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": "Corte de Honor/ Reunión del Comité"
+    }
+  },
+  {
+    "title": "Mesa Redonda D6",
+    "source": "distrito",
+    "start": "2026-04-14T19:00:00",
+    "end": "2026-04-14T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 3,
+    "d": 14,
+    "comp": 1776193200000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Virtual",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase B/Anaranjado)",
+    "source": "tropa",
+    "start": "2026-04-18T09:00:00",
+    "end": "2026-04-18T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 3,
+    "d": 18,
+    "comp": 1776502800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": "Reunión de Padres / Junta de Repaso"
+    }
+  },
+  {
+    "title": "Jamborette Conciliar",
+    "source": "tropa",
+    "start": "2026-04-24",
+    "end": "2026-04-27",
+    "allDay": true,
+    "y": 2026,
+    "m": 3,
+    "d": 24,
+    "comp": 1776988800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Parque Nacional Balneario Boquerón\\, Av. Parque Nacional\\, Cabo Rojo 00622\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión del Capítulo Majagua",
+    "source": "oa",
+    "start": "2026-04-29T18:30:00",
+    "end": "2026-04-29T20:30:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 3,
+    "d": 29,
+    "comp": 1777487400000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Club de Leones de Bayamón\\, River Side Condominio Riverside Plaza 71\\, 74 Cll Santa Cruz\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase A/Violeta)",
+    "source": "tropa",
+    "start": "2026-05-02T09:00:00",
+    "end": "2026-05-02T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 2,
+    "comp": 1777712400000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular  (Clase B/Anaranjado)",
+    "source": "tropa",
+    "start": "2026-05-09T09:00:00",
+    "end": "2026-05-09T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 9,
+    "comp": 1778317200000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": "Día de las Madres"
+    }
+  },
+  {
+    "title": "Mesa Redonda",
+    "source": "distrito",
+    "start": "2026-05-12T19:30:00",
+    "end": "2026-05-12T20:30:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 12,
+    "comp": 1778614200000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Virtual",
+      "description": ""
+    }
+  },
+  {
+    "title": "Expedicion Mural de Zama",
+    "source": "tropa",
+    "start": "2026-05-16",
+    "end": "2026-05-17",
+    "allDay": true,
+    "y": 2026,
+    "m": 4,
+    "d": 16,
+    "comp": 1778889600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Se estara coordinando carpool"
+    }
+  },
+  {
+    "title": "5K Kilometros de Cambio (Clase A)",
+    "source": "tropa",
+    "start": "2026-05-17T11:00:00",
+    "end": "2026-05-17T15:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 17,
+    "comp": 1779015600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "paseo lineal\\, Entrada por Santa Rosa",
+      "description": "Todos los Scouts de la Tropa 808 recibiran a los corredores en el paseo lineal."
+    }
+  },
+  {
+    "title": "Llamado Capitular",
+    "source": "oa",
+    "start": "2026-05-20T18:30:00",
+    "end": "2026-05-20T20:30:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 20,
+    "comp": 1779301800000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Club de Leones de Bayamón\\, River Side Condominio Riverside Plaza 71\\, 74 Cll Santa Cruz\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "1ra Ordalía",
+    "source": "oa",
+    "start": "2026-05-22",
+    "end": "2026-05-25",
+    "allDay": true,
+    "y": 2026,
+    "m": 4,
+    "d": 22,
+    "comp": 1779408000000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Casa Abierta (Clase A)",
+    "source": "tropa",
+    "start": "2026-05-30T09:25:00",
+    "end": "2026-05-30T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 4,
+    "d": 30,
+    "comp": 1780133100000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Conclave E-17",
+    "source": "oa",
+    "start": "2026-06-05",
+    "end": "2026-06-08",
+    "allDay": true,
+    "y": 2026,
+    "m": 5,
+    "d": 5,
+    "comp": 1780617600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Forestburg Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase A - Violeta)",
+    "source": "tropa",
+    "start": "2026-06-06T09:25:00",
+    "end": "2026-06-06T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 5,
+    "d": 6,
+    "comp": 1780737900000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Natación (Anaranjado)",
+    "source": "tropa",
+    "start": "2026-06-13",
+    "end": "2026-06-14",
+    "allDay": true,
+    "y": 2026,
+    "m": 5,
+    "d": 13,
+    "comp": 1781308800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Balneario del Escambron",
+      "description": ""
+    }
+  },
+  {
+    "title": "Mesa Redonda",
+    "source": "distrito",
+    "start": "2026-06-16T19:00:00",
+    "end": "2026-06-16T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 5,
+    "d": 16,
+    "comp": 1781636400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Virtual",
+      "description": ""
+    }
+  },
+  {
+    "title": "Noche Infinita",
+    "source": "tropa",
+    "start": "2026-06-20",
+    "end": "2026-06-21",
+    "allDay": true,
+    "y": 2026,
+    "m": 5,
+    "d": 20,
+    "comp": 1781913600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Expedicion de Alta Aventura",
+    "source": "tropa",
+    "start": "2026-06-23",
+    "end": "2026-07-10",
+    "allDay": true,
+    "y": 2026,
+    "m": 5,
+    "d": 23,
+    "comp": 1782172800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Philmont Scout Ranch\\, New Mexico 87714\\, EE. UU.",
+      "description": ""
+    }
+  },
+  {
+    "title": "Campamento Guajataka",
+    "source": "tropa",
+    "start": "2026-07-19",
+    "end": "2026-07-26",
+    "allDay": true,
+    "y": 2026,
+    "m": 6,
+    "d": 19,
+    "comp": 1784419200000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation\\, 93CJ+4V\\, PR-119 Km 23.9\\, San Sebastián\\, 00669\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "2da Ordalía OA",
+    "source": "oa",
+    "start": "2026-08-07",
+    "end": "2026-08-10",
+    "allDay": true,
+    "y": 2026,
+    "m": 7,
+    "d": 7,
+    "comp": 1786060800000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Adiestramiento  de Líderes",
+    "source": "tropa",
+    "start": "2026-08-08",
+    "end": "2026-08-09",
+    "allDay": true,
+    "y": 2026,
+    "m": 7,
+    "d": 8,
+    "comp": 1786147200000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": "Preparación del Calendario"
+    }
+  },
+  {
+    "title": "Reunión Regular (Clase A/Violeta)",
+    "source": "tropa",
+    "start": "2026-08-15T09:00:00",
+    "end": "2026-08-15T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 7,
+    "d": 15,
+    "comp": 1786784400000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney",
+      "description": "Conferencia de  SM /                                    15 /Junta de Repaso/Reunión del Comité"
+    }
+  },
+  {
+    "title": "Mesa Redonda  D6",
+    "source": "distrito",
+    "start": "2026-08-18T19:00:00",
+    "end": "2026-08-18T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 7,
+    "d": 18,
+    "comp": 1787079600000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular (ClaseB/Anaranjado)",
+    "source": "tropa",
+    "start": "2026-08-22T09:00:00",
+    "end": "2026-08-22T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 7,
+    "d": 22,
+    "comp": 1787389200000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": "Reunión de Padres"
+    }
+  },
+  {
+    "title": "Corte de Honor de Aguila",
+    "source": "tropa",
+    "start": "2026-08-29",
+    "end": "2026-08-30",
+    "allDay": true,
+    "y": 2026,
+    "m": 7,
+    "d": 29,
+    "comp": 1787961600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808",
+      "description": ""
+    }
+  },
+  {
+    "title": "3ra Ordalía",
+    "source": "oa",
+    "start": "2026-09-18",
+    "end": "2026-09-21",
+    "allDay": true,
+    "y": 2026,
+    "m": 8,
+    "d": 18,
+    "comp": 1789689600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Brotherhood",
+    "source": "oa",
+    "start": "2026-09-19T00:00:00",
+    "end": "2026-09-21T00:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 8,
+    "d": 19,
+    "comp": 1789776000000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase A/Víoleta / Corte de Honor",
+    "source": "tropa",
+    "start": "2026-10-03T09:00:00",
+    "end": "2026-10-03T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 3,
+    "comp": 1791018000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Pionerismo"
+    }
+  },
+  {
+    "title": "Wood Badge 1",
+    "source": "distrito",
+    "start": "2026-10-09T17:00:00",
+    "end": "2026-10-11T14:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 9,
+    "comp": 1791565200000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": "Adiestramiento de Liderazgo"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase B/Anaranjada",
+    "source": "tropa",
+    "start": "2026-10-10T09:00:00",
+    "end": "2026-10-10T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 10,
+    "comp": 1791622800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Pionerismo"
+    }
+  },
+  {
+    "title": "D1: Reunión Distrito",
+    "source": "distrito",
+    "start": "2026-10-13T19:00:00",
+    "end": "2026-10-13T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 13,
+    "comp": 1791918000000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Distrito",
+      "description": "Reunión de Distrito"
+    }
+  },
+  {
+    "title": "JOTA-JOTI (Jamboree On The Air / On The Internet)",
+    "source": "distrito",
+    "start": "2026-10-16T17:00:00",
+    "end": "2026-10-18T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 16,
+    "comp": 1792170000000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Distrito",
+      "description": "Evento Internacional de Comunicaciones"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase B/Verde / Reunión de Padres",
+    "source": "tropa",
+    "start": "2026-10-17T09:00:00",
+    "end": "2026-10-17T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 17,
+    "comp": 1792227600000,
+    "backgroundColor": "#16a34a",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Pionerismo"
+    }
+  },
+  {
+    "title": "Mesa Redonda D1",
+    "source": "distrito",
+    "start": "2026-10-20T19:00:00",
+    "end": "2026-10-20T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 20,
+    "comp": 1792522800000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito"
+    }
+  },
+  {
+    "title": "Campamento de Pioneering",
+    "source": "tropa",
+    "start": "2026-10-23T17:00:00",
+    "end": "2026-10-25T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 23,
+    "comp": 1792774800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Campamento de Tropa y Guateke OA"
+    }
+  },
+  {
+    "title": "Guateke OA",
+    "source": "oa",
+    "start": "2026-10-23T17:00:00",
+    "end": "2026-10-25T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 23,
+    "comp": 1792774800000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Guateke OA"
+    }
+  },
+  {
+    "title": "Reunión Capítulo Majagua OA",
+    "source": "oa",
+    "start": "2026-10-27T19:00:00",
+    "end": "2026-10-27T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 27,
+    "comp": 1793127600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "OA"
+    }
+  },
+  {
+    "title": "D1: Reunión Comisionados",
+    "source": "distrito",
+    "start": "2026-10-27T19:00:00",
+    "end": "2026-10-27T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 27,
+    "comp": 1793127600000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Comisionados y OA"
+    }
+  },
+  {
+    "title": "Reunión Comité",
+    "source": "tropa",
+    "start": "2026-10-30T19:00:00",
+    "end": "2026-10-30T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 30,
+    "comp": 1793386800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Reunión Administrativa"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase C/Negra / Conferencia SM / Junta de Repaso",
+    "source": "tropa",
+    "start": "2026-10-31T09:00:00",
+    "end": "2026-10-31T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 31,
+    "comp": 1793437200000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Pionerismo"
+    }
+  },
+  {
+    "title": "Wood Badge 2",
+    "source": "distrito",
+    "start": "2026-11-06T17:00:00",
+    "end": "2026-11-08T14:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 6,
+    "comp": 1793984400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation",
+      "description": "Adiestramiento de Liderazgo"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase A/Víoleta / Corte de Honor / Conferencia SM",
+    "source": "tropa",
+    "start": "2026-11-07T09:00:00",
+    "end": "2026-11-07T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 7,
+    "comp": 1794042000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase B/Anaranjado / Junta de Repaso / Reunión de Padres",
+    "source": "tropa",
+    "start": "2026-11-14T09:00:00",
+    "end": "2026-11-14T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 14,
+    "comp": 1794646800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Capítulo Majagua OA",
+    "source": "oa",
+    "start": "2026-11-17T19:00:00",
+    "end": "2026-11-17T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 17,
+    "comp": 1794942000000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "OA"
+    }
+  },
+  {
+    "title": "Mesa Redonda D1",
+    "source": "distrito",
+    "start": "2026-11-17T19:00:00",
+    "end": "2026-11-17T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 17,
+    "comp": 1794942000000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito y OA"
+    }
+  },
+  {
+    "title": "Paddle Boarding Award",
+    "source": "tropa",
+    "start": "2026-11-21T08:00:00",
+    "end": "2026-11-22T14:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 21,
+    "comp": 1795248000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Actividad Acuática"
+    }
+  },
+  {
+    "title": "D1: Reunión Comisionados",
+    "source": "distrito",
+    "start": "2026-11-24T19:00:00",
+    "end": "2026-11-24T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 24,
+    "comp": 1795546800000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Comisionados"
+    }
+  },
+  {
+    "title": "Vigilia de Honor",
+    "source": "oa",
+    "start": "2026-11-27",
+    "end": "2026-11-29",
+    "allDay": true,
+    "y": 2026,
+    "m": 10,
+    "d": 27,
+    "comp": 1795737600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Guajataka Scout Reservation\\, 93CJ+4V\\, PR-119 Km 23.9\\, San Sebastián\\, 00669\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Lodge Induction Experience",
+    "source": "oa",
+    "start": "2026-12-04",
+    "end": "2026-12-07",
+    "allDay": true,
+    "y": 2026,
+    "m": 11,
+    "d": 4,
+    "comp": 1796342400000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": ""
+    }
+  },
+  {
+    "title": "Adiestramiento de Nueva Inducción OA / Convención OA",
+    "source": "oa",
+    "start": "2026-12-04T17:00:00",
+    "end": "2026-12-06T14:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 4,
+    "comp": 1796403600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Evento de Orden de la Flecha"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase A/Víoleta / Corte de Honor / Reunión de Padres",
+    "source": "tropa",
+    "start": "2026-12-05T09:00:00",
+    "end": "2026-12-05T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 5,
+    "comp": 1796461200000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Alta Aventura"
+    }
+  },
+  {
+    "title": "Convención",
+    "source": "oa",
+    "start": "2026-12-06",
+    "end": "2026-12-07",
+    "allDay": true,
+    "y": 2026,
+    "m": 11,
+    "d": 6,
+    "comp": 1796515200000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": ""
+    }
+  },
+  {
+    "title": "D1: Reunión Distrito",
+    "source": "distrito",
+    "start": "2026-12-08T19:00:00",
+    "end": "2026-12-08T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 8,
+    "comp": 1796756400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito"
+    }
+  },
+  {
+    "title": "Fiesta de Navidad Tropa 808",
+    "source": "tropa",
+    "start": "2026-12-12T16:00:00",
+    "end": "2026-12-12T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 12,
+    "comp": 1797091200000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Celebración de Navidad"
+    }
+  },
+  {
+    "title": "Reunión Capítulo Majagua OA",
+    "source": "oa",
+    "start": "2026-12-15T19:00:00",
+    "end": "2026-12-15T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 15,
+    "comp": 1797361200000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito y OA"
+    }
+  },
+  {
+    "title": "Mesa Redonda D1",
+    "source": "distrito",
+    "start": "2026-12-15T19:00:00",
+    "end": "2026-12-15T21:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 15,
+    "comp": 1797361200000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito y OA"
+    }
+  },
+  {
+    "title": "PLC - Planificación Calendario 6 Meses / Adiestramiento de Líderes",
+    "source": "tropa",
+    "start": "2027-01-09T08:30:00",
+    "end": "2027-01-09T14:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 9,
+    "comp": 1799483400000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Planificación de Tropa"
+    }
+  },
+  {
+    "title": "Reunión Capítulo Majagua OA",
+    "source": "oa",
+    "start": "2027-01-12T19:00:00",
+    "end": "2027-01-12T21:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 12,
+    "comp": 1799780400000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito y OA"
+    }
+  },
+  {
+    "title": "Mesa Redonda D1",
+    "source": "distrito",
+    "start": "2027-01-12T19:00:00",
+    "end": "2027-01-12T21:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 12,
+    "comp": 1799780400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Distrito y OA"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase A/Víoleta",
+    "source": "tropa",
+    "start": "2027-01-16T09:00:00",
+    "end": "2027-01-16T12:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 16,
+    "comp": 1800090000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Adelanto"
+    }
+  },
+  {
+    "title": "D1: Reunión Comisionados",
+    "source": "distrito",
+    "start": "2027-01-19T19:00:00",
+    "end": "2027-01-19T21:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 19,
+    "comp": 1800385200000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Reunión de Comisionados"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase C/Verde / Reunión de Padres / Conf. SM / Junta de Repaso",
+    "source": "tropa",
+    "start": "2027-01-23T09:00:00",
+    "end": "2027-01-23T12:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 23,
+    "comp": 1800694800000,
+    "backgroundColor": "#16a34a",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Adelanto"
+    }
+  },
+  {
+    "title": "Seminario Liderato OA",
+    "source": "oa",
+    "start": "2027-01-24T08:00:00",
+    "end": "2027-01-24T16:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 24,
+    "comp": 1800777600000,
+    "backgroundColor": "#dc2626",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Capacitación OA"
+    }
+  },
+  {
+    "title": "Campamento de Adelanto",
+    "source": "tropa",
+    "start": "2027-01-29T17:00:00",
+    "end": "2027-01-31T14:00:00",
+    "allDay": false,
+    "y": 2027,
+    "m": 0,
+    "d": 29,
+    "comp": 1801242000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "",
+      "description": "Campamento de Tropa"
+    }
+  }
+]
