@@ -279,7 +279,7 @@
         </section>
 
         <!-- Galería (MOMENTOS 808) -->
-        <section id="galeria" class="py-24 bg-indigo-950 text-white order-5 scroll-reveal reveal-right">
+        <section id="galeria" class="py-24 bg-indigo-950 text-white order-3 scroll-reveal reveal-right">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center mb-12">
                     <h3 class="text-4xl md:text-5xl font-brand uppercase flex items-center flex-wrap">
@@ -306,7 +306,7 @@
             </div>
         </section>
 
-        <!-- Formulario de Contacto -->
+        <!-- Formulario de Contacto / Inscripción (Aparece justo después de Momentos 808) -->
         <section id="contacto" class="py-16 order-4 scroll-reveal reveal-left">
             <div class="max-w-3xl mx-auto px-6">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
@@ -962,10 +962,20 @@
                 </div>
             </div>
 
-            <!-- Calendario Oficial de Google Integrado -->
+            <!-- Contenedor del Calendario con Doble Iframe para Cambio Ultra-Rápido -->
             <div class="bg-white p-2 md:p-4 rounded-3xl shadow-2xl border border-slate-100 mb-12">
                 <div class="relative w-full h-[550px] md:h-[700px] overflow-hidden rounded-2xl bg-slate-50">
-                    <iframe id="google-calendar-iframe" class="absolute top-0 left-0 w-full h-full border-0" frameborder="0" scrolling="no"></iframe>
+                    <!-- Spinner Suave para transiciones de categoría -->
+                    <div id="calendar-loading" class="absolute inset-0 bg-white/90 backdrop-blur-sm z-20 flex flex-col items-center justify-center transition-opacity duration-300 opacity-0 pointer-events-none">
+                        <div class="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+                        <span class="text-[11px] font-bold text-indigo-950 uppercase tracking-widest">Cargando Calendario...</span>
+                    </div>
+
+                    <!-- Iframe Modo Agenda (Precargado) -->
+                    <iframe id="google-calendar-iframe-agenda" class="absolute top-0 left-0 w-full h-full border-0 transition-opacity duration-300" frameborder="0" scrolling="no"></iframe>
+                    
+                    <!-- Iframe Modo Mes (Precargado) -->
+                    <iframe id="google-calendar-iframe-month" class="absolute top-0 left-0 w-full h-full border-0 transition-opacity duration-300 hidden" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
 
@@ -1094,8 +1104,161 @@
 
         window.setCalendarViewMode = (mode) => {
             userSelectedViewMode = mode;
-            filterGoogleCalendar(currentCalendarFilter);
+            updateCalendarDisplay(false); // Transición ultra-rápida entre Agenda y Mes sin recargar
         };
+
+        function showCalendarLoading() {
+            const loader = document.getElementById('calendar-loading');
+            if (loader) {
+                loader.classList.remove('opacity-0', 'pointer-events-none');
+                loader.classList.add('opacity-100');
+            }
+        }
+
+        function hideCalendarLoading() {
+            const loader = document.getElementById('calendar-loading');
+            if (loader) {
+                loader.classList.remove('opacity-100');
+                loader.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // --- INTEGRACIÓN OFICIAL DE GOOGLE CALENDAR OPTIMIZADA ---
+        window.filterGoogleCalendar = (type) => {
+            currentCalendarFilter = type || 'todos';
+            updateCalendarDisplay(true); // Recargar iFrames cuando cambia la categoría
+        };
+
+        function updateCalendarDisplay(filterChanged = false) {
+            const btnTodos = document.getElementById('btn-filtro-todos');
+            const btnTropa = document.getElementById('btn-filtro-tropa');
+            const btnOa = document.getElementById('btn-filtro-oa');
+            const btnDistrito = document.getElementById('btn-filtro-distrito');
+
+            const iframeAgenda = document.getElementById('google-calendar-iframe-agenda');
+            const iframeMonth = document.getElementById('google-calendar-iframe-month');
+
+            if (!iframeAgenda || !iframeMonth) return;
+
+            // Determinar el modo de vista activo
+            const effectiveMode = userSelectedViewMode || (isMobileDevice() ? "AGENDA" : "MONTH");
+
+            // Actualizar apariencia de los botones de modo de vista
+            const btnAgenda = document.getElementById('btn-vista-agenda');
+            const btnMes = document.getElementById('btn-vista-mes');
+            if (btnAgenda && btnMes) {
+                if (effectiveMode === 'AGENDA') {
+                    btnAgenda.className = "bg-orange-600 text-white px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-1.5";
+                    btnMes.className = "bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition shadow-sm flex items-center gap-1.5";
+                } else {
+                    btnMes.className = "bg-orange-600 text-white px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-1.5";
+                    btnAgenda.className = "bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition shadow-sm flex items-center gap-1.5";
+                }
+            }
+
+            // Actualizar estilos de botones de categoría
+            [btnTodos, btnTropa, btnOa, btnDistrito].forEach(btn => {
+                if(btn) btn.className = "bg-white border px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-sm hover:scale-105 hover:opacity-80";
+            });
+            if(btnTodos) btnTodos.classList.add('text-indigo-900', 'border-indigo-200');
+            if(btnTropa) btnTropa.classList.add('text-indigo-900', 'border-indigo-200');
+            if(btnOa) btnOa.classList.add('text-red-700', 'border-red-200');
+            if(btnDistrito) btnDistrito.classList.add('text-blue-700', 'border-blue-200');
+
+            let activeBtn;
+            if (currentCalendarFilter === 'todos') activeBtn = btnTodos;
+            if (currentCalendarFilter === 'tropa') activeBtn = btnTropa;
+            if (currentCalendarFilter === 'oa') activeBtn = btnOa;
+            if (currentCalendarFilter === 'distrito') activeBtn = btnDistrito;
+
+            if (activeBtn) {
+                if (currentCalendarFilter === 'todos' || currentCalendarFilter === 'tropa') {
+                    activeBtn.classList.replace('bg-white', 'bg-indigo-900');
+                    activeBtn.classList.replace('text-indigo-900', 'text-white');
+                } else if (currentCalendarFilter === 'oa') {
+                    activeBtn.classList.replace('bg-white', 'bg-red-700');
+                    activeBtn.classList.replace('text-red-700', 'text-white');
+                } else if (currentCalendarFilter === 'distrito') {
+                    activeBtn.classList.replace('bg-white', 'bg-blue-700');
+                    activeBtn.classList.replace('text-blue-700', 'text-white');
+                }
+                activeBtn.classList.add('shadow-md');
+            }
+
+            // Fuentes según categoría seleccionada
+            const srcTropa = "&src=troop808pr%40gmail.com&color=%23ea580c";
+            const srcOA = "&src=7803ec765a89e88d9dc72ef1a267b6d4e1b75a32c4cf00820af8bffb5bac2d6f%40group.calendar.google.com&color=%23dc2626";
+            const srcDistrito = "&src=887a472df723b4721b7c9f23649439b2b73bc64a94eb40d4c1e776df955977ba%40group.calendar.google.com&color=%232563eb";
+
+            let selectedSources = srcTropa + srcOA + srcDistrito;
+            if (currentCalendarFilter === 'tropa') selectedSources = srcTropa;
+            if (currentCalendarFilter === 'oa') selectedSources = srcOA;
+            if (currentCalendarFilter === 'distrito') selectedSources = srcDistrito;
+
+            const baseAgendaUrl = `https://calendar.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es&wkst=1&bgcolor=%23ffffff${selectedSources}`;
+            const baseMonthUrl = `https://calendar.google.com/calendar/embed?mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es&wkst=1&bgcolor=%23ffffff${selectedSources}`;
+
+            // Precargar o actualizar iFrames cuando cambia la categoría
+            if (filterChanged || iframeAgenda.src !== baseAgendaUrl) {
+                showCalendarLoading();
+                iframeAgenda.src = baseAgendaUrl;
+                iframeMonth.src = baseMonthUrl;
+
+                const activeIframe = effectiveMode === 'AGENDA' ? iframeAgenda : iframeMonth;
+                activeIframe.onload = () => {
+                    hideCalendarLoading();
+                };
+                setTimeout(hideCalendarLoading, 1200);
+            }
+
+            // Alternar visibilidad al instante (0ms lag)
+            if (effectiveMode === 'AGENDA') {
+                iframeAgenda.classList.remove('hidden');
+                iframeMonth.classList.add('hidden');
+            } else {
+                iframeMonth.classList.remove('hidden');
+                iframeAgenda.classList.add('hidden');
+            }
+
+            // --- Panel de Sincronización ---
+            const syncBtnGoogle = document.getElementById('sync-btn-google');
+            const syncBtnApple = document.getElementById('sync-btn-apple');
+            const syncTitle = document.getElementById('sync-title');
+            const syncWarningTodos = document.getElementById('sync-warning-todos');
+            const syncButtonsContainer = document.getElementById('sync-buttons-container');
+
+            const calIdsEncoded = {
+                tropa: "troop808pr%40gmail.com",
+                oa: "7803ec765a89e88d9dc72ef1a267b6d4e1b75a32c4cf00820af8bffb5bac2d6f%40group.calendar.google.com",
+                distrito: "887a472df723b4721b7c9f23649439b2b73bc64a94eb40d4c1e776df955977ba%40group.calendar.google.com"
+            };
+
+            let selectedCalId = currentCalendarFilter === 'todos' ? calIdsEncoded.tropa : calIdsEncoded[currentCalendarFilter];
+
+            if (syncBtnGoogle && syncBtnApple) {
+                syncBtnGoogle.href = `https://calendar.google.com/calendar/r?cid=${selectedCalId}`;
+                syncBtnApple.href = `webcal://calendar.google.com/calendar/ical/${selectedCalId}/public/basic.ics`;
+            }
+
+            if (currentCalendarFilter === 'todos') {
+                if (syncTitle) syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza tu Agenda`;
+                if (syncButtonsContainer) syncButtonsContainer.classList.add('hidden');
+                if (syncWarningTodos) syncWarningTodos.classList.remove('hidden');
+            } else {
+                if (syncButtonsContainer) syncButtonsContainer.classList.remove('hidden');
+                if (syncWarningTodos) syncWarningTodos.classList.add('hidden');
+
+                if (syncTitle) {
+                    if (currentCalendarFilter === 'tropa') {
+                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza Tropa 808`;
+                    } else if (currentCalendarFilter === 'oa') {
+                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-red-600"></i> Sincroniza O.A.`;
+                    } else if (currentCalendarFilter === 'distrito') {
+                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-blue-600"></i> Sincroniza Distrito`;
+                    }
+                }
+            }
+        }
 
         // --- ANIMACIONES DE SCROLL ---
         window.revealElements = () => {
@@ -1113,10 +1276,9 @@
         
         window.addEventListener('scroll', revealElements);
         window.addEventListener('resize', () => {
-            // Actualizar vista de calendario si cambia orientación o tamaño
             const agenda = document.getElementById('agenda-view');
             if (agenda && !agenda.classList.contains('hidden')) {
-                filterGoogleCalendar(currentCalendarFilter);
+                updateCalendarDisplay(false);
             }
         });
 
@@ -1156,8 +1318,7 @@
             } else if (v === 'agenda') {
                 if(agenda) agenda.classList.remove('hidden');
                 try { window.history.pushState(null, null, '#agenda'); } catch(e) {}
-                // Al abrir la vista de agenda, forzar la vista de Google Calendar correspondiente
-                filterGoogleCalendar(currentCalendarFilter);
+                updateCalendarDisplay(false);
             } else { 
                 main.classList.remove('hidden'); 
                 if (['#recursos', '#insignia', '#conoce-mas', '#plan-caminata', '#agenda', '#calendario'].includes(window.location.hash)) {
@@ -1224,127 +1385,6 @@
         window.nextPhoto = () => {
             currentPhotoIndex = (currentPhotoIndex + 1) % galleryImages.length;
             openLightbox(currentPhotoIndex);
-        };
-
-        // --- INTEGRACIÓN OFICIAL DE GOOGLE CALENDAR ---
-        window.filterGoogleCalendar = (type) => {
-            currentCalendarFilter = type || 'todos';
-
-            const btnTodos = document.getElementById('btn-filtro-todos');
-            const btnTropa = document.getElementById('btn-filtro-tropa');
-            const btnOa = document.getElementById('btn-filtro-oa');
-            const btnDistrito = document.getElementById('btn-filtro-distrito');
-            const iframe = document.getElementById('google-calendar-iframe');
-
-            if(!iframe) return;
-
-            // Determinar el modo de vista efectivo (prioriza la elección explícita del usuario)
-            const effectiveMode = userSelectedViewMode || (isMobileDevice() ? "AGENDA" : "MONTH");
-
-            // Actualizar apariencia de los botones de modo de vista
-            const btnAgenda = document.getElementById('btn-vista-agenda');
-            const btnMes = document.getElementById('btn-vista-mes');
-            if (btnAgenda && btnMes) {
-                if (effectiveMode === 'AGENDA') {
-                    btnAgenda.className = "bg-orange-600 text-white px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-1.5";
-                    btnMes.className = "bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition shadow-sm flex items-center gap-1.5";
-                } else {
-                    btnMes.className = "bg-orange-600 text-white px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-1.5";
-                    btnAgenda.className = "bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition shadow-sm flex items-center gap-1.5";
-                }
-            }
-
-            // Reiniciar estilos de botones de categoría
-            [btnTodos, btnTropa, btnOa, btnDistrito].forEach(btn => {
-                if(btn) btn.className = "bg-white border px-4 py-2 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition shadow-sm hover:scale-105 hover:opacity-80";
-            });
-            if(btnTodos) btnTodos.classList.add('text-indigo-900', 'border-indigo-200');
-            if(btnTropa) btnTropa.classList.add('text-indigo-900', 'border-indigo-200');
-            if(btnOa) btnOa.classList.add('text-red-700', 'border-red-200');
-            if(btnDistrito) btnDistrito.classList.add('text-blue-700', 'border-blue-200');
-
-            let activeBtn;
-            
-            // Construir URL base de Google Calendar con modo explícito
-            const baseUrl = `https://calendar.google.com/calendar/embed?mode=${effectiveMode}&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=es&wkst=1&bgcolor=%23ffffff`;
-            
-            const srcTropa = "&src=troop808pr%40gmail.com&color=%23ea580c";
-            const srcOA = "&src=7803ec765a89e88d9dc72ef1a267b6d4e1b75a32c4cf00820af8bffb5bac2d6f%40group.calendar.google.com&color=%23dc2626";
-            const srcDistrito = "&src=887a472df723b4721b7c9f23649439b2b73bc64a94eb40d4c1e776df955977ba%40group.calendar.google.com&color=%232563eb";
-
-            if(type === 'todos') { 
-                activeBtn = btnTodos; 
-                if(activeBtn) {
-                    activeBtn.classList.replace('bg-white', 'bg-indigo-900'); 
-                    activeBtn.classList.replace('text-indigo-900', 'text-white');
-                }
-                iframe.src = baseUrl + srcTropa + srcOA + srcDistrito;
-            }
-            if(type === 'tropa') { 
-                activeBtn = btnTropa; 
-                if(activeBtn) {
-                    activeBtn.classList.replace('bg-white', 'bg-indigo-900'); 
-                    activeBtn.classList.replace('text-indigo-900', 'text-white');
-                }
-                iframe.src = baseUrl + srcTropa;
-            }
-            if(type === 'oa') { 
-                activeBtn = btnOa; 
-                if(activeBtn) {
-                    activeBtn.classList.replace('bg-white', 'bg-red-700'); 
-                    activeBtn.classList.replace('text-red-700', 'text-white');
-                }
-                iframe.src = baseUrl + srcOA;
-            }
-            if(type === 'distrito') { 
-                activeBtn = btnDistrito; 
-                if(activeBtn) {
-                    activeBtn.classList.replace('bg-white', 'bg-blue-700'); 
-                    activeBtn.classList.replace('text-blue-700', 'text-white');
-                }
-                iframe.src = baseUrl + srcDistrito;
-            }
-            
-            if(activeBtn) activeBtn.classList.add('shadow-md');
-
-            // --- Panel de Sincronización ---
-            const syncBtnGoogle = document.getElementById('sync-btn-google');
-            const syncBtnApple = document.getElementById('sync-btn-apple');
-            const syncTitle = document.getElementById('sync-title');
-            const syncWarningTodos = document.getElementById('sync-warning-todos');
-            const syncButtonsContainer = document.getElementById('sync-buttons-container');
-
-            const calIdsEncoded = {
-                tropa: "troop808pr%40gmail.com",
-                oa: "7803ec765a89e88d9dc72ef1a267b6d4e1b75a32c4cf00820af8bffb5bac2d6f%40group.calendar.google.com",
-                distrito: "887a472df723b4721b7c9f23649439b2b73bc64a94eb40d4c1e776df955977ba%40group.calendar.google.com"
-            };
-
-            let selectedCalId = type === 'todos' ? calIdsEncoded.tropa : calIdsEncoded[type];
-
-            if (syncBtnGoogle && syncBtnApple) {
-                syncBtnGoogle.href = `https://calendar.google.com/calendar/r?cid=${selectedCalId}`;
-                syncBtnApple.href = `webcal://calendar.google.com/calendar/ical/${selectedCalId}/public/basic.ics`;
-            }
-
-            if (type === 'todos') {
-                if (syncTitle) syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza tu Agenda`;
-                if (syncButtonsContainer) syncButtonsContainer.classList.add('hidden');
-                if (syncWarningTodos) syncWarningTodos.classList.remove('hidden');
-            } else {
-                if (syncButtonsContainer) syncButtonsContainer.classList.remove('hidden');
-                if (syncWarningTodos) syncWarningTodos.classList.add('hidden');
-
-                if (syncTitle) {
-                    if (type === 'tropa') {
-                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-indigo-600"></i> Sincroniza Tropa 808`;
-                    } else if (type === 'oa') {
-                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-red-600"></i> Sincroniza O.A.`;
-                    } else if (type === 'distrito') {
-                        syncTitle.innerHTML = `<i class="fas fa-sync-alt mr-2 text-blue-600"></i> Sincroniza Distrito`;
-                    }
-                }
-            }
         };
 
         // --- MANEJO DE RELATOS Y VISTAS (BITÁCORA) ---
