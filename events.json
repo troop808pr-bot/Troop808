@@ -852,13 +852,13 @@
   {
     "title": "Wood Badge 2",
     "source": "distrito",
-    "start": "2026-11-06T17:00:00",
-    "end": "2026-11-08T14:00:00",
+    "start": "2026-11-07T06:00:00",
+    "end": "2026-11-08T17:00:00",
     "allDay": false,
     "y": 2026,
     "m": 10,
-    "d": 6,
-    "comp": 1793984400000,
+    "d": 7,
+    "comp": 1794031200000,
     "backgroundColor": "#2563eb",
     "borderColor": "transparent",
     "extendedProps": {
