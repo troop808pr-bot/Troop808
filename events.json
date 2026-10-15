@@ -748,23 +748,6 @@
     }
   },
   {
-    "title": "Campamento de Pioneering",
-    "source": "tropa",
-    "start": "2026-10-23T17:00:00",
-    "end": "2026-10-25T12:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 9,
-    "d": 23,
-    "comp": 1792774800000,
-    "backgroundColor": "#4c1d95",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Campamento de Tropa y Guateke OA"
-    }
-  },
-  {
     "title": "Guateke OA",
     "source": "oa",
     "start": "2026-10-23T17:00:00",
@@ -779,6 +762,23 @@
     "extendedProps": {
       "location": "",
       "description": "Guateke OA"
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase B",
+    "source": "tropa",
+    "start": "2026-10-24T09:00:00",
+    "end": "2026-10-24T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 24,
+    "comp": 1792832400000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
+      "description": "Tema: Pionerismo"
     }
   },
   {
@@ -833,20 +833,20 @@
     }
   },
   {
-    "title": "Reunión Regular - Clase C/Negra / Conferencia SM / Junta de Repaso",
+    "title": "Day camp de Pioneering",
     "source": "tropa",
-    "start": "2026-10-31T09:00:00",
-    "end": "2026-10-31T12:00:00",
+    "start": "2026-10-31T07:00:00",
+    "end": "2026-10-31T15:00:00",
     "allDay": false,
     "y": 2026,
     "m": 9,
     "d": 31,
-    "comp": 1793437200000,
+    "comp": 1793430000000,
     "backgroundColor": "#4c1d95",
     "borderColor": "transparent",
     "extendedProps": {
-      "location": "CANEY Tropa 808\\, Bayamón",
-      "description": "Tema: Pionerismo"
+      "location": "",
+      "description": "Campamento de Tropa y Guateke OA"
     }
   },
   {
