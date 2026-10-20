@@ -731,27 +731,10 @@
     }
   },
   {
-    "title": "Mesa Redonda D1",
-    "source": "distrito",
-    "start": "2026-10-20T19:00:00",
-    "end": "2026-10-20T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 9,
-    "d": 20,
-    "comp": 1792522800000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Distrito"
-    }
-  },
-  {
     "title": "Guateke OA",
     "source": "oa",
     "start": "2026-10-23T17:00:00",
-    "end": "2026-10-25T12:00:00",
+    "end": "2026-10-25T11:00:00",
     "allDay": false,
     "y": 2026,
     "m": 9,
@@ -761,7 +744,7 @@
     "borderColor": "transparent",
     "extendedProps": {
       "location": "",
-      "description": "Guateke OA"
+      "description": "<p>Guateke OA</p><p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Se utiliza el horario de la ficha de inscripción: 23 de octubre a las 5:00 p. m. al 25 de octubre a las 11:00 a. m. El anuncio general publica horas distintas; pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/661-Guateke2026</p>"
     }
   },
   {
@@ -852,18 +835,18 @@
   {
     "title": "Wood Badge 2",
     "source": "distrito",
-    "start": "2026-11-07T06:00:00",
+    "start": "2026-11-07T07:00:00",
     "end": "2026-11-08T17:00:00",
     "allDay": false,
     "y": 2026,
     "m": 10,
     "d": 7,
-    "comp": 1794031200000,
+    "comp": 1794034800000,
     "backgroundColor": "#2563eb",
     "borderColor": "transparent",
     "extendedProps": {
       "location": "Guajataka Scout Reservation",
-      "description": "Adiestramiento de Liderazgo"
+      "description": "<p>Adiestramiento de Liderazgo</p><p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Horario del segundo fin de semana según la ficha de inscripción.<br>Fuente: https://scoutingevent.com/661-117244</p>"
     }
   },
   {
@@ -971,18 +954,18 @@
   {
     "title": "Vigilia de Honor",
     "source": "oa",
-    "start": "2026-11-27",
-    "end": "2026-11-29",
-    "allDay": true,
+    "start": "2026-11-28T19:00:00",
+    "end": "2026-11-29T21:00:00",
+    "allDay": false,
     "y": 2026,
     "m": 10,
-    "d": 27,
-    "comp": 1795737600000,
+    "d": 28,
+    "comp": 1795892400000,
     "backgroundColor": "#dc2626",
     "borderColor": "transparent",
     "extendedProps": {
       "location": "Guajataka Scout Reservation\\, 93CJ+4V\\, PR-119 Km 23.9\\, San Sebastián\\, 00669\\, Puerto Rico",
-      "description": ""
+      "description": "<p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Fecha y horario según la ficha general del calendario conciliar. Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620157</p>"
     }
   },
   {
@@ -1005,18 +988,18 @@
   {
     "title": "Adiestramiento de Nueva Inducción OA / Convención OA",
     "source": "oa",
-    "start": "2026-12-04T17:00:00",
-    "end": "2026-12-06T14:00:00",
+    "start": "2026-12-04T19:00:00",
+    "end": "2026-12-06T21:00:00",
     "allDay": false,
     "y": 2026,
     "m": 11,
     "d": 4,
-    "comp": 1796403600000,
+    "comp": 1796410800000,
     "backgroundColor": "#dc2626",
     "borderColor": "transparent",
     "extendedProps": {
       "location": "",
-      "description": "Evento de Orden de la Flecha"
+      "description": "<p>Evento de Orden de la Flecha</p><p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Horario ajustado al adiestramiento publicado en la ficha general del calendario conciliar. La Convención figura separadamente el 6 de diciembre, de 7:00 a 9:00 p. m.: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620158 . Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=694582</p>"
     }
   },
   {
@@ -1039,18 +1022,18 @@
   {
     "title": "Convención",
     "source": "oa",
-    "start": "2026-12-06",
-    "end": "2026-12-07",
-    "allDay": true,
+    "start": "2026-12-06T19:00:00",
+    "end": "2026-12-06T21:00:00",
+    "allDay": false,
     "y": 2026,
     "m": 11,
     "d": 6,
-    "comp": 1796515200000,
+    "comp": 1796583600000,
     "backgroundColor": "#dc2626",
     "borderColor": "transparent",
     "extendedProps": {
       "location": "",
-      "description": ""
+      "description": "<p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Horario según la ficha general del calendario conciliar. Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620158</p>"
     }
   },
   {
@@ -1226,18 +1209,18 @@
   {
     "title": "Seminario Liderato OA",
     "source": "oa",
-    "start": "2027-01-24T08:00:00",
-    "end": "2027-01-24T16:00:00",
+    "start": "2027-01-24T19:00:00",
+    "end": "2027-01-24T21:00:00",
     "allDay": false,
     "y": 2027,
     "m": 0,
     "d": 24,
-    "comp": 1800777600000,
+    "comp": 1800817200000,
     "backgroundColor": "#dc2626",
     "borderColor": "transparent",
     "extendedProps": {
       "location": "",
-      "description": "Capacitación OA"
+      "description": "<p>Capacitación OA</p><p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Horario según la ficha general del calendario conciliar. Difiere del horario diurno que tenía este evento; pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=694679</p>"
     }
   },
   {
