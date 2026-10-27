@@ -765,6 +765,23 @@
     }
   },
   {
+    "title": "JUNTA DE REPASO para el Rango de Águila",
+    "source": "tropa",
+    "start": "2026-10-27T18:30:00",
+    "end": "2026-10-27T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 9,
+    "d": 27,
+    "comp": 1793125800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": "<p>Nos honra invitarle a acompañar este importante paso en el camino Scout de<sup></sup>   </p><p><b>Julio Báez · Jorge Rodríguez</b></p><p>Su presencia hará aún más significativo este momento  </p>"
+    }
+  },
+  {
     "title": "Reunión Capítulo Majagua OA",
     "source": "oa",
     "start": "2026-10-27T19:00:00",
