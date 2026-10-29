@@ -833,7 +833,7 @@
     }
   },
   {
-    "title": "Day camp de Pioneering",
+    "title": "Day camp de Pioneering / Clase B / Anarajando",
     "source": "tropa",
     "start": "2026-10-31T07:00:00",
     "end": "2026-10-31T15:00:00",
@@ -845,8 +845,8 @@
     "backgroundColor": "#4c1d95",
     "borderColor": "transparent",
     "extendedProps": {
-      "location": "",
-      "description": "Campamento de Tropa y Guateke OA"
+      "location": "CF99+754 Manatí",
+      "description": "Llevar a cabo un campamento diurno el día 31 de octubre del 2026, en el que se estarán demostrando las distintas destrezas de “Pioneering” o pionerismo. También se dará un taller sobre empalmes (splicing)."
     }
   },
   {
