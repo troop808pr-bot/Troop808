@@ -901,20 +901,37 @@
     }
   },
   {
-    "title": "Reunión Capítulo Majagua OA",
-    "source": "oa",
-    "start": "2026-11-17T19:00:00",
-    "end": "2026-11-17T21:00:00",
+    "title": "Reunión Regular del Crew",
+    "source": "tropa",
+    "start": "2026-11-14T09:00:00",
+    "end": "2026-11-14T12:00:00",
     "allDay": false,
     "y": 2026,
     "m": 10,
-    "d": 17,
-    "comp": 1794942000000,
+    "d": 14,
+    "comp": 1794646800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Capítulo 1 OA",
+    "source": "oa",
+    "start": "2026-11-14T16:00:00",
+    "end": "2026-11-14T20:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 14,
+    "comp": 1794672000000,
     "backgroundColor": "#dc2626",
     "borderColor": "transparent",
     "extendedProps": {
-      "location": "",
-      "description": "OA"
+      "location": "University of Puerto Rico at Bayamón\\, Carr. 174. 170 Industrial Minillas 1911\\, Bayamón\\, 00959\\, Puerto Rico",
+      "description": "OA<br><br>https://www.facebook.com/share/p/1Cc2DJ7Tvx/?mibextid=wwXIfr"
     }
   },
   {
@@ -1037,6 +1054,23 @@
     }
   },
   {
+    "title": "Reunión Regular del Crew",
+    "source": "tropa",
+    "start": "2026-12-05T13:00:00",
+    "end": "2026-12-05T15:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 5,
+    "comp": 1796475600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
     "title": "Convención",
     "source": "oa",
     "start": "2026-12-06T19:00:00",
@@ -1068,6 +1102,23 @@
     "extendedProps": {
       "location": "",
       "description": "Reunión de Distrito"
+    }
+  },
+  {
+    "title": "Ceremonia Anual de Premios y Encuentro Navideño",
+    "source": "distrito",
+    "start": "2026-12-10T18:30:00",
+    "end": "2026-12-10T21:30:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 10,
+    "comp": 1796927400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": "https://www.facebook.com/share/p/1DhTddGUya/?mibextid=wwXIfr"
     }
   },
   {
