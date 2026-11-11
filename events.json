@@ -884,23 +884,6 @@
     }
   },
   {
-    "title": "Reunión Regular - Clase B/Anaranjado / Junta de Repaso / Reunión de Padres",
-    "source": "tropa",
-    "start": "2026-11-14T09:00:00",
-    "end": "2026-11-14T12:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 10,
-    "d": 14,
-    "comp": 1794646800000,
-    "backgroundColor": "#ea580c",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "CANEY Tropa 808\\, Bayamón",
-      "description": ""
-    }
-  },
-  {
     "title": "Reunión Regular del Crew",
     "source": "tropa",
     "start": "2026-11-14T09:00:00",
@@ -914,6 +897,23 @@
     "borderColor": "transparent",
     "extendedProps": {
       "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular - Clase B/Anaranjado / Junta de Repaso / Reunión de Padres",
+    "source": "tropa",
+    "start": "2026-11-14T09:00:00",
+    "end": "2026-11-14T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 14,
+    "comp": 1794646800000,
+    "backgroundColor": "#ea580c",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "CANEY Tropa 808\\, Bayamón",
       "description": ""
     }
   },
