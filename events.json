@@ -935,23 +935,6 @@
     }
   },
   {
-    "title": "Mesa Redonda D1",
-    "source": "distrito",
-    "start": "2026-11-17T19:00:00",
-    "end": "2026-11-17T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 10,
-    "d": 17,
-    "comp": 1794942000000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Distrito y OA"
-    }
-  },
-  {
     "title": "Paddle Boarding Award",
     "source": "tropa",
     "start": "2026-11-21T08:00:00",
@@ -969,23 +952,6 @@
     }
   },
   {
-    "title": "D1: Reunión Comisionados",
-    "source": "distrito",
-    "start": "2026-11-24T19:00:00",
-    "end": "2026-11-24T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 10,
-    "d": 24,
-    "comp": 1795546800000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Comisionados"
-    }
-  },
-  {
     "title": "Vigilia de Honor",
     "source": "oa",
     "start": "2026-11-28T19:00:00",
@@ -1000,23 +966,6 @@
     "extendedProps": {
       "location": "Guajataka Scout Reservation\\, 93CJ+4V\\, PR-119 Km 23.9\\, San Sebastián\\, 00669\\, Puerto Rico",
       "description": "<p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Fecha y horario según la ficha general del calendario conciliar. Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620157</p>"
-    }
-  },
-  {
-    "title": "Lodge Induction Experience",
-    "source": "oa",
-    "start": "2026-12-04",
-    "end": "2026-12-07",
-    "allDay": true,
-    "y": 2026,
-    "m": 11,
-    "d": 4,
-    "comp": 1796342400000,
-    "backgroundColor": "#dc2626",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": ""
     }
   },
   {
@@ -1088,23 +1037,6 @@
     }
   },
   {
-    "title": "D1: Reunión Distrito",
-    "source": "distrito",
-    "start": "2026-12-08T19:00:00",
-    "end": "2026-12-08T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 11,
-    "d": 8,
-    "comp": 1796756400000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Distrito"
-    }
-  },
-  {
     "title": "Ceremonia Anual de Premios y Encuentro Navideño",
     "source": "distrito",
     "start": "2026-12-10T18:30:00",
@@ -1139,37 +1071,37 @@
     }
   },
   {
-    "title": "Reunión Capítulo Majagua OA",
-    "source": "oa",
-    "start": "2026-12-15T19:00:00",
-    "end": "2026-12-15T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 11,
-    "d": 15,
-    "comp": 1797361200000,
-    "backgroundColor": "#dc2626",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Distrito y OA"
-    }
-  },
-  {
-    "title": "Mesa Redonda D1",
+    "title": "Mesa Redonda Navideña",
     "source": "distrito",
-    "start": "2026-12-15T19:00:00",
-    "end": "2026-12-15T21:00:00",
+    "start": "2026-12-16T19:00:00",
+    "end": "2026-12-16T21:00:00",
     "allDay": false,
     "y": 2026,
     "m": 11,
-    "d": 15,
-    "comp": 1797361200000,
+    "d": 16,
+    "comp": 1797447600000,
     "backgroundColor": "#2563eb",
     "borderColor": "transparent",
     "extendedProps": {
+      "location": "Tropa XXV La Legendaria\\, 9VW4+G8X\\, Bayamón\\, 00961\\, Puerto Rico",
+      "description": ""
+    }
+  },
+  {
+    "title": "Camping Crew 808",
+    "source": "tropa",
+    "start": "2026-12-18",
+    "end": "2026-12-21",
+    "allDay": true,
+    "y": 2026,
+    "m": 11,
+    "d": 18,
+    "comp": 1797552000000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
       "location": "",
-      "description": "Reunión de Distrito y OA"
+      "description": ""
     }
   },
   {
@@ -1187,23 +1119,6 @@
     "extendedProps": {
       "location": "CANEY Tropa 808\\, Bayamón",
       "description": "Planificación de Tropa"
-    }
-  },
-  {
-    "title": "Reunión Capítulo Majagua OA",
-    "source": "oa",
-    "start": "2027-01-12T19:00:00",
-    "end": "2027-01-12T21:00:00",
-    "allDay": false,
-    "y": 2027,
-    "m": 0,
-    "d": 12,
-    "comp": 1799780400000,
-    "backgroundColor": "#dc2626",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Distrito y OA"
     }
   },
   {
@@ -1238,23 +1153,6 @@
     "extendedProps": {
       "location": "CANEY Tropa 808\\, Bayamón",
       "description": "Tema: Adelanto"
-    }
-  },
-  {
-    "title": "D1: Reunión Comisionados",
-    "source": "distrito",
-    "start": "2027-01-19T19:00:00",
-    "end": "2027-01-19T21:00:00",
-    "allDay": false,
-    "y": 2027,
-    "m": 0,
-    "d": 19,
-    "comp": 1800385200000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "Reunión de Comisionados"
     }
   },
   {
