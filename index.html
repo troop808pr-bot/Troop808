@@ -1342,68 +1342,7 @@
                 },
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
-                    const ev = info.event;
-                    
-                    document.getElementById('modal-title').innerText = ev.title;
-                    document.getElementById('modal-color').style.backgroundColor = ev.backgroundColor;
-                    
-                    let tagText = "Tropa 808";
-                    if (ev.extendedProps.source === 'oa') tagText = "Order of the Arrow";
-                    else if (ev.extendedProps.source === 'distrito') tagText = "Distrito Majagua";
-                    document.getElementById('modal-tag').innerText = tagText;
-                    
-                    document.getElementById('modal-date').innerText = info.view.calendar.formatDate(ev.start, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                    
-                    if (ev.allDay) {
-                        document.getElementById('modal-time').innerText = "Todo el día";
-                    } else {
-                        const opts = { hour: 'numeric', minute: '2-digit', hour12: true };
-                        let timeStr = info.view.calendar.formatDate(ev.start, opts);
-                        if (ev.end) {
-                            timeStr += " - " + info.view.calendar.formatDate(ev.end, opts);
-                        }
-                        timeStr = timeStr.replace(/a\.?\s*m\.?/gi, 'AM').replace(/p\.?\s*m\.?/gi, 'PM');
-                        document.getElementById('modal-time').innerText = timeStr;
-                    }
-                    
-                    const locContainer = document.getElementById('modal-location-container');
-                    if (ev.extendedProps.location && ev.extendedProps.location.trim() !== "") {
-                        document.getElementById('modal-location').innerText = ev.extendedProps.location;
-                        locContainer.classList.remove('hidden');
-                    } else {
-                        locContainer.classList.add('hidden');
-                    }
-
-                    const descContainer = document.getElementById('modal-description-container');
-                    if (ev.extendedProps.description && ev.extendedProps.description.trim() !== "") {
-                        document.getElementById('modal-description').innerHTML = ev.extendedProps.description;
-                        descContainer.classList.remove('hidden');
-                    } else {
-                        descContainer.classList.add('hidden');
-                    }
-                    
-                    const agendaBtn = document.getElementById('modal-agenda-btn');
-                    const eventDateObj = new Date(ev.start);
-                    const y = eventDateObj.getFullYear();
-                    const m = eventDateObj.getMonth();
-                    const day = eventDateObj.getDate();
-                    
-                    if (y === 2026 && m === 2 && day === 7) {
-                        agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
-                        agendaBtn.classList.remove('hidden');
-                        agendaBtn.classList.add('flex');
-                    } else if (y === 2026 && m === 2 && day === 21) {
-                        agendaBtn.href = "https://drive.google.com/file/d/1jp9nwElsW2vMXalx3cXZMecV2_BRUxBv/view?usp=sharing";
-                        agendaBtn.classList.remove('hidden');
-                        agendaBtn.classList.add('flex');
-                    } else {
-                        agendaBtn.classList.add('hidden');
-                        agendaBtn.classList.remove('flex');
-                    }
-                    
-                    document.getElementById('event-modal').classList.remove('hidden');
-                    setTimeout(() => { document.getElementById('event-modal').classList.remove('opacity-0'); }, 10);
-                    document.body.style.overflow = 'hidden';
+                    showEventModal(info.event);
                 }
             });
         }
@@ -1417,42 +1356,36 @@
         };
 
         window.openCardModal = (compTime) => {
-            const ev = globalRawEvents.find(e => e.comp === compTime);
-            if (!ev) return;
+            const event = calendarInstance?.getEvents().find(event => event.extendedProps.comp === compTime);
+            if (event) showEventModal(event);
+        };
 
+        function showEventModal(ev) {
+            
             document.getElementById('modal-title').innerText = ev.title;
             document.getElementById('modal-color').style.backgroundColor = ev.backgroundColor;
             
             let tagText = "Tropa 808";
-            if (ev.source === 'oa') tagText = "Order of the Arrow";
-            else if (ev.source === 'distrito') tagText = "Distrito Majagua";
+            if (ev.extendedProps.source === 'oa') tagText = "Order of the Arrow";
+            else if (ev.extendedProps.source === 'distrito') tagText = "Distrito Majagua";
             document.getElementById('modal-tag').innerText = tagText;
             
-            const d = new Date(ev.comp);
-            const dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            let dateStr = d.toLocaleDateString('es-ES', dateOpts);
-            dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-            document.getElementById('modal-date').innerText = dateStr;
+            document.getElementById('modal-date').innerText = calendarInstance.formatDate(ev.start, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             
             if (ev.allDay) {
                 document.getElementById('modal-time').innerText = "Todo el día";
             } else {
-                const timeOpts = { hour: 'numeric', minute: '2-digit', hour12: true };
-                let timeStr = d.toLocaleTimeString('es-ES', timeOpts);
+                const opts = { hour: 'numeric', minute: '2-digit', hour12: true };
+                let timeStr = calendarInstance.formatDate(ev.start, opts);
                 if (ev.end) {
-                    try {
-                        const endD = new Date(ev.end);
-                        if (!isNaN(endD)) {
-                            timeStr += " - " + endD.toLocaleTimeString('es-ES', timeOpts);
-                        }
-                    } catch(e) {}
+                    timeStr += " - " + calendarInstance.formatDate(ev.end, opts);
                 }
                 timeStr = timeStr.replace(/a\.?\s*m\.?/gi, 'AM').replace(/p\.?\s*m\.?/gi, 'PM');
                 document.getElementById('modal-time').innerText = timeStr;
             }
             
             const locContainer = document.getElementById('modal-location-container');
-            if (ev.extendedProps && ev.extendedProps.location && ev.extendedProps.location.trim() !== "") {
+            if (ev.extendedProps.location && ev.extendedProps.location.trim() !== "") {
                 document.getElementById('modal-location').innerText = ev.extendedProps.location;
                 locContainer.classList.remove('hidden');
             } else {
@@ -1460,7 +1393,7 @@
             }
 
             const descContainer = document.getElementById('modal-description-container');
-            if (ev.extendedProps && ev.extendedProps.description && ev.extendedProps.description.trim() !== "") {
+            if (ev.extendedProps.description && ev.extendedProps.description.trim() !== "") {
                 document.getElementById('modal-description').innerHTML = ev.extendedProps.description;
                 descContainer.classList.remove('hidden');
             } else {
@@ -1468,9 +1401,10 @@
             }
             
             const agendaBtn = document.getElementById('modal-agenda-btn');
-            const y = d.getFullYear();
-            const m = d.getMonth();
-            const day = d.getDate();
+            const eventDateObj = new Date(ev.start);
+            const y = eventDateObj.getFullYear();
+            const m = eventDateObj.getMonth();
+            const day = eventDateObj.getDate();
             
             if (y === 2026 && m === 2 && day === 7) {
                 agendaBtn.href = "https://drive.google.com/file/d/1YvLFaNFcteDktGKDb_61L_Nh2UsyL6fZ/view?usp=sharing";
@@ -1485,11 +1419,10 @@
                 agendaBtn.classList.remove('flex');
             }
             
-            const modal = document.getElementById('event-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            document.getElementById('event-modal').classList.remove('hidden');
+            setTimeout(() => { document.getElementById('event-modal').classList.remove('opacity-0'); }, 10);
             document.body.style.overflow = 'hidden';
-        };
+        }
 
         function renderEventHTML(events, targetId) {
             const container = document.getElementById(targetId);
