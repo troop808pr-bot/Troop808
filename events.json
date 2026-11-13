@@ -884,23 +884,6 @@
     }
   },
   {
-    "title": "Reunión Regular del Crew",
-    "source": "tropa",
-    "start": "2026-11-14T09:00:00",
-    "end": "2026-11-14T12:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 10,
-    "d": 14,
-    "comp": 1794646800000,
-    "backgroundColor": "#4c1d95",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
-      "description": ""
-    }
-  },
-  {
     "title": "Reunión Regular - Clase B/Anaranjado / Junta de Repaso / Reunión de Padres",
     "source": "tropa",
     "start": "2026-11-14T09:00:00",
@@ -914,6 +897,23 @@
     "borderColor": "transparent",
     "extendedProps": {
       "location": "CANEY Tropa 808\\, Bayamón",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular del Crew",
+    "source": "tropa",
+    "start": "2026-11-14T09:00:00",
+    "end": "2026-11-14T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 14,
+    "comp": 1794646800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
       "description": ""
     }
   },
@@ -983,23 +983,6 @@
     "extendedProps": {
       "location": "Guajataka Scout Reservation\\, 93CJ+4V\\, PR-119 Km 23.9\\, San Sebastián\\, 00669\\, Puerto Rico",
       "description": "<p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Fecha y horario según la ficha general del calendario conciliar. Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620157</p>"
-    }
-  },
-  {
-    "title": "Adiestramiento de Nueva Inducción OA / Convención OA",
-    "source": "oa",
-    "start": "2026-12-04T19:00:00",
-    "end": "2026-12-06T21:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 11,
-    "d": 4,
-    "comp": 1796410800000,
-    "backgroundColor": "#dc2626",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": "<p>Evento de Orden de la Flecha</p><p>Referencia de fecha y horario: fuente consultada el 20 de octubre de 2026. Horas de Puerto Rico.<br>Horario ajustado al adiestramiento publicado en la ficha general del calendario conciliar. La Convención figura separadamente el 6 de diciembre, de 7:00 a 9:00 p. m.: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=620158 . Pendiente de confirmación con la coordinación.<br>Fuente: https://scoutingevent.com/?OrgKey=BSA661&amp;calendarID=694582</p>"
     }
   },
   {
