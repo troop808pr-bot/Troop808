@@ -1054,23 +1054,6 @@
     }
   },
   {
-    "title": "Fiesta de Navidad Tropa 808",
-    "source": "tropa",
-    "start": "2026-12-12",
-    "end": "2026-12-13",
-    "allDay": true,
-    "y": 2026,
-    "m": 11,
-    "d": 12,
-    "comp": 1797033600000,
-    "backgroundColor": "#4c1d95",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "Dorado\\, 00646\\, Puerto Rico",
-      "description": "Celebración de Navidad"
-    }
-  },
-  {
     "title": "Fiesta de Navidad VOA",
     "source": "distrito",
     "start": "2026-12-12",
@@ -1085,6 +1068,23 @@
     "extendedProps": {
       "location": "",
       "description": ""
+    }
+  },
+  {
+    "title": "Fiesta de Navidad Tropa 808",
+    "source": "tropa",
+    "start": "2026-12-12T10:00:00",
+    "end": "2026-12-12T16:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 12,
+    "comp": 1797069600000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Dorado\\, 00646\\, Puerto Rico",
+      "description": "Celebración de Navidad"
     }
   },
   {
