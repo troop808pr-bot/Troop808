@@ -1037,23 +1037,6 @@
     }
   },
   {
-    "title": "Ceremonia Anual de Premios y Encuentro Navideño",
-    "source": "distrito",
-    "start": "2026-12-10T18:30:00",
-    "end": "2026-12-10T21:30:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 11,
-    "d": 10,
-    "comp": 1796927400000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
-      "description": "https://www.facebook.com/share/p/1DhTddGUya/?mibextid=wwXIfr"
-    }
-  },
-  {
     "title": "Fiesta de Navidad VOA",
     "source": "distrito",
     "start": "2026-12-12",
