@@ -884,23 +884,6 @@
     }
   },
   {
-    "title": "Reunión Regular del Crew",
-    "source": "tropa",
-    "start": "2026-11-14T09:00:00",
-    "end": "2026-11-14T12:00:00",
-    "allDay": false,
-    "y": 2026,
-    "m": 10,
-    "d": 14,
-    "comp": 1794646800000,
-    "backgroundColor": "#4c1d95",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
-      "description": ""
-    }
-  },
-  {
     "title": "Reunión Regular - Clase B/Anaranjado / Junta de Repaso / Reunión de Padres",
     "source": "tropa",
     "start": "2026-11-14T09:00:00",
@@ -914,6 +897,23 @@
     "borderColor": "transparent",
     "extendedProps": {
       "location": "CANEY Tropa 808\\, Bayamón",
+      "description": ""
+    }
+  },
+  {
+    "title": "Reunión Regular del Crew",
+    "source": "tropa",
+    "start": "2026-11-14T09:00:00",
+    "end": "2026-11-14T12:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 10,
+    "d": 14,
+    "comp": 1794646800000,
+    "backgroundColor": "#4c1d95",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "El Caney de la Tropa 808\\, 9VX4+5H\\, Bayamón\\, 00961\\, Puerto Rico",
       "description": ""
     }
   },
@@ -1037,23 +1037,6 @@
     }
   },
   {
-    "title": "Fiesta de Navidad VOA",
-    "source": "distrito",
-    "start": "2026-12-12",
-    "end": "2026-12-13",
-    "allDay": true,
-    "y": 2026,
-    "m": 11,
-    "d": 12,
-    "comp": 1797033600000,
-    "backgroundColor": "#2563eb",
-    "borderColor": "transparent",
-    "extendedProps": {
-      "location": "",
-      "description": ""
-    }
-  },
-  {
     "title": "Fiesta de Navidad Tropa 808",
     "source": "tropa",
     "start": "2026-12-12T10:00:00",
@@ -1068,6 +1051,23 @@
     "extendedProps": {
       "location": "Dorado\\, 00646\\, Puerto Rico",
       "description": "Celebración de Navidad"
+    }
+  },
+  {
+    "title": "Fiesta de Navidad VOA",
+    "source": "distrito",
+    "start": "2026-12-12T13:00:00",
+    "end": "2026-12-12T17:00:00",
+    "allDay": false,
+    "y": 2026,
+    "m": 11,
+    "d": 12,
+    "comp": 1797080400000,
+    "backgroundColor": "#2563eb",
+    "borderColor": "transparent",
+    "extendedProps": {
+      "location": "Universidad de Puerto Rico en Arecibo\\, Km. 0.8\\, PR-653\\, Arecibo\\, 00612\\, Puerto Rico",
+      "description": "⚜️ ¡AVENTUREROS! ⚜️<br><br>El Venturing Officer Association tiene el placer de invitarlos a nuestra Cena de Reconocimientos, donde celebraremos el liderazgo, esfuerzo y compromiso de nuestros aventureros. <br><br>📍 Lugar: UPR de Arecibo<br>🕐 Hora: 1:00 p. m.<br><br>💵 Costo por persona:<br>🔹 $30 antes del 7 de diciembre<br>🔹 $40 a partir del 8 de diciembre<br><br>🚨 ¡SOLO 100 ESPACIOS DISPONIBLES!<br><br>Enlace de registro: https://scoutingevent.com/661-123894 <br><br>¡No te pierdas esta gran celebración! ⚜️<br><br>Directiva del VOA 2026-2027"
     }
   },
   {
